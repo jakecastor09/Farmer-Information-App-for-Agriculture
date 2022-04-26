@@ -1,0 +1,30 @@
+import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { Router } from '@angular/router';
+
+@Component({
+  selector: 'app-logo-screen',
+  templateUrl: './logo-screen.page.html',
+  styleUrls: ['./logo-screen.page.scss'],
+})
+export class LogoScreenPage implements OnInit {
+  load = false;
+  constructor(
+    private modalController: ModalController,
+    private router: Router
+  ) {}
+
+  ngOnInit() {
+    setTimeout(() => {
+      this.modalController.dismiss();
+      this.navigate();
+      this.load = true;
+    }, 500);
+  }
+  navigate() {
+    if (this.load) {
+      return;
+    }
+    this.router.navigate(['/onboarding/screen1']);
+  }
+}
