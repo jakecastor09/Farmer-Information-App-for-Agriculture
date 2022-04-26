@@ -7,11 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { Screen1PageRoutingModule } from './screen1-routing.module';
 
 import { Screen1Page } from './screen1.page';
-import { NavBarComponent } from '../nav-bar/nav-bar.component';
-import { ContentComponent } from '../content/content.component';
+import { SharedModuleModule } from '../shared-module/shared-module.module';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, IonicModule, Screen1PageRoutingModule],
-  declarations: [Screen1Page, NavBarComponent, ContentComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    IonicModule,
+    Screen1PageRoutingModule,
+    SharedModuleModule,
+  ],
+  declarations: [Screen1Page],
 })
 export class Screen1PageModule {}

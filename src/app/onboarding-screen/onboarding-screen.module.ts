@@ -7,7 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { OnboardingScreenPageRoutingModule } from './onboarding-screen-routing.module';
 
 import { OnboardingScreenPage } from './onboarding-screen.page';
-import { ContentComponent } from './content/content.component';
+
+import { SharedModuleModule } from './shared-module/shared-module.module';
 
 @NgModule({
   imports: [
@@ -16,6 +17,6 @@ import { ContentComponent } from './content/content.component';
     IonicModule,
     OnboardingScreenPageRoutingModule,
   ],
-  declarations: [OnboardingScreenPage, ContentComponent],
+  declarations: [OnboardingScreenPage],
 })
 export class OnboardingScreenPageModule {}
