@@ -1,9 +1,24 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>welcome-screen</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-  <ion-button routerLink="/main/tabs/home/crops">Enter</ion-button>
+  <div class="welcome__container">
+    <div class="welcome__backgroundImg"></div>
+    <div class="welcome__header">
+      <ion-img
+        class="welcome__header--logo"
+        src="assets/img/logo.png"
+      ></ion-img>
+      <ion-label class="welcome__header--text">Welcome</ion-label>
+    </div>
+    <div class="welcome__content">
+      <ion-img
+        class="welcome__content--img"
+        src="assets/img/welcome/welcome.png"
+      ></ion-img>
+      <div class="welcome__content--form">
+        <input type="text" placeholder="Enter your name" />
+        <ion-button color="secondary" routerLink="/main/tabs/home/crops"
+          >Enter</ion-button
+        >
+      </div>
+    </div>
+  </div>
 </ion-content>

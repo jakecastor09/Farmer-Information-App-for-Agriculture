@@ -1,0 +1,80 @@
+.welcome {
+  &__container {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    position: relative;
+  }
+  &__backgroundImg {
+    height: 70vh;
+    width: 100vw;
+    background: url("../../assets/img/welcome/background.png") no-repeat 0 0;
+    filter: brightness(0.8);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+  }
+  &__header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 35vh;
+    z-index: 2;
+    &--logo {
+      width: 190px;
+      height: 190px;
+      z-index: 5;
+    }
+    &--text {
+      font-size: 32px;
+      transform: translateY(-20px);
+      color: #fff;
+      z-index: 5;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+  }
+  &__content {
+    height: 75vh;
+    background-color: #fff;
+    z-index: 6;
+    position: relative;
+    border-top-left-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    &--img {
+      width: 70%;
+      height: 70%;
+      transform: translateY(-70px);
+    }
+    &--form {
+      transform: translateY(-100px);
+      display: flex;
+      flex-direction: column;
+      width: 80%;
+      align-items: center;
+    }
+  }
+}
+
+input {
+  width: 80%;
+  border: 1px solid gray;
+  height: 40px;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 10px;
+}
+ion-button {
+  width: 80%;
+  height: 40px;
+  margin-top: 10px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  font-size: 12px;
+  text-transform: uppercase;
+}

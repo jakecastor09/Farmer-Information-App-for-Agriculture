@@ -1,5 +1,5 @@
 <div class="img-container">
-  <ion-img class="img" [src]="data[0].imageUrl"></ion-img>
+  <ion-img class="img" [src]="data[page - 1].imageUrl"></ion-img>
 </div>
-<h1>{{ data[0].title }}</h1>
-<p>{{ data[0].description }}</p>
+<h1>{{ data[page - 1].title }}</h1>
+<p>{{ data[page - 1].description }}</p>

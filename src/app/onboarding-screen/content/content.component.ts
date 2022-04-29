@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Onboarding } from '../onboarding.model';
+import { OnboardingService } from '../onboarding.service';
 
 @Component({
   selector: 'app-content',
@@ -8,7 +9,10 @@ import { Onboarding } from '../onboarding.model';
 })
 export class ContentComponent implements OnInit {
   @Input() data: Onboarding[] = [];
-  constructor() {}
+  page;
+  constructor(private onBoardingService: OnboardingService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.page = this.onBoardingService.getPage();
+  }
 }
