@@ -1,0 +1,59 @@
+.crops {
+  &__logo {
+    width: 130px;
+    height: 130px;
+    margin-top: 40px;
+  }
+  &__message {
+    font-size: 30px;
+    color: #fff;
+    transform: translateY(-22px);
+  }
+  &__header {
+    display: grid;
+    place-items: center;
+    background-color: var(--ion-color-primary);
+    height: 32vh;
+    border-radius: 0 0 50px 50px;
+  }
+  &__content {
+    height: 70vh;
+    padding: 0.8rem 0;
+    margin-top: 0.7rem;
+  }
+}
+ion-card {
+  text-align: center;
+  padding: 12px 8px;
+}
+ion-card > ion-img {
+  width: 50px;
+  margin: 0 auto;
+  padding-bottom: 5px;
+}
+span {
+  margin: 0 22px;
+  font-size: 17px;
+  padding: 0.8rem 0;
+  display: inline-block;
+}
+
+.selected {
+  position: relative;
+  z-index: 1;
+  &::after {
+    content: "";
+    display: block;
+    height: 80%;
+    width: 80%;
+    background: url("../../../../assets/img/check.png") no-repeat 0 0;
+    background-size: 45px 45px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    background-position: center;
+    backdrop-filter: blur(3px);
+  }
+}

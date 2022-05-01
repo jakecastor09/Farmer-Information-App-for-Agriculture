@@ -1,9 +1,98 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>crops-screen</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+  <div class="container">
+    <ion-grid class="ion-no-padding">
+      <ion-row>
+        <ion-col class="crops__header">
+          <ion-img
+            class="crops__logo"
+            src="assets/img/crops/avatar.png"
+          ></ion-img>
+          <ion-text class="crops__message">Hello, Jake</ion-text>
+        </ion-col>
+      </ion-row>
+      <div class="crops__content">
+        <span>Select your crops:</span>
+        <ion-row class="ion-padding-horizontal">
+          <ion-col size="4">
+            <ion-card
+              (click)="onClickWaterMelon()"
+              [class.selected]="isSelectedWaterMelon"
+            >
+              <ion-img src="assets/img/crops/watermelon.png"></ion-img>
+              <ion-label>Watermelon</ion-label>
+            </ion-card>
+          </ion-col>
+          <ion-col size="4">
+            <ion-card
+              (click)="onClickBanana()"
+              [class.selected]="isSelectedBanana"
+            >
+              <ion-img src="assets/img/crops/banana.png"></ion-img>
+              <ion-label>Banana</ion-label>
+            </ion-card>
+          </ion-col>
+          <ion-col size="4">
+            <ion-card
+              (click)="onClickMelon()"
+              [class.selected]="isSelectedMelon"
+            >
+              <ion-img src="assets/img/crops/melon.png"></ion-img>
+              <ion-label>Melon</ion-label>
+            </ion-card></ion-col
+          >
+        </ion-row>
+        <ion-row class="ion-padding-horizontal">
+          <ion-col size="4">
+            <ion-card (click)="onClickRice()" [class.selected]="isSelectedRice">
+              <ion-img src="assets/img/crops/palay.png"></ion-img>
+              <ion-label>Palay</ion-label>
+            </ion-card></ion-col
+          >
+          <ion-col size="4">
+            <ion-card
+              (click)="onClickEggPlant()"
+              [class.selected]="isSelectedEggPlant"
+            >
+              <ion-img src="assets/img/crops/eggplant.png"></ion-img>
+              <ion-label>Eggplant</ion-label>
+            </ion-card></ion-col
+          >
+          <ion-col size="4">
+            <ion-card
+              (click)="onClickBeans()"
+              [class.selected]="isSelectedBeans"
+            >
+              <ion-img src="assets/img/crops/stringbeans.png"></ion-img>
+              <ion-label>String Beans</ion-label>
+            </ion-card></ion-col
+          >
+        </ion-row>
+        <span>Select your livestock:</span>
+        <ion-row class="ion-padding-horizontal">
+          <ion-col size="4">
+            <ion-card (click)="onClickPig()" [class.selected]="isSelectedPig">
+              <ion-img src="assets/img/livestock/pig.png"></ion-img>
+              <ion-label>Pig</ion-label>
+            </ion-card></ion-col
+          >
+          <ion-col size="4">
+            <ion-card
+              (click)="onClickChicken()"
+              [class.selected]="isSelectedChicken"
+            >
+              <ion-img src="assets/img/livestock/chicken.png"></ion-img>
+              <ion-label>Chicken</ion-label>
+            </ion-card></ion-col
+          >
+          <ion-col size="4">
+            <ion-card (click)="onClickDuck()" [class.selected]="isSelectedDuck">
+              <ion-img src="assets/img/livestock/itik.png"></ion-img>
+              <ion-label>Duck</ion-label>
+            </ion-card></ion-col
+          >
+        </ion-row>
+      </div>
+    </ion-grid>
+  </div>
   <ion-button routerLink="/main/tabs/home">Done</ion-button>
 </ion-content>
