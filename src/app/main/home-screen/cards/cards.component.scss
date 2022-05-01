@@ -1,0 +1,25 @@
+.card {
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 184px;
+  border-radius: 20px;
+  &__title {
+    font-size: 10px;
+    color: #fff;
+    padding: 5px 19px;
+    border-radius: 25px;
+    transform: translateY(-10px);
+  }
+  &__content {
+    transform: translateY(-18px);
+    font-size: 10px;
+    text-align: center;
+    color: #3a3a3a;
+  }
+}
+
+.img {
+  width: 60%;
+}

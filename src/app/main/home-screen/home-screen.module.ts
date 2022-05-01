@@ -7,14 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { HomeScreenPageRoutingModule } from './home-screen-routing.module';
 
 import { HomeScreenPage } from './home-screen.page';
+import { CardsComponent } from './cards/cards.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    HomeScreenPageRoutingModule
+    HomeScreenPageRoutingModule,
   ],
-  declarations: [HomeScreenPage]
+  declarations: [HomeScreenPage, CardsComponent],
 })
 export class HomeScreenPageModule {}

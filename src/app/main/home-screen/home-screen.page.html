@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar mode="ios">
+  <ion-toolbar mode="ios" color="primary">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
@@ -8,11 +8,39 @@
 </ion-header>
 
 <ion-content>
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <h1>Manok</h1>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <div class="home__header container">
+    <div class="home__user">
+      <ion-img
+        class="home__header-logo"
+        src="assets/img/crops/avatar.png"
+      ></ion-img>
+      <div class="home__user--content">
+        <ion-label class="home__user--content-greetings"
+          >Good morning,</ion-label
+        >
+        <ion-label class="home__user--content-name">Jake</ion-label>
+      </div>
+    </div>
+    <div class="home__weather">
+      <ion-label class="home__weather-updates"></ion-label>
+      <div class="home__weather-button"></div>
+    </div>
+  </div>
+  <div class="home__content">
+    <ion-grid>
+      <ion-label class="home__content--title-crops" color="primary"
+        >My Crops</ion-label
+      >
+      <ion-row>
+        <ion-col>
+          <app-cards></app-cards>
+        </ion-col>
+        <ion-col> <app-cards></app-cards> </ion-col>
+      </ion-row>
+      <ion-label class="home__content--title-livestock" color="primary"
+        >My LiveStock</ion-label
+      >
+      <ion-row> </ion-row>
+    </ion-grid>
+  </div>
 </ion-content>

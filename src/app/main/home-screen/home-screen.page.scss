@@ -1,0 +1,52 @@
+.container {
+  padding: 0 20px;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+.home {
+  &__header {
+    display: flex;
+    height: 20vh;
+    align-items: center;
+    background-color: var(--ion-color-primary);
+    border-radius: 0 0 20px 20px;
+
+    &-logo {
+      width: 110px;
+      height: 110px;
+    }
+  }
+  &__user {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    &--content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      &-greetings {
+      }
+      &-name {
+        font-size: 30px;
+      }
+    }
+  }
+  &__weather {
+    &-updates {
+    }
+    &-button {
+    }
+  }
+
+  &__content {
+    background-color: #fff;
+    &--title {
+      &-crops {
+      }
+      &-livestock {
+      }
+    }
+  }
+}
