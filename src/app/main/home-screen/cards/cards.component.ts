@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+/* eslint-disable no-underscore-dangle */
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-cards',
@@ -6,9 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cards.component.scss'],
 })
 export class CardsComponent implements OnInit {
-
-  constructor() { }
-
+  @Input() item;
+  @Input() color;
+  constructor() {}
   ngOnInit() {}
-
 }

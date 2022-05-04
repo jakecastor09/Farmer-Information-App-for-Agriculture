@@ -5,11 +5,18 @@
   align-items: center;
   height: 184px;
   border-radius: 20px;
+  width: 161.67px;
+  height: 184px;
+  &__img {
+    width: 60%;
+  }
   &__title {
     font-size: 10px;
     color: #fff;
     padding: 5px 19px;
     border-radius: 25px;
+    width: 94.25px;
+    height: 22px;
     transform: translateY(-10px);
   }
   &__content {
@@ -18,8 +25,4 @@
     text-align: center;
     color: #3a3a3a;
   }
-}
-
-.img {
-  width: 60%;
 }

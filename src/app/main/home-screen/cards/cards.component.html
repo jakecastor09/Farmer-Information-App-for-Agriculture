@@ -1,7 +1,17 @@
-<ion-card class="card" style="background-color: #e5f4db">
-  <ion-img class="img" src="assets/img/home/crops/watermelon2.png"></ion-img>
-  <h1 class="card__title" style="background-color: #3c800f">Watermelon</h1>
+<ion-card
+  class="card"
+  [style]="{ backgroundColor: color[item.id - 1].backgroundColor }"
+>
+  <ion-img class="card__img" [src]="item.image"></ion-img>
+  <h1
+    class="card__title"
+    [style]="{
+      backgroundColor: color[item.id - 1].backgroundTextColor
+    }"
+  >
+    {{ item.name }}
+  </h1>
   <p class="card__content">
-    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+    {{ item.description.slice(0, 55) + "..." }}
   </p>
 </ion-card>

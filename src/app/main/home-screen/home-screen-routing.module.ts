@@ -17,7 +17,7 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'crop-details',
+    path: ':cropAndLiveStockDetailsId',
     loadChildren: () =>
       import('./crop-details/crop-details.module').then(
         (m) => m.CropDetailsPageModule

@@ -28,19 +28,39 @@
   </div>
   <div class="home__content">
     <ion-grid>
-      <ion-label class="home__content--title-crops" color="primary"
+      <ion-label class="home__content--title" color="primary"
         >My Crops</ion-label
       >
       <ion-row>
-        <ion-col>
-          <app-cards></app-cards>
-        </ion-col>
-        <ion-col> <app-cards></app-cards> </ion-col>
+        <ion-slides [options]="sliderConfig">
+          <ion-slide *ngFor="let cropsData of homeDataCrops">
+            <ion-col>
+              <app-cards
+                [item]="cropsData"
+                [color]="cropsColors"
+                (click)="onClickCropDetails(cropsData.id)"
+              ></app-cards>
+            </ion-col>
+          </ion-slide>
+        </ion-slides>
       </ion-row>
-      <ion-label class="home__content--title-livestock" color="primary"
+
+      <ion-label class="home__content--title" color="primary"
         >My LiveStock</ion-label
       >
-      <ion-row> </ion-row>
+      <ion-row>
+        <ion-slides [options]="sliderConfig">
+          <ion-slide *ngFor="let livestockData of homeDataLivestock">
+            <ion-col>
+              <app-cards
+                [item]="livestockData"
+                [color]="livestockColors"
+                (click)="onClickLivestockDetails(livestockData.id)"
+              ></app-cards>
+            </ion-col>
+          </ion-slide>
+        </ion-slides>
+      </ion-row>
     </ion-grid>
   </div>
 </ion-content>

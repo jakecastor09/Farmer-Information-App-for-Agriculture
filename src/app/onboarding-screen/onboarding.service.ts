@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import { Injectable } from '@angular/core';
 import { Onboarding } from './onboarding.model';
 
@@ -9,7 +10,6 @@ export class OnboardingService {
   private page = 1;
 
   constructor() {
-    // eslint-disable-next-line no-underscore-dangle
     this._onboardingData = [
       new Onboarding(
         '1',
@@ -39,7 +39,6 @@ export class OnboardingService {
   }
 
   getOnBoardingData() {
-    // eslint-disable-next-line no-underscore-dangle
     return [...this._onboardingData];
   }
   getPage() {
