@@ -14,8 +14,15 @@
         src="assets/img/welcome/welcome.png"
       ></ion-img>
       <div class="welcome__content--form">
-        <input type="text" placeholder="Enter your name" />
-        <ion-button color="secondary" routerLink="/main/tabs/home/crops"
+        <input
+          [(ngModel)]="firstName"
+          type="text"
+          placeholder="Enter your first name"
+        />
+        <ion-button
+          color="secondary"
+          (click)="onClickBtn()"
+          routerLink="/main/tabs/home/crops"
           >Enter</ion-button
         >
       </div>

@@ -17,4 +17,6 @@ export class AppComponent {
     });
     return await modal.present();
   }
+
+  addFarmersFirstName(firstName) {}
 }

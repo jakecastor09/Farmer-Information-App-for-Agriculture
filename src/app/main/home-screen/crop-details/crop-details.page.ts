@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
 import { HomeCropsService } from '../home-crops.service';
 import { HomeLivestockService } from '../home-livestock.service';
 

@@ -7,7 +7,7 @@
             class="crops__logo"
             src="assets/img/crops/avatar.png"
           ></ion-img>
-          <ion-text class="crops__message">Hello, Jake</ion-text>
+          <ion-text class="crops__message">Hello, {{firstName}}</ion-text>
         </ion-col>
       </ion-row>
       <div class="crops__content">
@@ -94,5 +94,5 @@
       </div>
     </ion-grid>
   </div>
-  <ion-button routerLink="/main/tabs/home">Done</ion-button>
+  <ion-button (click)="onClickBtn()">Done</ion-button>
 </ion-content>
