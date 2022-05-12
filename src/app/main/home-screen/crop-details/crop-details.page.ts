@@ -18,11 +18,11 @@ export class CropDetailsPage implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.subscribe((paramMap) => {
-      // if (paramMap.get('cropAndLiveStockDetailsId').includes('crop')) {
-      //   this.detailsData = this.cropsService.getCropData(
-      //     paramMap.get('cropAndLiveStockDetailsId')
-      //   );
-      // }
+      if (paramMap.get('cropAndLiveStockDetailsId').includes('crop')) {
+        this.detailsData = this.cropsService.getCropData(
+          paramMap.get('cropAndLiveStockDetailsId')
+        );
+      }
       if (paramMap.get('cropAndLiveStockDetailsId').includes('livestock')) {
         this.detailsData = this.livestockService.getOneLivestockData(
           paramMap.get('cropAndLiveStockDetailsId')

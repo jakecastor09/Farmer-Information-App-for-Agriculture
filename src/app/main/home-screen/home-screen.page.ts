@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ApiService } from 'src/app/api.service';
 import { HomeCropsService } from './home-crops.service';
 import { HomeLivestockService } from './home-livestock.service';
 
@@ -18,28 +19,49 @@ export class HomeScreenPage implements OnInit {
   homeDataCrops;
   homeDataLivestock;
   cropsColors;
-  livestockColors = [];
+  livestockColors;
+  userSelectedCropsData = [];
+  userSelectedLivestocksData = [];
 
   constructor(
     private cropsService: HomeCropsService,
     private livestockService: HomeLivestockService,
-    private router: Router
+    private router: Router,
+    private apiService: ApiService
   ) {}
 
   ngOnInit() {
-    fetch('../../../assets/model/cropsData.json')
-      .then((res) => res.json())
-      .then((data) => (this.homeDataCrops = data));
-
-    this.homeDataLivestock = this.livestockService.getLivestockData();
+    this.homeDataCrops = this.userSelectedCropsData;
+    this.homeDataLivestock = this.userSelectedLivestocksData;
     this.cropsColors = this.cropsService.getCropsColors();
     this.livestockColors = this.livestockService.getLivestockColors();
-    console.log(this.homeDataCrops);
+    this.getSelectedCrops();
+    this.getSelectedLivestocks();
   }
   onClickCropDetails(id) {
     this.router.navigate(['/', 'main', 'tabs', 'home', 'crop' + id]);
   }
   onClickLivestockDetails(id) {
     this.router.navigate(['/', 'main', 'tabs', 'home', 'livestock' + id]);
+  }
+
+  getSelectedCrops() {
+    this.apiService.getCrops().subscribe((res: any) => {
+      res.forEach((data) => {
+        const receivedCropData = this.cropsService.getCropByName(data.cropName);
+        this.userSelectedCropsData.push(receivedCropData);
+      });
+    });
+  }
+
+  getSelectedLivestocks() {
+    this.apiService.getLivestocks().subscribe((res: any) => {
+      res.forEach((data) => {
+        const receivedLivestocksData =
+          this.livestockService.getLivestockDataByName(data.livestocksName);
+        console.log(receivedLivestocksData);
+        this.userSelectedLivestocksData.push(receivedLivestocksData);
+      });
+    });
   }
 }

@@ -63,7 +63,7 @@ export class CropsScreenPage implements OnInit {
       { name: 'eggplant', crop: this.isSelectedEggPlant },
       { name: 'melon', crop: this.isSelectedMelon },
       { name: 'watermelon', crop: this.isSelectedWaterMelon },
-      { name: 'rice', crop: this.isSelectedRice },
+      { name: 'palay', crop: this.isSelectedRice },
     ];
 
     const allLivestocks = [

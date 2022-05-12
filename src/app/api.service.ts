@@ -33,11 +33,23 @@ export class ApiService {
     );
   }
 
+  getCrops() {
+    return this.http.get(
+      'http://localhost/projects/farmer-information-app-for-agriculture/backend/crops/getCrops.php'
+    );
+  }
+
   //Crops Table
   addLivestocks(data) {
     return this.http.post(
       'http://localhost/projects/farmer-information-app-for-agriculture/backend/livestocks/create.php',
       data
+    );
+  }
+
+  getLivestocks() {
+    return this.http.get(
+      'http://localhost/projects/farmer-information-app-for-agriculture/backend/livestocks/getLivestocks.php'
     );
   }
 }
