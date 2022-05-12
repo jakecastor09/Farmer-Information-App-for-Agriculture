@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HomeCropsService } from './home-crops.service';
 import { HomeLivestockService } from './home-livestock.service';
-import { Crops } from './home.crops.model';
-import { Livestock } from './home.livestock.model';
 
 @Component({
   selector: 'app-home-screen',
@@ -17,9 +15,9 @@ export class HomeScreenPage implements OnInit {
     slidesPerView: 2,
   };
 
-  homeDataCrops: Crops[] = [];
-  homeDataLivestock: Livestock[] = [];
-  cropsColors = [];
+  homeDataCrops;
+  homeDataLivestock;
+  cropsColors;
   livestockColors = [];
 
   constructor(
@@ -29,10 +27,14 @@ export class HomeScreenPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.homeDataCrops = this.cropsService.getCropsData();
+    fetch('../../../assets/model/cropsData.json')
+      .then((res) => res.json())
+      .then((data) => (this.homeDataCrops = data));
+
     this.homeDataLivestock = this.livestockService.getLivestockData();
     this.cropsColors = this.cropsService.getCropsColors();
     this.livestockColors = this.livestockService.getLivestockColors();
+    console.log(this.homeDataCrops);
   }
   onClickCropDetails(id) {
     this.router.navigate(['/', 'main', 'tabs', 'home', 'crop' + id]);

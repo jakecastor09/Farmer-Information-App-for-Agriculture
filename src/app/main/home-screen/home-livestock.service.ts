@@ -1,7 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable max-len */
 import { Injectable } from '@angular/core';
-import { Livestock } from './home.livestock.model';
 
 @Injectable({
   providedIn: 'root',
@@ -12,13 +11,20 @@ export class HomeLivestockService {
     { backgroundTextColor: '#C76D71', backgroundColor: '#FFFFFF' },
     { backgroundTextColor: '#E38550', backgroundColor: '#F8E2D5' },
   ];
-  _livestockData: Livestock[] = [];
-  constructor() {}
-
-  getLivestockData() {
-    return [...this._livestockData];
+  _livestockData;
+  constructor() {
+    fetch('../../../assets/model/livestockData.json')
+      .then((res) => res.json())
+      .then((data) => this.getFetchData(data));
   }
 
+  getFetchData(data) {
+    this._livestockData = data;
+  }
+
+  getLivestockData() {
+    return this._livestockData;
+  }
   getLivestockColors() {
     return [...this.livestockColors];
   }

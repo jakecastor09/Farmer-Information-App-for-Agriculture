@@ -1,17 +1,19 @@
 <ion-card
   class="card"
-  [style]="{ backgroundColor: color[item.id - 1].backgroundColor }"
+  [style]="{
+    backgroundColor: color[item.name].backgroundColor
+  }"
 >
-  <ion-img class="card__img" [src]="item.image"></ion-img>
+  <ion-img class="card__img" [src]="item.img"></ion-img>
   <h1
     class="card__title"
     [style]="{
-      backgroundColor: color[item.id - 1].backgroundTextColor
+      backgroundColor: color[item.name].backgroundTextColor
     }"
   >
     {{ item.name }}
   </h1>
   <p class="card__content">
-    {{ item.description.slice(0, 55) + "..." }}
+    {{ item.description.english[0].text.slice(0, 55) + "..." }}
   </p>
 </ion-card>
