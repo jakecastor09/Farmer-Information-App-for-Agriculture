@@ -59,7 +59,6 @@ export class HomeScreenPage implements OnInit {
       res.forEach((data) => {
         const receivedLivestocksData =
           this.livestockService.getLivestockDataByName(data.livestocksName);
-        console.log(receivedLivestocksData);
         this.userSelectedLivestocksData.push(receivedLivestocksData);
       });
     });

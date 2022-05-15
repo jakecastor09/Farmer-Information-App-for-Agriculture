@@ -1,7 +1,72 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>{{detailsData.name}}</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content> </ion-content>
+<ion-content>
+  <ion-grid class="ion-no-padding">
+    <ion-row class="header">
+      <ion-col>
+        <ion-img [src]="navData.img"></ion-img>
+      </ion-col>
+    </ion-row>
+    <ion-row class="content">
+      <ion-col>
+        <div
+          (click)="onClickNavIcon()"
+          class="icon"
+          [style]="{
+          backgroundColor: color.backgroundColor
+        }"
+        >
+          <ion-img [src]="navData.icon"></ion-img>
+        </div>
+        <div class="content__nav" [class.toggle]="toggle">
+          <ion-img
+            (click)="onClickFertilizer()"
+            class="nav-icons selected"
+            src="assets/img/details/icons/fertilizer.png"
+          ></ion-img>
+          <ion-img
+            (click)="onClickLifeSpan()"
+            class="nav-icons selected"
+            src="assets/img/details/icons/lifeSpan.png"
+          ></ion-img>
+          <ion-img
+            (click)="onClickLevelOfDifficulty()"
+            class="nav-icons selected"
+            src="assets/img/details/icons/level.png"
+          ></ion-img>
+          <ion-img
+            (click)="onClickBestTimeToPlant()"
+            class="nav-icons selected"
+            src="assets/img/details/icons/best.png"
+          ></ion-img>
+          <ion-img
+            (click)="onClickTips()"
+            class="nav-icons selected"
+            src="assets/img/details/icons/tips.png"
+          ></ion-img>
+        </div>
+        <div>
+          <h1 class="title">
+            {{data.name.charAt(0).toUpperCase() + data.name.slice(1)}}
+          </h1>
+          <h3 class="description">{{navData.title}}</h3>
+          <p class="paragraph">{{navData.content[language]}}</p>
+          <div class="accordion">
+            <ion-list>
+              <ion-item>
+                <ion-label>Language</ion-label>
+                <ion-select
+                  [(ngModel)]="language"
+                  (ngModelChange)="languageChange()"
+                >
+                  <ion-select-option value="english">English</ion-select-option>
+                  <ion-select-option value="filipino"
+                    >Filipino</ion-select-option
+                  >
+                </ion-select>
+              </ion-item>
+            </ion-list>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

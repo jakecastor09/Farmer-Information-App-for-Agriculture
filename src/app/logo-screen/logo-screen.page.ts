@@ -27,5 +27,6 @@ export class LogoScreenPage implements OnInit {
     }
     //Default home
     this.router.navigate(['/onboarding/screen1']);
+    // this.router.navigate(['/main/tabs/home/crop1']);
   }
 }

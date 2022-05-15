@@ -1,0 +1,76 @@
+.content {
+  transform: translateY(20px);
+  background-color: #ffff;
+  border-radius: 40px 40px 0 0;
+  padding: 2.3rem;
+  position: relative;
+  transition: all 0.5s;
+}
+.header {
+  height: 40vh;
+  transition: all 1s;
+}
+.title {
+  font-weight: bold;
+  color: #333;
+}
+
+.description {
+  color: #333;
+  font-weight: bold;
+}
+.paragraph {
+  transform: translateY(-10px);
+  font-weight: lighter;
+  color: #333;
+}
+
+.icon ion-img {
+  width: 50px;
+  height: 50px;
+}
+.icon {
+  display: inline-block;
+  position: absolute;
+  top: -72px;
+  left: -20px;
+  padding: 10px;
+  border-radius: 100%;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.07);
+  z-index: 5;
+}
+
+.content__nav {
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  width: 0%;
+  opacity: 0;
+  top: -62px;
+  left: 5px;
+  border-radius: 40px;
+  padding: 0.5rem 1.5rem 0.5rem 3.6rem;
+  transition: all 0.4s;
+  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.08);
+}
+
+.toggle {
+  width: 105%;
+  transition: all 0.4s;
+  opacity: 1;
+}
+
+.nav-icons {
+  width: 35px;
+  height: 35px;
+  opacity: 0.8;
+}
+
+.selected {
+  &:hover {
+    transition: all 0.5s;
+    transform: translateY(-5px);
+    opacity: 1;
+  }
+}
