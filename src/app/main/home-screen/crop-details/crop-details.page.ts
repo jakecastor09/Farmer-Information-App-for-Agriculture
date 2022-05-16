@@ -13,6 +13,13 @@ export class CropDetailsPage implements OnInit {
   color;
   language = 'english';
   toggle;
+  navIcon = {
+    item1: '',
+    item2: '',
+    item3: '',
+    item4: '',
+    item5: '',
+  };
   navData = {
     title: '',
     content: {
@@ -30,19 +37,37 @@ export class CropDetailsPage implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.subscribe((paramMap) => {
-      if (paramMap.get('cropAndLiveStockDetailsId').includes('crop')) {
+      if (paramMap.get('cropAndLivestocksDetailsId').includes('crop')) {
         this.data = this.cropsService.getCropData(
-          paramMap.get('cropAndLiveStockDetailsId')
+          paramMap.get('cropAndLivestocksDetailsId')
         );
       }
-      if (paramMap.get('cropAndLiveStockDetailsId').includes('livestock')) {
+      if (paramMap.get('cropAndLivestocksDetailsId').includes('livestock')) {
         this.data = this.livestockService.getOneLivestockData(
-          paramMap.get('cropAndLiveStockDetailsId')
+          paramMap.get('cropAndLivestocksDetailsId')
         );
       }
     });
 
-    this.color = this.cropsService.getCropsColor(this.data.name);
+    if (this.data.type === 'crops') {
+      this.color = this.cropsService.getCropsColor(this.data.name);
+      this.navIcon.item1 = 'assets/img/details/crops/icons/best.png';
+      this.navIcon.item2 = 'assets/img/details/crops/icons/fertilizer.png';
+      this.navIcon.item3 = 'assets/img/details/crops/icons/lifeSpan.png';
+      this.navIcon.item4 = 'assets/img/details/crops/icons/level.png';
+      this.navIcon.item5 = 'assets/img/details/crops/icons/tips.png';
+    }
+
+    if (this.data.type === 'livestocks') {
+      this.color = this.livestockService.getLivestockColor(this.data.name);
+      this.navIcon.item1 =
+        'assets/img/details/livestocks/icons/waysToRaise.png';
+      this.navIcon.item2 = 'assets/img/details/livestocks/icons/food.png';
+      this.navIcon.item3 = 'assets/img/details/livestocks/icons/lifeSpan.png';
+      this.navIcon.item4 = 'assets/img/details/livestocks/icons/level.png';
+      this.navIcon.item5 = 'assets/img/details/livestocks/icons/tips.png';
+    }
+
     this.defaultData();
   }
   languageChange() {}
@@ -53,39 +78,36 @@ export class CropDetailsPage implements OnInit {
     }
   }
   defaultData() {
-    this.navData.title = 'Description';
-    this.navData.content.english = this.data.description.english;
-    this.navData.content.filipino = this.data.description.filipino;
+    this.navData.title = this.data.item1.title;
+    this.navData.content.english = this.data.item1.english;
+    this.navData.content.filipino = this.data.item1.filipino;
     this.navData.img = this.data.images.descriptionImg;
     this.navData.icon = this.data.icon;
   }
-  onClickFertilizer() {
-    this.navData.title = 'Fertilizers Needed';
-    this.navData.content.english = this.data.fertilizersNeeded.english;
-    this.navData.content.filipino = this.data.fertilizersNeeded.filipino;
+  onClickItem1() {
+    this.navData.title = this.data.item2.title;
+    this.navData.content.english = this.data.item2.english;
+    this.navData.content.filipino = this.data.item2.filipino;
   }
-  onClickLifeSpan() {
-    this.navData.title = 'Life Span';
-    this.navData.content.english = this.data.lifeSpan.english;
-    this.navData.content.filipino = this.data.lifeSpan.filipino;
+  onClickItem2() {
+    this.navData.title = this.data.item3.title;
+    this.navData.content.english = this.data.item3.english;
+    this.navData.content.filipino = this.data.item3.filipino;
   }
-  onClickLevelOfDifficulty() {
-    this.navData.title = 'Level of Difficulty of Planting';
-    this.navData.content.english =
-      this.data.levelOfDifficultyOfPlanting.english;
-    this.navData.content.filipino =
-      this.data.levelOfDifficultyOfPlanting.filipino;
+  onClickItem3() {
+    this.navData.title = this.data.item4.title;
+    this.navData.content.english = this.data.item4.english;
+    this.navData.content.filipino = this.data.item4.filipino;
   }
-  onClickBestTimeToPlant() {
-    this.navData.title = 'Best Time to Plant';
-    this.navData.content.english = this.data.bestTimeToPlant.english;
-    this.navData.content.filipino = this.data.bestTimeToPlant.filipino;
-    this.navData.img = this.data.images.bestTimeToPlantImg;
+  onClickItem4() {
+    this.navData.title = this.data.item5.title;
+    this.navData.content.english = this.data.item5.english;
+    this.navData.content.filipino = this.data.item5.filipino;
   }
-  onClickTips() {
-    this.navData.title = 'Tips to have a good harvest';
-    this.navData.content.english = this.data.tips.english;
-    this.navData.content.filipino = this.data.tips.filipino;
-    this.navData.img = this.data.images.tipsImg;
+
+  onClickItem5() {
+    this.navData.title = this.data.item6.title;
+    this.navData.content.english = this.data.item6.english;
+    this.navData.content.filipino = this.data.item6.filipino;
   }
 }

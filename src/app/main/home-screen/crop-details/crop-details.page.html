@@ -2,6 +2,9 @@
   <ion-grid class="ion-no-padding">
     <ion-row class="header">
       <ion-col>
+        <div class="back-btn" routerLink="/main/tabs/home">
+          <ion-icon class="back-btn--icon" name="arrow-back-outline"></ion-icon>
+        </div>
         <ion-img [src]="navData.img"></ion-img>
       </ion-col>
     </ion-row>
@@ -18,29 +21,29 @@
         </div>
         <div class="content__nav" [class.toggle]="toggle">
           <ion-img
-            (click)="onClickFertilizer()"
+            (click)="onClickItem2()"
             class="nav-icons selected"
-            src="assets/img/details/icons/fertilizer.png"
+            [src]="navIcon.item2"
           ></ion-img>
           <ion-img
-            (click)="onClickLifeSpan()"
+            (click)="onClickItem3()"
             class="nav-icons selected"
-            src="assets/img/details/icons/lifeSpan.png"
+            [src]="navIcon.item3"
           ></ion-img>
           <ion-img
-            (click)="onClickLevelOfDifficulty()"
+            (click)="onClickItem4()"
             class="nav-icons selected"
-            src="assets/img/details/icons/level.png"
+            [src]="navIcon.item4"
           ></ion-img>
           <ion-img
-            (click)="onClickBestTimeToPlant()"
+            (click)="onClickItem1()"
             class="nav-icons selected"
-            src="assets/img/details/icons/best.png"
+            [src]="navIcon.item1"
           ></ion-img>
           <ion-img
-            (click)="onClickTips()"
+            (click)="onClickItem5()"
             class="nav-icons selected"
-            src="assets/img/details/icons/tips.png"
+            [src]="navIcon.item5"
           ></ion-img>
         </div>
         <div>

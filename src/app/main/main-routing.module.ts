@@ -7,9 +7,11 @@ const routes: Routes = [
   {
     path: 'tabs',
     component: MainPage,
+
     children: [
       {
         path: 'home',
+
         children: [
           {
             path: '',
@@ -26,7 +28,6 @@ const routes: Routes = [
                 (m) => m.CropsScreenPageModule
               ),
           },
-
           {
             path: ':cropsId',
             loadChildren: () =>
@@ -36,6 +37,7 @@ const routes: Routes = [
           },
         ],
       },
+
       {
         path: 'profile',
         children: [
@@ -49,13 +51,13 @@ const routes: Routes = [
         ],
       },
       {
-        path: 'tips',
+        path: 'community',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('./tips-screen/tips-screen.module').then(
-                (m) => m.TipsScreenPageModule
+              import('./community-screen/community-screen-routing.module').then(
+                (m) => m.CommunityScreenPageRoutingModule
               ),
           },
         ],

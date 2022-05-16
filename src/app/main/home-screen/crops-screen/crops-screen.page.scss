@@ -17,7 +17,7 @@
     border-radius: 0 0 50px 50px;
   }
   &__content {
-    height: 70vh;
+    height: 53vh;
     padding: 0.8rem 0;
     margin-top: 0.7rem;
   }
@@ -56,4 +56,9 @@ span {
     background-position: center;
     backdrop-filter: blur(3px);
   }
+}
+ion-button {
+  position: absolute;
+  bottom: 15px;
+  right: 25px;
 }

@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { TipsScreenPage } from './tips-screen.page';
+import { CommunityScreenPage } from './community-screen.page';
 
-describe('TipsScreenPage', () => {
-  let component: TipsScreenPage;
-  let fixture: ComponentFixture<TipsScreenPage>;
+describe('CommunityScreenPage', () => {
+  let component: CommunityScreenPage;
+  let fixture: ComponentFixture<CommunityScreenPage>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ TipsScreenPage ],
+      declarations: [ CommunityScreenPage ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(TipsScreenPage);
+    fixture = TestBed.createComponent(CommunityScreenPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
