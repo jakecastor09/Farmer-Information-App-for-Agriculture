@@ -30,8 +30,14 @@
               <ion-icon name="chatbox-ellipses-outline"></ion-icon>
             </div>
             <div class="icons">
-              <ion-icon name="create-outline"></ion-icon>
-              <ion-icon name="trash-outline"></ion-icon>
+              <ion-icon
+                (click)="onClickEdit(post.id)"
+                name="create-outline"
+              ></ion-icon>
+              <ion-icon
+                (click)="onClickDelete(post.id)"
+                name="trash-outline"
+              ></ion-icon>
             </div>
           </ion-card>
         </ion-col>

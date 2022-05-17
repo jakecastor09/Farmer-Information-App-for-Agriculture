@@ -15,8 +15,12 @@ export class CommunityScreenPage implements OnInit {
   constructor(private router: Router, private apiService: ApiService) {}
 
   async ngOnInit() {
-    await this.getPosts();
-    await this.getFarmer();
+    // await this.getPosts();
+    // await this.getFarmer();
+  }
+  ionViewWillEnter() {
+    this.getPosts();
+    this.getFarmer();
   }
 
   onClickAddBtn() {
@@ -48,5 +52,14 @@ export class CommunityScreenPage implements OnInit {
         console.log('ERROR ===', error);
       }
     );
+  }
+  onClickEdit(id) {
+    this.router.navigateByUrl('/main/tabs/community/' + id);
+  }
+  onClickDelete(id) {
+    this.apiService.deletePost(id).subscribe((res: any) => {
+      console.log(res);
+      this.getPosts();
+    });
   }
 }
