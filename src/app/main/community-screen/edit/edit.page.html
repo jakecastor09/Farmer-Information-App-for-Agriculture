@@ -1,0 +1,22 @@
+<ion-content>
+  <div class="container">
+    <div class="title">Edit Post</div>
+    <div class="form">
+      <ion-item>
+        <ion-label position="floating">Title</ion-label>
+        <ion-input type="text" [(ngModel)]="title"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Message</ion-label>
+        <ion-input type="text" [(ngModel)]="message"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Image</ion-label>
+        <ion-input type="text" [(ngModel)]="image"></ion-input>
+      </ion-item>
+    </div>
+    <ion-button (click)="onClickBtn()" expand="full" size="large"
+      >Edit</ion-button
+    >
+  </div>
+</ion-content>

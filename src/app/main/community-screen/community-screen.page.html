@@ -7,4 +7,46 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content> </ion-content>
+<ion-content>
+  <div class="header">
+    <ion-img src="assets/img/crops/avatar.png"></ion-img>
+    <div class="name">
+      <ion-label>{{firstName}}</ion-label>
+      <span>{{postsLength}} posts</span>
+    </div>
+  </div>
+  <div class="content">
+    <ion-grid>
+      <ion-row *ngFor="let post of posts">
+        <ion-col>
+          <ion-card>
+            <ion-card-header>
+              <!-- <ion-img [src]="post.img"></ion-img> -->
+              <ion-card-title>{{post.type}}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content> {{post.message}} </ion-card-content>
+            <div class="comment">
+              <ion-input placeholder="Write a comment"></ion-input>
+              <ion-icon name="chatbox-ellipses-outline"></ion-icon>
+            </div>
+            <div class="icons">
+              <ion-icon name="create-outline"></ion-icon>
+              <ion-icon name="trash-outline"></ion-icon>
+            </div>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <ion-fab
+    (click)="onClickAddBtn()"
+    vertical="bottom"
+    horizontal="end"
+    slot="fixed"
+  >
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

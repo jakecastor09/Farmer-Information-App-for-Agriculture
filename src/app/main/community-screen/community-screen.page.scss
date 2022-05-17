@@ -1,0 +1,45 @@
+.header {
+  display: flex;
+  height: 20vh;
+  width: 100%;
+  box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.4);
+  border-radius: 0 0 25px 25px;
+  align-items: center;
+  padding: 1rem;
+}
+
+.name {
+  display: flex;
+  flex-direction: column;
+  padding-left: 1rem;
+  color: #333;
+}
+.name > ion-label {
+  font-size: 25px;
+  font-weight: bold;
+}
+.header > ion-img {
+  width: 85px;
+  height: 85px;
+}
+.comment {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #e5e5e5;
+  padding: 0 1rem;
+}
+.comment > ion-icon {
+  font-size: 20px;
+}
+
+ion-card {
+  position: relative;
+}
+
+.icons {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 30px;
+}
