@@ -15,10 +15,14 @@ export class CommunityScreenPage implements OnInit {
   constructor(private router: Router, private apiService: ApiService) {}
 
   async ngOnInit() {
-    // await this.getPosts();
-    // await this.getFarmer();
+    await this.getPosts();
+    await this.getFarmer();
   }
   ionViewWillEnter() {
+    this.getPosts();
+    this.getFarmer();
+  }
+  ionViewWillLeave() {
     this.getPosts();
     this.getFarmer();
   }
