@@ -1,0 +1,21 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #519259;
+  height: 40vh;
+  width: 100%;
+}
+
+.header ion-img {
+  width: 150px;
+  height: 150px;
+}
+.header ion-label {
+  font-size: 2rem;
+  color: #fff;
+}
+
+.content {
+}

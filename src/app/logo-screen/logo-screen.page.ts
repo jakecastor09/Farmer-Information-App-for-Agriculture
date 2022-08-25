@@ -19,14 +19,14 @@ export class LogoScreenPage implements OnInit {
       this.modalController.dismiss();
       this.navigate();
       this.load = true;
-    }, 500);
+    }, 1500);
   }
   navigate() {
     if (this.load) {
       return;
     }
     //Default home
-    this.router.navigate(['/onboarding/screen1']);
-    // this.router.navigate(['/main/tabs/home/crop1']);
+    // this.router.navigate(['/onboarding/screen1']);\
+    this.router.navigate(['/auth-page/validation']);
   }
 }

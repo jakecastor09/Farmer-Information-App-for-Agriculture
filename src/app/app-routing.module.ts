@@ -34,6 +34,10 @@ const routes: Routes = [
     loadChildren: () =>
       import('./main/main.module').then((m) => m.MainPageModule),
   },
+  {
+    path: 'auth-page',
+    loadChildren: () => import('./auth-page/auth-page.module').then( m => m.AuthPagePageModule)
+  },
 ];
 
 @NgModule({

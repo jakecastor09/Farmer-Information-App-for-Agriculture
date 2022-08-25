@@ -52,4 +52,29 @@ export class ApiService {
       'http://localhost/projects/farmer-information-app-for-agriculture/backend/livestocks/getLivestocks.php'
     );
   }
+  //Post Table
+  addPost(data) {
+    return this.http.post(
+      'http://localhost/projects/farmer-information-app-for-agriculture/backend/posts/create.php',
+      data
+    );
+  }
+  getPosts() {
+    return this.http.get(
+      'http://localhost/projects/farmer-information-app-for-agriculture/backend/posts/getPosts.php'
+    );
+  }
+  deletePost(id) {
+    return this.http.delete(
+      'http://localhost/projects/farmer-information-app-for-agriculture/backend/posts/delete.php?id=' +
+        id
+    );
+  }
+  updatePost(id, data) {
+    return this.http.put(
+      'http://localhost/projects/farmer-information-app-for-agriculture/backend/posts/updatePost.php?id=' +
+        id,
+      data
+    );
+  }
 }

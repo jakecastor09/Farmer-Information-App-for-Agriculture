@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
 import { MainPage } from './main.page';
 
 const routes: Routes = [
@@ -56,8 +55,22 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: () =>
-              import('./community-screen/community-screen-routing.module').then(
-                (m) => m.CommunityScreenPageRoutingModule
+              import('./community-screen/community-screen.module').then(
+                (m) => m.CommunityScreenPageModule
+              ),
+          },
+          {
+            path: 'add',
+            loadChildren: () =>
+              import('./community-screen/community-screen.module').then(
+                (m) => m.CommunityScreenPageModule
+              ),
+          },
+          {
+            path: ':editId',
+            loadChildren: () =>
+              import('./community-screen/edit/edit.module').then(
+                (m) => m.EditPageModule
               ),
           },
         ],

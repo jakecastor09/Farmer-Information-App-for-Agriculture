@@ -56,6 +56,7 @@ export class HomeScreenPage implements OnInit {
 
   getSelectedLivestocks() {
     this.apiService.getLivestocks().subscribe((res: any) => {
+      console.log('Error' + res);
       res.forEach((data) => {
         const receivedLivestocksData =
           this.livestockService.getLivestockDataByName(data.livestocksName);
