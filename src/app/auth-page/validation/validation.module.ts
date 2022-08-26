@@ -7,7 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { ValidationPageRoutingModule } from './validation-routing.module';
 
 import { ValidationPage } from './validation.page';
-import { ButtonComponent } from 'src/app/UI/button/button.component';
+
+import { UiSharedModule } from 'src/app/UI/ui-shared/ui-shared.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { ButtonComponent } from 'src/app/UI/button/button.component';
     FormsModule,
     IonicModule,
     ValidationPageRoutingModule,
+    UiSharedModule,
   ],
-  declarations: [ValidationPage, ButtonComponent],
+  declarations: [ValidationPage],
 })
 export class ValidationPageModule {}

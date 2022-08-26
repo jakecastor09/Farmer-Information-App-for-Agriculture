@@ -1,2 +1,10 @@
 .validation {
+  height: 100vh;
+  display: grid;
+  align-content: center;
+  &__header {
+  }
+  &__form {
+    margin-top: 3.6rem;
+  }
 }

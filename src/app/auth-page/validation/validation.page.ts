@@ -6,7 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./validation.page.scss'],
 })
 export class ValidationPage implements OnInit {
-  buttonName = 'Done';
   constructor() {}
 
   ngOnInit() {}

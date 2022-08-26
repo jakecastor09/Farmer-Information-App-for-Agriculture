@@ -16,7 +16,6 @@ export class NavBarComponent implements OnInit {
 
   ngOnInit() {
     this.page = this.onBoardingService.getPage();
- 
   }
   nextBtn() {
     this.onBoardingService.setPage(

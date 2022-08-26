@@ -8,8 +8,6 @@ import { OnboardingScreenPageRoutingModule } from './onboarding-screen-routing.m
 
 import { OnboardingScreenPage } from './onboarding-screen.page';
 
-import { SharedModuleModule } from './shared-module/shared-module.module';
-
 @NgModule({
   imports: [
     CommonModule,

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-input-field',
@@ -6,9 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./input-field.component.scss'],
 })
 export class InputFieldComponent implements OnInit {
+  @Input() inputPlaceholder: string;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {}
-
 }

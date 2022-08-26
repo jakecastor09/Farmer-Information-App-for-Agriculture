@@ -7,8 +7,16 @@
   font-weight: normal;
   font-style: normal;
 }
+html {
+  /* 62.5% of 16px = 10px */
+  font-size: 62.5%;
+}
 * {
   font-family: "Roboto-Regular" !important;
+  box-sizing: border-box;
+}
+p {
+  margin: 0;
 }
 
 /** Ionic CSS Variables **/
@@ -71,7 +79,6 @@
 
   --ion-color-gray: #343434;
   --ion-color-gray-light: #605d5d;
-
 }
 @media (prefers-color-scheme: dark) {
   /*
@@ -230,4 +237,3 @@
     --ion-card-background: #1e1e1e;
   }
 }
-

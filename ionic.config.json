@@ -1,7 +1,8 @@
 {
   "name": "Farmer Information App for Agriculture",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {},
+    "cordova": {}
   },
   "type": "angular"
 }
