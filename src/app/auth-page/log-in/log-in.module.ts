@@ -7,14 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { LogInPageRoutingModule } from './log-in-routing.module';
 
 import { LogInPage } from './log-in.page';
+import { UiSharedModule } from 'src/app/UI/ui-shared/ui-shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    LogInPageRoutingModule
+    LogInPageRoutingModule,
+    UiSharedModule,
   ],
-  declarations: [LogInPage]
+  declarations: [LogInPage],
 })
 export class LogInPageModule {}

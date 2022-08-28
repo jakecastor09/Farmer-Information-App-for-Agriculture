@@ -1,9 +1,17 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>sign-up</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-
+  <section class="sign-up page-container">
+    <div class="sign-up__content">
+      <app-page-header title="Sign Up"></app-page-header>
+      <form action="#" class="sign-up__content">
+        <app-input-field inputPlaceholder="First Name"></app-input-field>
+        <app-input-field inputPlaceholder="Last Name"></app-input-field>
+        <app-input-field inputPlaceholder="Email"></app-input-field>
+        <app-input-field inputPlaceholder="Password"></app-input-field>
+        <app-input-field inputPlaceholder="Purok"></app-input-field>
+      </form>
+      <app-button class="solid small" name="Create an account"></app-button>
+      <app-button class="outline small" name="Cancel"></app-button>
+      <p class="ion-text-center">Already have an account? <span [routerLink]="['/auth-page/log-in']">Login</span></p>
+    </div>
+  </section>
 </ion-content>

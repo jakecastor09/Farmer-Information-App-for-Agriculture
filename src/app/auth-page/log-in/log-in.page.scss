@@ -1,0 +1,12 @@
+.log-in {
+  margin-bottom: 1rem;
+  & p {
+    color: #b4bbb4;
+    margin-top: 1.2rem;
+  }
+  & span {
+    color: #d9534f;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+}

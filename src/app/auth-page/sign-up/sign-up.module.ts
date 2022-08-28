@@ -8,13 +8,16 @@ import { SignUpPageRoutingModule } from './sign-up-routing.module';
 
 import { SignUpPage } from './sign-up.page';
 
+import { UiSharedModule } from 'src/app/UI/ui-shared/ui-shared.module';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    SignUpPageRoutingModule
+    SignUpPageRoutingModule,
+    UiSharedModule,
   ],
-  declarations: [SignUpPage]
+  declarations: [SignUpPage],
 })
 export class SignUpPageModule {}

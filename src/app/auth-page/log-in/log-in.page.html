@@ -1,9 +1,13 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>log-in</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-
+  <section class="log-in page-container">
+    <div class="log-in__content">
+      <app-page-header title="Log In"></app-page-header>
+      <form action="#" class="log-in__form">
+        <app-input-field inputPlaceholder="Email"></app-input-field>
+        <app-input-field inputPlaceholder="Password"></app-input-field>
+      </form>
+      <app-button class="solid" name="Login"></app-button>
+      <p class="ion-text-center">New User? <span [routerLink]="['/auth-page/sign-up']">Sign Up</span></p>
+    </div>
+  </section>
 </ion-content>

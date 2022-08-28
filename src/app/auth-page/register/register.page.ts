@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
+  constructor(private router: Router) {}
 
-  constructor() { }
-
-  ngOnInit() {
+  ngOnInit() {}
+  registerHandlerClick() {
+    this.router.navigate(['/auth-page/sign-up']);
   }
-
+  loginHandlerClick() {
+    this.router.navigate(['/auth-page/log-in']);
+  }
 }

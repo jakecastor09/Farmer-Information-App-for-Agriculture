@@ -1,9 +1,27 @@
-.custom-button {
-  color: #fff;
-  background-image: linear-gradient(to right, #3dc27c, #2ff784);
+button {
   width: 100%;
   height: 50px;
   border-radius: 25px;
   font-size: 16px;
   margin-top: 1.6rem;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+.solid {
+  color: #fff;
+  background-image: linear-gradient(to right, #3dc27c, #2ff784);
+}
+.outline {
+  color: #519259;
+  border: 1px solid #519259;
+  background-color: transparent;
+}
+.small {
+  width: fit-content;
+  border-radius: 5px;
+  padding: 0 2rem;
+  margin-right: 2rem;
 }
