@@ -1,10 +1,17 @@
 button {
-  width: 100%;
-  height: 50px;
   border-radius: 25px;
-  font-size: 16px;
-  margin-top: 1.6rem;
   cursor: pointer;
+  font-size: 16px;
+  height: 50px;
+  margin-top: 1.6rem;
+  width: 100%;
+
+  @media only screen and (min-width: 500px) {
+    display: block;
+    margin: 1.6rem auto 0 auto;
+    max-width: 40rem;
+    text-align: center;
+  }
 }
 
 button:hover {
@@ -15,13 +22,13 @@ button:hover {
   background-image: linear-gradient(to right, #3dc27c, #2ff784);
 }
 .outline {
-  color: #519259;
-  border: 1px solid #519259;
   background-color: transparent;
+  border: 1px solid #519259;
+  color: #519259;
 }
 .small {
-  width: fit-content;
   border-radius: 5px;
-  padding: 0 2rem;
   margin-right: 2rem;
+  padding: 0 2rem;
+  width: fit-content;
 }

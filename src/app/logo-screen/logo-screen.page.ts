@@ -19,14 +19,17 @@ export class LogoScreenPage implements OnInit {
       this.modalController.dismiss();
       this.navigate();
       this.load = true;
-    }, 1500);
+    }, 500);
   }
   navigate() {
     if (this.load) {
       return;
     }
     //Default home
-    // this.router.navigate(['/onboarding/screen1']);\
-    this.router.navigate(['/auth-page/validation']);
+    // this.router.navigate(['/profile-setup/crops-or-livestock/select-crops']);
+
+    this.router.navigate(['/onboarding/screen1']);
+    // this.router.navigate(['/auth-page/validation']);
+    // this.router.navigate(['/profile-setup']);
   }
 }

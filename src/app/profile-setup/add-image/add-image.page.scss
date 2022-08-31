@@ -1,0 +1,21 @@
+.add-image {
+  display: grid;
+  text-align: center;
+  place-items: center;
+  grid-template-rows: repeat(3, 24rem);
+
+  &__title {
+    align-self: flex-end;
+  }
+  &__message {
+  }
+  &__img {
+    width: 20rem;
+    border-radius: 100%;
+    overflow: hidden;
+  }
+  &__buttons {
+    width: 100%;
+    align-self: flex-end;
+  }
+}

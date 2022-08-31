@@ -36,7 +36,15 @@ const routes: Routes = [
   },
   {
     path: 'auth-page',
-    loadChildren: () => import('./auth-page/auth-page.module').then( m => m.AuthPagePageModule)
+    loadChildren: () =>
+      import('./auth-page/auth-page.module').then((m) => m.AuthPagePageModule),
+  },
+  {
+    path: 'profile-setup',
+    loadChildren: () =>
+      import('./profile-setup/profile-setup.module').then(
+        (m) => m.ProfileSetupPageModule
+      ),
   },
 ];
 

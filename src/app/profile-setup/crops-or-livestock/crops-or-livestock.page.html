@@ -1,0 +1,24 @@
+<ion-content>
+  <div class="crops-or-livestock page-container">
+    <div class="crops-or-livestock__choices">
+      <div class="crops-or-livestock__choices--crops" (click)="cropsHandlerClick()"
+        [class.selected-item]="isCropsSelected">
+        <div class="crops-or-livestock__choices--crops-container">
+          <ion-img src="assets/img/profile-setup/crops-or-livestock/crops-icon.png"></ion-img>
+        </div>
+        <h3>Crops</h3>
+      </div>
+      <div class="crops-or-livestock__choices--livestock" (click)="livestockHandlerClick()"
+        [class.selected-item]="isLivestockSelected">
+        <div class="crops-or-livestock__choices--livestock-container">
+          <ion-img src="assets/img/profile-setup/crops-or-livestock/livestock-icon.png"></ion-img>
+        </div>
+        <h3>Livestock</h3>
+      </div>
+    </div>
+    <div class="crops-or-livestock__button">
+      <app-button class="solid" name="Next" (click)="buttonClickHandler()"></app-button>
+    </div>
+
+  </div>
+</ion-content>

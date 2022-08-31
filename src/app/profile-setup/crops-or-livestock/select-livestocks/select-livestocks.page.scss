@@ -1,0 +1,24 @@
+.select-livestock {
+  margin-top: 15rem;
+  &__items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 2rem;
+    height: 35rem;
+    overflow-y: scroll;
+    justify-items: center;
+    padding: 0;
+    margin-top: 5rem;
+
+    &--list {
+      display: block;
+      width: 10rem;
+      height: 10rem;
+      border-radius: 100%;
+      background-color: #d9d9d9;
+    }
+  }
+  &__button {
+    margin-top: 5rem;
+  }
+}

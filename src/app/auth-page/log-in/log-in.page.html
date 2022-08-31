@@ -6,7 +6,7 @@
         <app-input-field inputPlaceholder="Email"></app-input-field>
         <app-input-field inputPlaceholder="Password"></app-input-field>
       </form>
-      <app-button class="solid" name="Login"></app-button>
+      <app-button class="solid" name="Login" (click)="loginClickHandler()"></app-button>
       <p class="ion-text-center">New User? <span [routerLink]="['/auth-page/sign-up']">Sign Up</span></p>
     </div>
   </section>

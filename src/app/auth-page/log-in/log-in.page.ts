@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-log-in',
@@ -6,10 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./log-in.page.scss'],
 })
 export class LogInPage implements OnInit {
+  constructor(private router: Router) {}
 
-  constructor() { }
-
-  ngOnInit() {
+  ngOnInit() {}
+  loginClickHandler() {
+    this.router.navigateByUrl('/profile-setup/add-image');
   }
-
 }
