@@ -2,15 +2,9 @@
   <div class="select-crops page-container">
     <h1>Select crops:</h1>
     <ul class="select-crops__items">
-      <li class="select-crops__items--list"></li>
-      <li class="select-crops__items--list"></li>
-      <li class="select-crops__items--list"></li>
-      <li class="select-crops__items--list"></li>
-      <li class="select-crops__items--list"></li>
-      <li class="select-crops__items--list"></li>
-      <li class="select-crops__items--list"></li>
-      <li class="select-crops__items--list"></li>
-      <li class="select-crops__items--list"></li>
+      <li class="select-crops__items--list" *ngFor="let crop of crops">
+        <ion-img [src]="crop.img"></ion-img>
+      </li>
     </ul>
     <div class="select-crops__button">
       <app-button class="solid" name="Next" (click)="buttonClickHandler()"></app-button>

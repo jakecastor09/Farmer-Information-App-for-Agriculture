@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-select-crops',
@@ -7,9 +8,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./select-crops.page.scss'],
 })
 export class SelectCropsPage implements OnInit {
-  constructor(private route: Router) {}
+  crops;
+  constructor(private route: Router, private http: HttpClient) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.http
+      .get('https://agri-app-96063-default-rtdb.firebaseio.com/crops.json')
+      .subscribe((response) => {
+        this.crops = response;
+        console.log(this.crops);
+      });
+  }
   buttonClickHandler() {
     this.route.navigateByUrl(
       '/profile-setup/crops-or-livestock/select-livestocks'
