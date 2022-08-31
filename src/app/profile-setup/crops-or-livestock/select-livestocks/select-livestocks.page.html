@@ -2,15 +2,9 @@
   <div class="select-livestock page-container">
     <h1>Select livestock:</h1>
     <ul class="select-livestock__items">
-      <li class="select-livestock__items--list"></li>
-      <li class="select-livestock__items--list"></li>
-      <li class="select-livestock__items--list"></li>
-      <li class="select-livestock__items--list"></li>
-      <li class="select-livestock__items--list"></li>
-      <li class="select-livestock__items--list"></li>
-      <li class="select-livestock__items--list"></li>
-      <li class="select-livestock__items--list"></li>
-      <li class="select-livestock__items--list"></li>
+      <li class="select-livestock__items--list" *ngFor="let livestock of livestocks">
+        <ion-img [src]="livestock.img"></ion-img>
+      </li>
     </ul>
     <div class="select-livestock__button">
       <app-button class="solid" name="Next" (click)="buttonClickHandler()"></app-button>

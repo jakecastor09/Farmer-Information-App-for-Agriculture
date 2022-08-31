@@ -16,7 +16,6 @@ export class SelectCropsPage implements OnInit {
       .get('https://agri-app-96063-default-rtdb.firebaseio.com/crops.json')
       .subscribe((response) => {
         this.crops = response;
-        console.log(this.crops);
       });
   }
   buttonClickHandler() {

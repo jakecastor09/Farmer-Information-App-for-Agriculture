@@ -2,8 +2,11 @@
   margin-top: 15rem;
   &__items {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 100px);
+
+    justify-content: center;
     row-gap: 2rem;
+    column-gap: 6rem;
     height: 35rem;
     overflow-y: scroll;
     justify-items: center;
@@ -14,8 +17,9 @@
       display: block;
       width: 10rem;
       height: 10rem;
+      padding: 1rem;
       border-radius: 100%;
-      background-color: #d9d9d9;
+      background-color: #f5e8c7;
     }
   }
   &__button {
