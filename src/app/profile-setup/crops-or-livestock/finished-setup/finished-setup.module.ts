@@ -7,14 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { FinishedSetupPageRoutingModule } from './finished-setup-routing.module';
 
 import { FinishedSetupPage } from './finished-setup.page';
+import { UiSharedModule } from 'src/app/UI/ui-shared/ui-shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    FinishedSetupPageRoutingModule
+    FinishedSetupPageRoutingModule,
+    UiSharedModule,
   ],
-  declarations: [FinishedSetupPage]
+  declarations: [FinishedSetupPage],
 })
 export class FinishedSetupPageModule {}

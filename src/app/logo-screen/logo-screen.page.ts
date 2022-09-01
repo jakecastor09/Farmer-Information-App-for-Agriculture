@@ -26,9 +26,9 @@ export class LogoScreenPage implements OnInit {
       return;
     }
     //Default home
-    this.router.navigate(['/profile-setup/crops-or-livestock/select-crops']);
+    // this.router.navigate(['/profile-setup/crops-or-livestock/finished-setup']);
 
-    // this.router.navigate(['/onboarding/screen1']);
+    this.router.navigate(['/onboarding/screen1']);
     // this.router.navigate(['/auth-page/validation']);
     // this.router.navigate(['/profile-setup']);
   }

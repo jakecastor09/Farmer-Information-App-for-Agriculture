@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-select-livestocks',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SelectLivestocksPage implements OnInit {
   livestocks;
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit() {
     this.http
@@ -17,5 +18,9 @@ export class SelectLivestocksPage implements OnInit {
         this.livestocks = response;
       });
   }
-  buttonClickHandler() {}
+  buttonClickHandler() {
+    this.router.navigateByUrl(
+      '/profile-setup/crops-or-livestock/finished-setup'
+    );
+  }
 }
