@@ -26,3 +26,25 @@
     margin-top: 5rem;
   }
 }
+
+.selected {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    display: block;
+    height: 100%;
+    width: 100%;
+    background: url("../../../../assets/img/check.png") no-repeat 0 0;
+    background-size: 45px 45px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    background-position: center;
+    backdrop-filter: blur(2px);
+  }
+}

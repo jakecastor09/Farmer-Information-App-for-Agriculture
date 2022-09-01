@@ -38,25 +38,6 @@ span {
   display: inline-block;
 }
 
-.selected {
-  position: relative;
-  z-index: 1;
-  &::after {
-    content: "";
-    display: block;
-    height: 80%;
-    width: 80%;
-    background: url("../../../../assets/img/check.png") no-repeat 0 0;
-    background-size: 45px 45px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 5;
-    background-position: center;
-    backdrop-filter: blur(3px);
-  }
-}
 ion-button {
   position: absolute;
   bottom: 15px;

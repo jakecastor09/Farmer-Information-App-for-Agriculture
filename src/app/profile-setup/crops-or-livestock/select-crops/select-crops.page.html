@@ -2,7 +2,8 @@
   <div class="select-crops page-container">
     <h1>Select crops:</h1>
     <ul class="select-crops__items">
-      <li class="select-crops__items--list" *ngFor="let crop of crops">
+      <li class="select-crops__items--list" *ngFor="let crop of crops" (click)="selectCropHandlerClick(crop.name)"
+        [class.selected]="selectedCrops[crop.name]">
         <ion-img [src]="crop.img"></ion-img>
       </li>
     </ul>

@@ -9,6 +9,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SelectCropsPage implements OnInit {
   crops;
+  selectedCrops = {};
+
   constructor(private route: Router, private http: HttpClient) {}
 
   ngOnInit() {
@@ -22,5 +24,10 @@ export class SelectCropsPage implements OnInit {
     this.route.navigateByUrl(
       '/profile-setup/crops-or-livestock/select-livestocks'
     );
+
+    console.log(this.selectedCrops);
+  }
+  selectCropHandlerClick(name: string) {
+    this.selectedCrops[name] = !this.selectedCrops[name];
   }
 }

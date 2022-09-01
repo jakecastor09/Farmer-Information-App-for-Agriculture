@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class SelectLivestocksPage implements OnInit {
   livestocks;
+  selectedLivestock = {};
   constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit() {
@@ -22,5 +23,8 @@ export class SelectLivestocksPage implements OnInit {
     this.router.navigateByUrl(
       '/profile-setup/crops-or-livestock/finished-setup'
     );
+  }
+  selectLivestockHandlerClick(name: string) {
+    this.selectedLivestock[name] = !this.selectedLivestock[name];
   }
 }

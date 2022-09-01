@@ -8,9 +8,9 @@ import { ApiService } from 'src/app/api.service';
   styleUrls: ['./crops-screen.page.scss'],
 })
 export class CropsScreenPage implements OnInit {
-  selectedCrops = [];
   selectedLivestocks = [];
   firstName: string;
+  selectedCrops = [];
   isSelectedWaterMelon;
   isSelectedBanana;
   isSelectedMelon;
