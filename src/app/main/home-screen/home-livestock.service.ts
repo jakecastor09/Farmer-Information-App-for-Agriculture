@@ -13,15 +13,19 @@ export class HomeLivestockService {
     duck: { backgroundTextColor: '#E38550', backgroundColor: '#F8E2D5' },
   };
 
-  _livestockData;
+  livestockData;
   constructor() {}
 
+  addLivestockData(data) {
+    this.livestockData = data;
+  }
+
   getLivestockData() {
-    return [...this._livestockData];
+    return this.livestockData;
   }
   getLivestockDataByName(livestockName) {
     return {
-      ...this._livestockData.find((data) => data.name === livestockName),
+      ...this.livestockData.find((data) => data.name === livestockName),
     };
   }
 
@@ -33,7 +37,7 @@ export class HomeLivestockService {
   }
   getOneLivestockData(livestockId) {
     return {
-      ...this._livestockData.find(
+      ...this.livestockData.find(
         (data) => 'livestock' + data.id === livestockId
       ),
     };

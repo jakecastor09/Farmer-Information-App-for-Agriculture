@@ -31,6 +31,6 @@ export class LogoScreenPage implements OnInit {
 
     // this.router.navigate(['/onboarding/screen1']);
     // this.router.navigate(['/auth-page/validation']);
-    // this.router.navigate(['/profile-setup']);
+    // this.router.navigate(['/main/tabs/home']);
   }
 }

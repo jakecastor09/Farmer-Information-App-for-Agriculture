@@ -21,20 +21,18 @@ export class HomeScreenPage implements OnInit {
   homeDataLivestock;
   cropsColors;
   livestockColors;
-  userSelectedCropsData = [];
-  userSelectedLivestocksData = [];
 
-  constructor(private homeCropSvc: HomeCropsService, private router: Router) {}
+  constructor(
+    private homeCropSvc: HomeCropsService,
+    private router: Router,
+    private homeLivestockSvc: HomeLivestockService
+  ) {}
 
   ngOnInit() {
-    // this.homeDataCrops = this.userSelectedCropsData;
-    // this.homeDataLivestock = this.userSelectedLivestocksData;
-    // this.livestockColors = this.livestockService.getLivestockColors();
-    // this.getSelectedCrops();
-    // this.getSelectedLivestocks();
     this.cropsColors = this.homeCropSvc.getCropsColors();
     this.homeDataCrops = this.homeCropSvc.getCropsData();
-    console.log(this.homeDataCrops);
+    this.livestockColors = this.homeLivestockSvc.getLivestockColors();
+    this.homeDataLivestock = this.homeLivestockSvc.getLivestockData();
   }
 
   onClickCropDetails(id) {
@@ -43,24 +41,4 @@ export class HomeScreenPage implements OnInit {
   onClickLivestockDetails(id) {
     this.router.navigate(['/', 'main', 'tabs', 'home', 'livestock' + id]);
   }
-
-  // getSelectedCrops() {
-  //   this.apiService.getCrops().subscribe((res: any) => {
-  //     res.forEach((data) => {
-  //       const receivedCropData = this.cropsService.getCropByName(data.cropName);
-  //       this.userSelectedCropsData.push(receivedCropData);
-  //     });
-  //   });
-  // }
-
-  // getSelectedLivestocks() {
-  //   this.apiService.getLivestocks().subscribe((res: any) => {
-  //     console.log('Error' + res);
-  //     res.forEach((data) => {
-  //       const receivedLivestocksData =
-  //         this.livestockService.getLivestockDataByName(data.livestocksName);
-  //       this.userSelectedLivestocksData.push(receivedLivestocksData);
-  //     });
-  //   });
-  // }
 }

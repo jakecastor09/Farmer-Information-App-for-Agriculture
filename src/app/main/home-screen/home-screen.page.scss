@@ -1,17 +1,13 @@
-.container {
-  padding: 0 20px;
-  height: 100vh;
-  width: 100vw;
-  overflow: hidden;
-}
 .home {
   &__header {
-    display: flex;
-    height: 20vh;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    height: 12rem;
     align-items: center;
-    background-color: var(--ion-color-primary);
-    border-radius: 0 0 20px 20px;
-
+    margin-top: 3rem;
+    background-image: var(--ion-color-gradient);
+    border-radius: 15px;
+    padding: 2rem;
     &-logo {
       width: 110px;
       height: 110px;
@@ -21,34 +17,55 @@
     display: flex;
     align-items: center;
     color: #fff;
+
     &--content {
       display: flex;
       flex-direction: column;
       justify-content: center;
 
       &-greetings {
-      }
-      &-name {
-        font-size: 30px;
+        font-size: 1.6rem;
+        font-weight: 500;
       }
     }
   }
   &__weather {
+    align-self: center;
     &-updates {
+      color: #fff;
     }
     &-button {
+      display: flex;
+      align-items: center;
+      font-size: 1.4rem;
+      column-gap: 0.8rem;
+      background-color: #fff;
+      padding: 0.4rem;
+      border-radius: 25px;
+      width: fit-content;
+      margin-top: 1rem;
     }
   }
 
   &__content {
     background-color: #fff;
     &--title {
-      font-size: 20px;
-
-      font-weight: bold;
-      padding: 0 25px;
       margin-top: 15px;
-      display: block;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #f3f3f3;
+      padding: 1rem;
+      border-radius: 5px;
+    }
+    &--name {
+      font-size: 18px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    &--edit-crops {
+      display: flex;
+      align-items: center;
     }
   }
 }
