@@ -27,6 +27,7 @@ export class LogoScreenPage implements OnInit {
     }
     //Default home
     this.router.navigate(['/profile-setup/crops-or-livestock/select-crops']);
+    // this.router.navigate(['/main/tabs/home']);
 
     // this.router.navigate(['/onboarding/screen1']);
     // this.router.navigate(['/auth-page/validation']);

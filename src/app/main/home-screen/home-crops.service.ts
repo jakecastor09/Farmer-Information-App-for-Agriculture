@@ -35,20 +35,20 @@ export class HomeCropsService {
     },
   };
 
-  _cropsData;
+  cropsData;
 
   constructor() {}
 
   addCropsData(data) {
-    this._cropsData = [...data];
+    this.cropsData = data;
   }
 
   getCropsData() {
-    return [...this._cropsData];
+    return this.cropsData;
   }
 
   getCropByName(cropName) {
-    return { ...this._cropsData.find((data) => data.name === cropName) };
+    return { ...this.cropsData.find((data) => data.name === cropName) };
   }
 
   getCropsColors() {
@@ -58,6 +58,6 @@ export class HomeCropsService {
     return this.cropsColors[cropName];
   }
   getCropData(cropId) {
-    return { ...this._cropsData.find((data) => 'crop' + data.id === cropId) };
+    return { ...this.cropsData.find((data) => 'crop' + data.id === cropId) };
   }
 }

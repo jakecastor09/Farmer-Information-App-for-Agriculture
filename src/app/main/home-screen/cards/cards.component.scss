@@ -6,7 +6,7 @@
   height: 184px;
   border-radius: 20px;
   width: 161.67px;
-  height: 184px;
+  row-gap: 1rem;
   &__img {
     width: 60%;
   }
@@ -20,9 +20,9 @@
     transform: translateY(-10px);
   }
   &__content {
-    transform: translateY(-18px);
     font-size: 10px;
     text-align: center;
     color: #3a3a3a;
+    transform: translateY(-8px);
   }
 }

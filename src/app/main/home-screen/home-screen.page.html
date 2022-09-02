@@ -10,14 +10,9 @@
 <ion-content>
   <div class="home__header container">
     <div class="home__user">
-      <ion-img
-        class="home__header-logo"
-        src="assets/img/crops/avatar.png"
-      ></ion-img>
+      <ion-img class="home__header-logo" src="assets/img/crops/avatar.png"></ion-img>
       <div class="home__user--content">
-        <ion-label class="home__user--content-greetings"
-          >Good Afternoon,</ion-label
-        >
+        <ion-label class="home__user--content-greetings">Good Afternoon,</ion-label>
         <ion-label class="home__user--content-name">Jake</ion-label>
       </div>
     </div>
@@ -28,23 +23,18 @@
   </div>
   <div class="home__content">
     <ion-grid>
-      <ion-label class="home__content--title" color="primary"
-        >My Crops</ion-label
-      >
+      <ion-label class="home__content--title" color="primary">My Crops</ion-label>
       <ion-row>
         <ion-slides [options]="sliderConfig">
           <ion-slide *ngFor="let cropsData of homeDataCrops">
             <ion-col>
-              <app-cards
-                [item]="cropsData"
-                [color]="cropsColors"
-                (click)="onClickCropDetails(cropsData.id)"
-              ></app-cards>
+              <app-cards [item]="cropsData" [color]="cropsColors" (click)="onClickCropDetails(cropsData.id)">
+              </app-cards>
             </ion-col>
           </ion-slide>
         </ion-slides>
       </ion-row>
-
+      <!--
       <ion-label class="home__content--title" color="primary"
         >My LiveStock</ion-label
       >
@@ -60,7 +50,7 @@
             </ion-col>
           </ion-slide>
         </ion-slides>
-      </ion-row>
+      </ion-row> -->
     </ion-grid>
   </div>
 </ion-content>

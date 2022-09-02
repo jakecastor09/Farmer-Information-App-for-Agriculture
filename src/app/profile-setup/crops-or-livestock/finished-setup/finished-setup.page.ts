@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-finished-setup',
@@ -6,10 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./finished-setup.page.scss'],
 })
 export class FinishedSetupPage implements OnInit {
+  constructor(private router: Router) {}
 
-  constructor() { }
-
-  ngOnInit() {
+  ngOnInit() {}
+  getStartedButtonHandlerClick() {
+    this.router.navigateByUrl('/main/tabs/home');
   }
-
 }

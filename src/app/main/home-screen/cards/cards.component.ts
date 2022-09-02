@@ -10,7 +10,5 @@ export class CardsComponent implements OnInit {
   @Input() item;
   @Input() color;
   constructor() {}
-  ngOnInit() {
-    console.log(this.item);
-  }
+  ngOnInit() {}
 }

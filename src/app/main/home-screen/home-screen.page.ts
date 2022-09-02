@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
@@ -23,21 +24,19 @@ export class HomeScreenPage implements OnInit {
   userSelectedCropsData = [];
   userSelectedLivestocksData = [];
 
-  constructor(
-    private cropsService: HomeCropsService,
-    private livestockService: HomeLivestockService,
-    private router: Router,
-    private apiService: ApiService
-  ) {}
+  constructor(private homeCropSvc: HomeCropsService, private router: Router) {}
 
   ngOnInit() {
-    this.homeDataCrops = this.userSelectedCropsData;
-    this.homeDataLivestock = this.userSelectedLivestocksData;
-    this.cropsColors = this.cropsService.getCropsColors();
-    this.livestockColors = this.livestockService.getLivestockColors();
-    this.getSelectedCrops();
-    this.getSelectedLivestocks();
+    // this.homeDataCrops = this.userSelectedCropsData;
+    // this.homeDataLivestock = this.userSelectedLivestocksData;
+    // this.livestockColors = this.livestockService.getLivestockColors();
+    // this.getSelectedCrops();
+    // this.getSelectedLivestocks();
+    this.cropsColors = this.homeCropSvc.getCropsColors();
+    this.homeDataCrops = this.homeCropSvc.getCropsData();
+    console.log(this.homeDataCrops);
   }
+
   onClickCropDetails(id) {
     this.router.navigate(['/', 'main', 'tabs', 'home', 'crop' + id]);
   }
@@ -45,23 +44,23 @@ export class HomeScreenPage implements OnInit {
     this.router.navigate(['/', 'main', 'tabs', 'home', 'livestock' + id]);
   }
 
-  getSelectedCrops() {
-    this.apiService.getCrops().subscribe((res: any) => {
-      res.forEach((data) => {
-        const receivedCropData = this.cropsService.getCropByName(data.cropName);
-        this.userSelectedCropsData.push(receivedCropData);
-      });
-    });
-  }
+  // getSelectedCrops() {
+  //   this.apiService.getCrops().subscribe((res: any) => {
+  //     res.forEach((data) => {
+  //       const receivedCropData = this.cropsService.getCropByName(data.cropName);
+  //       this.userSelectedCropsData.push(receivedCropData);
+  //     });
+  //   });
+  // }
 
-  getSelectedLivestocks() {
-    this.apiService.getLivestocks().subscribe((res: any) => {
-      console.log('Error' + res);
-      res.forEach((data) => {
-        const receivedLivestocksData =
-          this.livestockService.getLivestockDataByName(data.livestocksName);
-        this.userSelectedLivestocksData.push(receivedLivestocksData);
-      });
-    });
-  }
+  // getSelectedLivestocks() {
+  //   this.apiService.getLivestocks().subscribe((res: any) => {
+  //     console.log('Error' + res);
+  //     res.forEach((data) => {
+  //       const receivedLivestocksData =
+  //         this.livestockService.getLivestockDataByName(data.livestocksName);
+  //       this.userSelectedLivestocksData.push(receivedLivestocksData);
+  //     });
+  //   });
+  // }
 }
