@@ -15,55 +15,55 @@ export class CommunityScreenPage implements OnInit {
   constructor(private router: Router, private apiService: ApiService) {}
 
   async ngOnInit() {
-    await this.getPosts();
-    await this.getFarmer();
+    // await this.getPosts();
+    // await this.getFarmer();
   }
   ionViewWillEnter() {
-    this.getPosts();
-    this.getFarmer();
+    // this.getPosts();
+    // this.getFarmer();
   }
   ionViewWillLeave() {
-    this.getPosts();
-    this.getFarmer();
+    // this.getPosts();
+    // this.getFarmer();
   }
 
   onClickAddBtn() {
     this.router.navigateByUrl('/main/tabs/community/add');
   }
-  getFarmer() {
-    this.apiService.getFirstName().subscribe(
-      (res: any) => {
-        console.log('SUCCESS ===', res);
-        const responseFirstName = res[res.length - 1].firstName;
-        this.firstName =
-          responseFirstName.charAt(0).toUpperCase() +
-          responseFirstName.slice(1);
-      },
+  // getFarmer() {
+  //   this.apiService.getFirstName().subscribe(
+  //     (res: any) => {
+  //       console.log('SUCCESS ===', res);
+  //       const responseFirstName = res[res.length - 1].firstName;
+  //       this.firstName =
+  //         responseFirstName.charAt(0).toUpperCase() +
+  //         responseFirstName.slice(1);
+  //     },
 
-      (error: any) => {
-        console.log('ERROR ===', error);
-      }
-    );
-  }
-  getPosts() {
-    this.apiService.getPosts().subscribe(
-      (res: any) => {
-        this.posts = res;
-        this.postsLength = this.posts.length;
-        console.log('SUCCESS ===', res);
-      },
-      (error: any) => {
-        console.log('ERROR ===', error);
-      }
-    );
-  }
-  onClickEdit(id) {
-    this.router.navigateByUrl('/main/tabs/community/' + id);
-  }
-  onClickDelete(id) {
-    this.apiService.deletePost(id).subscribe((res: any) => {
-      console.log(res);
-      this.getPosts();
-    });
-  }
+  //     (error: any) => {
+  //       console.log('ERROR ===', error);
+  //     }
+  //   );
+  // }
+  // getPosts() {
+  //   this.apiService.getPosts().subscribe(
+  //     (res: any) => {
+  //       this.posts = res;
+  //       this.postsLength = this.posts.length;
+  //       console.log('SUCCESS ===', res);
+  //     },
+  //     (error: any) => {
+  //       console.log('ERROR ===', error);
+  //     }
+  //   );
+  // }
+  // onClickEdit(id) {
+  //   this.router.navigateByUrl('/main/tabs/community/' + id);
+  // }
+  // onClickDelete(id) {
+  //   this.apiService.deletePost(id).subscribe((res: any) => {
+  //     console.log(res);
+  //     this.getPosts();
+  //   });
+  // }
 }

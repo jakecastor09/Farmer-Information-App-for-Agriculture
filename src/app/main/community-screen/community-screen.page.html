@@ -1,58 +1,49 @@
-<ion-header>
-  <ion-toolbar mode="ios">
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>Community</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-  <div class="header">
-    <ion-img src="assets/img/crops/avatar.png"></ion-img>
-    <div class="name">
-      <ion-label>{{firstName}}</ion-label>
-      <span>{{postsLength}} posts</span>
+  <div class="community page-container">
+    <app-page-header title="Community"></app-page-header>
+    <div class="community__header">
+      <ion-avatar>
+        <img class="community__img" src="assets/img/jake.jpg" alt="">
+      </ion-avatar>
+      <ion-searchbar mode="ios" color="light"></ion-searchbar>
+      <div class="community__write-post">Write Post <ion-icon name="pencil-outline"></ion-icon>
+      </div>
+      <div class="community__sort">sort</div>
     </div>
-  </div>
-  <div class="content">
-    <ion-grid>
-      <ion-row *ngFor="let post of posts">
-        <ion-col>
-          <ion-card>
-            <ion-card-header>
-              <!-- <ion-img [src]="post.img"></ion-img> -->
-              <ion-card-title>{{post.type}}</ion-card-title>
-            </ion-card-header>
-            <ion-card-content> {{post.message}} </ion-card-content>
-            <div class="comment">
-              <ion-input placeholder="Write a comment"></ion-input>
-              <ion-icon name="chatbox-ellipses-outline"></ion-icon>
-            </div>
-            <div class="icons">
-              <ion-icon
+    <div class="community__content">
+      <ion-grid>
+        <ion-row *ngFor="let post of posts">
+          <ion-col>
+            <ion-card>
+              <ion-card-header>
+                <!-- <ion-img [src]="post.img"></ion-img> -->
+                <ion-card-title>{{post.type}}</ion-card-title>
+              </ion-card-header>
+              <ion-card-content> {{post.message}} </ion-card-content>
+              <div class="comment">
+                <ion-input placeholder="Write a comment"></ion-input>
+                <ion-icon name="chatbox-ellipses-outline"></ion-icon>
+              </div>
+              <div class="icons">
+                <!-- <ion-icon
                 (click)="onClickEdit(post.id)"
                 name="create-outline"
-              ></ion-icon>
-              <ion-icon
+              ></ion-icon> -->
+                <!-- <ion-icon
                 (click)="onClickDelete(post.id)"
                 name="trash-outline"
-              ></ion-icon>
-            </div>
-          </ion-card>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </div>
+              ></ion-icon> -->
+              </div>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
 
-  <ion-fab
-    (click)="onClickAddBtn()"
-    vertical="bottom"
-    horizontal="end"
-    slot="fixed"
-  >
-    <ion-fab-button>
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
+    <ion-fab (click)="onClickAddBtn()" vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button>
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </div>
 </ion-content>
