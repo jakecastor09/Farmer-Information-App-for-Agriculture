@@ -1,9 +1,9 @@
 <ion-card class="card" [style]="{
-  backgroundColor: color[item.name].backgroundColor
+  backgroundColor: color[item.name]?.backgroundColor ?? color['default'].backgroundColor
 }">
   <ion-img class="card__img" [src]="item.img"></ion-img>
   <h1 class="card__title" [style]="{
-      backgroundColor: color[item.name].backgroundTextColor
+      backgroundColor: color[item.name]?.backgroundTextColor ?? color['default'].backgroundTextColor
     }">
     {{ item.name }}
   </h1>

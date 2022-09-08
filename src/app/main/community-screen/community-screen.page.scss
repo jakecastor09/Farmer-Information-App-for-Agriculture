@@ -7,7 +7,7 @@
     padding: 0 1rem;
   }
   &__avatar {
-    width: 10rem;
+    width: 8rem;
     border-radius: 100%;
     padding: 0.5rem 0;
     position: relative;
@@ -31,26 +31,22 @@
     }
   }
 
-  &__write-post,
   &__sort {
     background-color: #fff;
     border-radius: 25px;
     text-align: center;
     padding: 0.8rem 1rem;
-    width: max-content;
+    min-width: 5rem;
     margin-right: 1rem;
     white-space: nowrap;
   }
-}
-
-.community__content {
-  overflow: scroll;
 }
 
 .card {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border-radius: 5px;
   width: 100%;
+  margin-bottom: 2rem;
   &__header {
     padding: 1.6rem 1.6rem 0 1.6rem;
     display: flex;
@@ -90,14 +86,12 @@
   justify-content: space-between;
   align-items: center;
   background-color: #e5e5e5;
-  padding: 0 1rem;
+  padding: 1rem;
+  border-radius: 5px;
+  font-size: 1.6rem;
 }
 .comment > ion-icon {
-  font-size: 20px;
-}
-
-ion-card {
-  position: relative;
+  font-size: 2rem;
 }
 
 .icons {

@@ -11,6 +11,10 @@ export class HomeLivestockService {
     pig: { backgroundTextColor: '#DEA794', backgroundColor: '#F6EFEC' },
     chicken: { backgroundTextColor: '#C76D71', backgroundColor: '#FFFFFF' },
     duck: { backgroundTextColor: '#E38550', backgroundColor: '#F8E2D5' },
+    default: {
+      backgroundTextColor: '#DEA794',
+      backgroundColor: '#F6EFEC',
+    },
   };
 
   livestockData;

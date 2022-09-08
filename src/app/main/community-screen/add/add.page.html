@@ -1,6 +1,6 @@
 <ion-content>
   <div class="container">
-    <div class="title">Add Post</div>
+    <app-page-header title="Write Post"></app-page-header>
     <div class="form">
       <ion-item>
         <ion-label position="floating">Title</ion-label>
@@ -15,8 +15,6 @@
         <ion-input type="text" [(ngModel)]="image"></ion-input>
       </ion-item>
     </div>
-    <ion-button (click)="onClickBtn()" expand="full" size="large"
-      >Post</ion-button
-    >
+    <app-button (click)="onClickBtn()" name="Add Post" class="solid"></app-button>
   </div>
 </ion-content>

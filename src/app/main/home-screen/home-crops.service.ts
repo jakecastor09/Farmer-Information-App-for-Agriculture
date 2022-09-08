@@ -29,9 +29,13 @@ export class HomeCropsService {
       backgroundTextColor: '#86C03F',
       backgroundColor: '#DDEFC6',
     },
-    eggplant: {
-      backgroundTextColor: '#43203b',
-      backgroundColor: '#D2CCD2',
+    // eggplant: {
+    //   backgroundTextColor: '#43203b',
+    //   backgroundColor: '#D2CCD2',
+    // },
+    default: {
+      backgroundTextColor: '#86C03F',
+      backgroundColor: '#FFFFFF',
     },
   };
 

@@ -7,14 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { EditPageRoutingModule } from './edit-routing.module';
 
 import { EditPage } from './edit.page';
+import { UiSharedModule } from 'src/app/UI/ui-shared/ui-shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    EditPageRoutingModule
+    EditPageRoutingModule,
+    UiSharedModule,
   ],
-  declarations: [EditPage]
+  declarations: [EditPage],
 })
 export class EditPageModule {}
