@@ -5,46 +5,22 @@
         <div class="back-btn" routerLink="/main/tabs/home">
           <ion-icon class="back-btn--icon" name="arrow-back-outline"></ion-icon>
         </div>
-        <ion-img [src]="navData.img"></ion-img>
+        <img class="header__img" [src]="navData.img" />
       </ion-col>
     </ion-row>
     <ion-row class="content">
       <ion-col>
-        <div
-          (click)="onClickNavIcon()"
-          class="icon"
-          [style]="{
+        <div (click)="onClickNavIcon()" class="icon" [style]="{
           backgroundColor: color.backgroundColor
-        }"
-        >
+        }">
           <ion-img [src]="navData.icon"></ion-img>
         </div>
         <div class="content__nav" [class.toggle]="toggle">
-          <ion-img
-            (click)="onClickItem2()"
-            class="nav-icons selected"
-            [src]="navIcon.item2"
-          ></ion-img>
-          <ion-img
-            (click)="onClickItem3()"
-            class="nav-icons selected"
-            [src]="navIcon.item3"
-          ></ion-img>
-          <ion-img
-            (click)="onClickItem4()"
-            class="nav-icons selected"
-            [src]="navIcon.item4"
-          ></ion-img>
-          <ion-img
-            (click)="onClickItem1()"
-            class="nav-icons selected"
-            [src]="navIcon.item1"
-          ></ion-img>
-          <ion-img
-            (click)="onClickItem5()"
-            class="nav-icons selected"
-            [src]="navIcon.item5"
-          ></ion-img>
+          <ion-img (click)="onClickItem2()" class="nav-icons selected" [src]="navIcon.item2"></ion-img>
+          <ion-img (click)="onClickItem3()" class="nav-icons selected" [src]="navIcon.item3"></ion-img>
+          <ion-img (click)="onClickItem4()" class="nav-icons selected" [src]="navIcon.item4"></ion-img>
+          <ion-img (click)="onClickItem1()" class="nav-icons selected" [src]="navIcon.item1"></ion-img>
+          <ion-img (click)="onClickItem5()" class="nav-icons selected" [src]="navIcon.item5"></ion-img>
         </div>
         <div>
           <h1 class="title">
@@ -56,14 +32,9 @@
             <ion-list>
               <ion-item>
                 <ion-label>Language</ion-label>
-                <ion-select
-                  [(ngModel)]="language"
-                  (ngModelChange)="languageChange()"
-                >
+                <ion-select [(ngModel)]="language" (ngModelChange)="languageChange()">
                   <ion-select-option value="english">English</ion-select-option>
-                  <ion-select-option value="filipino"
-                    >Filipino</ion-select-option
-                  >
+                  <ion-select-option value="filipino">Filipino</ion-select-option>
                 </ion-select>
               </ion-item>
             </ion-list>

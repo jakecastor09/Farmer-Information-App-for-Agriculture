@@ -9,15 +9,24 @@
 .header {
   height: 40vh;
   transition: all 1s;
+
+  &__img {
+    min-height: 453px;
+    width: 100%;
+    object-fit: cover;
+  }
 }
 .title {
   font-weight: bold;
   color: #333;
+  margin-top: 2rem;
+  font-size: 3.2rem;
 }
 
 .description {
   color: #333;
   font-weight: bold;
+  margin: 2rem 0;
 }
 .paragraph {
   transform: translateY(-10px);
@@ -32,8 +41,8 @@
 .icon {
   display: inline-block;
   position: absolute;
-  top: -72px;
-  left: -20px;
+  top: -61px;
+  left: -10px;
   padding: 10px;
   border-radius: 100%;
   box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.07);
@@ -43,16 +52,20 @@
 .content__nav {
   background-color: #fff;
   display: flex;
-  justify-content: space-between;
+  justify-content: right;
   position: absolute;
   width: 0%;
   opacity: 0;
-  top: -62px;
-  left: 5px;
+  top: -46px;
+  left: -3px;
   border-radius: 40px;
   padding: 0.5rem 1.5rem 0.5rem 3.6rem;
   transition: all 0.4s;
-  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 0 5px 5px rgb(0 0 0 / 8%);
+
+  & > * {
+    margin-left: 3rem;
+  }
 }
 
 .toggle {

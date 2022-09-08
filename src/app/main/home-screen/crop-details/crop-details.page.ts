@@ -41,6 +41,7 @@ export class CropDetailsPage implements OnInit {
         this.data = this.cropsService.getCropData(
           paramMap.get('cropAndLivestocksDetailsId')
         );
+        console.log(this.data);
       }
       if (paramMap.get('cropAndLivestocksDetailsId').includes('livestock')) {
         this.data = this.livestockService.getOneLivestockData(
