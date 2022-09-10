@@ -1,10 +1,24 @@
 <ion-content>
   <div class="farming-method page-container">
     <app-page-header title="Farming Method"></app-page-header>
-    <app-card-item></app-card-item>
-    <app-card-item></app-card-item>
-    <app-card-item></app-card-item>
-    <app-card-item></app-card-item>
-
+    <div class="farming-method__items">
+      <div class="farming-method__item">
+        <app-card-item></app-card-item>
+      </div>
+      <div class="farming-method__item">
+        <app-card-item></app-card-item>
+      </div>
+      <div class="farming-method__item">
+        <app-card-item></app-card-item>
+      </div>
+      <div class="farming-method__item">
+        <app-card-item></app-card-item>
+      </div>
+    </div>
   </div>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" routerLink="/main/tabs/farming-method/add">
+    <ion-fab-button color="dark">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

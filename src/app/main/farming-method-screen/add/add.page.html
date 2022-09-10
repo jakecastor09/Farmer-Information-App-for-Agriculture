@@ -1,9 +1,15 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>add</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+  <div class="add-farming-method">
+    <span class="add-farming-method__publish">Publish</span>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Controller Modal</ion-title>
+      </ion-toolbar>
+    </ion-header>
 
+  </div>
+  <ion-content class="ion-padding">
+    <ion-button expand="block" (click)="openModal()">Open</ion-button>
+    <p>{{message}}</p>
+  </ion-content>
 </ion-content>
