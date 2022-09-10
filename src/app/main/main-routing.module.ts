@@ -75,6 +75,32 @@ const routes: Routes = [
           },
         ],
       },
+      {
+        path: 'farming-method',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import(
+                './farming-method-screen/farming-method-screen.module'
+              ).then((m) => m.FarmingMethodScreenPageModule),
+          },
+          {
+            path: 'add',
+            loadChildren: () =>
+              import('./farming-method-screen/add/add-routing.module').then(
+                (m) => m.AddPageRoutingModule
+              ),
+          },
+          {
+            path: 'edit',
+            loadChildren: () =>
+              import('./farming-method-screen/edit/edit-routing.module').then(
+                (m) => m.EditPageRoutingModule
+              ),
+          },
+        ],
+      },
     ],
   },
 ];
