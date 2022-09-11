@@ -16,38 +16,39 @@
   </ion-item>
 </ion-content> -->
 
+<div class="add-modal__header-button">
+  <div class="add-modal__header-button--cancel" (click)="cancel()">Cancel</div>
+  <div class="add-modal__header-button--add" (click)="confirm()">Add</div>
+</div>
 <ion-content>
-
-  <div class="add-modal">
-    <div class="add-modal__header-button"></div>
-    <div class="add-modal__hectares">
-      <input type="text" [value]="hectares">
-      <div class="add-modal__hectares-buttons">
-        <div class="add-modal__hectares-button-add" (click)="btnAdd()">
-          <ion-icon name="add-outline"></ion-icon>
-        </div>
-        <div class="add-modal__hectares-button-minus" (click)="btnMinus()">
-          <ion-icon name="remove-outline"></ion-icon>
-        </div>
-      </div>
-    </div>
-
+  <div class="add-modal page-container">
     <div class="add-modal__details">
       <ion-item>
-        <ion-label position="floating">Crops/Livestock</ion-label>
-        <ion-input></ion-input>
+        <ion-label position="stacked">Crops/Livestock</ion-label>
+        <ion-input autocapitalize="on" [(ngModel)]="farmingMethod.cropsLivestockName"></ion-input>
       </ion-item>
+      <div class="add-modal__hectares">
+        <input type="text" [value]="farmingMethod.hectares + ' ha'">
+        <div class="add-modal__hectares-buttons">
+          <div class="add-modal__hectares-button-add" (click)="btnAdd()">
+            <ion-icon name="add-outline"></ion-icon>
+          </div>
+          <div class="add-modal__hectares-button-minus" (click)="btnMinus()">
+            <ion-icon name="remove-outline"></ion-icon>
+          </div>
+        </div>
+      </div>
 
     </div>
 
     <ion-list class="add-modal__input-field">
       <ion-item>
         <ion-label position="floating">Title</ion-label>
-        <ion-input></ion-input>
+        <ion-input [(ngModel)]="farmingMethod.title"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="floating">Message</ion-label>
-        <ion-textarea autoGrow="true"></ion-textarea>
+        <ion-textarea autoGrow="true" [(ngModel)]="farmingMethod.message"></ion-textarea>
       </ion-item>
     </ion-list>
   </div>

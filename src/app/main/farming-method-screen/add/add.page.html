@@ -1,15 +1,16 @@
 <ion-content>
   <div class="add-farming-method">
     <span class="add-farming-method__publish">Publish</span>
-    <ion-header>
-      <ion-toolbar>
-        <ion-title>Controller Modal</ion-title>
-      </ion-toolbar>
-    </ion-header>
-
   </div>
-  <ion-content class="ion-padding">
-    <ion-button expand="block" (click)="openModal()">Open</ion-button>
-    <p>{{message}}</p>
-  </ion-content>
+  <div class="add-farming-method__content page-container">
+    <div class="add-farming-method__content--item" *ngFor="let data of publishData">
+      <app-title [title]="data.title"></app-title>
+      <app-message [message]="data.message"></app-message>
+    </div>
+  </div>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" color="dark">
+    <ion-fab-button color="dark" (click)="openModal()">
+      <ion-icon name="arrow-up-circle"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

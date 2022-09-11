@@ -8,9 +8,11 @@ import { AddPageRoutingModule } from './add-routing.module';
 
 import { AddPage } from './add.page';
 import { ModalComponent } from './modal/modal.component';
+import { TitleComponent } from './title/title.component';
+import { MessageComponent } from './message/message.component';
 
 @NgModule({
   imports: [CommonModule, FormsModule, IonicModule, AddPageRoutingModule],
-  declarations: [AddPage, ModalComponent],
+  declarations: [AddPage, ModalComponent, TitleComponent, MessageComponent],
 })
 export class AddPageModule {}

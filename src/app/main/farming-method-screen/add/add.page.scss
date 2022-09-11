@@ -1,0 +1,19 @@
+.add-farming-method {
+  &__publish {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: bold;
+    background-color: #3e433f;
+    width: 100%;
+    padding: 2rem;
+    color: #ffffff;
+    text-align: right;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+
+  &__content--item:nth-child(1) {
+    margin-top: 10rem;
+  }
+}

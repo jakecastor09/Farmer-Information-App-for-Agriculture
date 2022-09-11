@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { AddService } from './add.service';
 import { ModalComponent } from './modal/modal.component';
 
 @Component({
@@ -10,8 +11,12 @@ import { ModalComponent } from './modal/modal.component';
 export class AddPage implements OnInit {
   message =
     'This modal example uses the modalController to present and dismiss modals.';
+  publishData;
 
-  constructor(private modalCtrl: ModalController) {}
+  constructor(
+    private modalCtrl: ModalController,
+    private addService: AddService
+  ) {}
 
   async openModal() {
     const modal = await this.modalCtrl.create({
@@ -27,4 +32,8 @@ export class AddPage implements OnInit {
   }
 
   ngOnInit() {}
+  ionViewDidEnter() {
+    this.publishData = this.addService.getData();
+    console.log(this.publishData);
+  }
 }

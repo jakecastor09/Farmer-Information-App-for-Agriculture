@@ -1,8 +1,22 @@
 .add-modal {
+  &__header-button {
+    font-size: 1.8rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #3e433f;
+    width: 100%;
+    padding: 1.5rem;
+    color: #ffffff;
+  }
   &__details {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3.6rem;
   }
   &__input-field {
-    margin-top: 5rem;
+    margin-top: 3rem;
   }
   &__hectares {
     display: flex;

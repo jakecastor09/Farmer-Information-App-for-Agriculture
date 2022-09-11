@@ -2,17 +2,37 @@
 // http://ionicframework.com/docs/theming/
 
 @font-face {
-  font-family: "Roboto-Regular";
+  font-family: "Roboto";
+  src: url("../assets/font/Roboto-Bold.ttf");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Roboto";
+  src: url("../assets/font/Roboto-Medium.ttf");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Roboto";
+  src: url("../assets/font/Roboto-Light.ttf");
+  font-weight: 200;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Roboto";
   src: url("../assets/font/Roboto-Regular.ttf");
   font-weight: normal;
   font-style: normal;
 }
+
 html {
   /* 62.5% of 16px = 10px */
   font-size: 62.5%;
+  font-family: "Roboto";
 }
 * {
-  font-family: "Roboto-Regular" !important;
+  font-weight: normal;
   box-sizing: border-box;
 }
 p {

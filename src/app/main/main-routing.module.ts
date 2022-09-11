@@ -86,6 +86,13 @@ const routes: Routes = [
               ).then((m) => m.FarmingMethodScreenPageModule),
           },
           {
+            path: 'details/:detailsId',
+            loadChildren: () =>
+              import('./farming-method-screen/details/details.module').then(
+                (m) => m.DetailsPageModule
+              ),
+          },
+          {
             path: 'add',
             loadChildren: () =>
               import('./farming-method-screen/add/add-routing.module').then(
@@ -93,7 +100,7 @@ const routes: Routes = [
               ),
           },
           {
-            path: 'edit',
+            path: 'edit/:editId',
             loadChildren: () =>
               import('./farming-method-screen/edit/edit-routing.module').then(
                 (m) => m.EditPageRoutingModule
