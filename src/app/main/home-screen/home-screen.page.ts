@@ -12,7 +12,7 @@ import { HomeLivestockService } from './home-livestock.service';
 })
 export class HomeScreenPage implements OnInit {
   sliderConfig = {
-    spaceBetween: 2,
+    spaceBetween: 1,
     centeredSlides: false,
     slidesPerView: 2,
   };

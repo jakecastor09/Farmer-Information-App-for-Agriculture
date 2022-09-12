@@ -32,7 +32,7 @@ export class LogoScreenPage implements OnInit {
     // this.router.navigate(['/main/tabs/home']);
 
     // this.router.navigate(['/onboarding/screen1']);
-    // this.router.navigate(['/auth-page/validation']);
-    this.router.navigate(['/main/tabs/farming-method']);
+    this.router.navigate(['/auth-page/sign-up']);
+    // this.router.navigate(['/main/tabs/farming-method']);
   }
 }
