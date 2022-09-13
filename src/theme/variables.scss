@@ -31,6 +31,15 @@ html {
   font-size: 62.5%;
   font-family: "Roboto";
 }
+.custom-input {
+  border-radius: 5px;
+  border: 1px solid #bcc3bd;
+  font-size: 1.6rem;
+  height: 5rem;
+  margin-bottom: 1.6rem;
+  padding: 0 1rem;
+  width: 100%;
+}
 * {
   font-weight: normal;
   box-sizing: border-box;

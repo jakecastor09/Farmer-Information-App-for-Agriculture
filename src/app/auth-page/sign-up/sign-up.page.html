@@ -1,17 +1,46 @@
-<ion-content>
-  <section class="sign-up page-container">
+<ion-content class="ion-padding">
+  <section class="sign-up">
     <div class="sign-up__content">
       <app-page-header title="Sign Up"></app-page-header>
-      <form action="#" class="sign-up__content">
-        <app-input-field inputPlaceholder="First Name"></app-input-field>
-        <app-input-field inputPlaceholder="Last Name"></app-input-field>
-        <app-input-field inputPlaceholder="Email"></app-input-field>
-        <app-input-field inputPlaceholder="Password"></app-input-field>
-        <app-input-field inputPlaceholder="Purok"></app-input-field>
+      <form action="">
+        <ion-grid>
+          <ion-row>
+            <ion-col size-sm="8" offset-sm="2">
+              <ion-list>
+                <ion-item>
+                  <ion-label position="floating">First Name</ion-label>
+                  <ion-input type="text" ngModel name="first name" required></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label position="floating">Last Name</ion-label>
+                  <ion-input type="text" ngModel name="last name" required></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label position="floating">Email</ion-label>
+                  <ion-input type="email" ngModel name="email" required email></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label position="floating">Password</ion-label>
+                  <ion-input type="password" ngModel name="password" required minlength="6"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label position="floating">Purok</ion-label>
+                  <ion-input type="number" ngModel name="purok" required></ion-input>
+                </ion-item>
+              </ion-list>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size-sm="8" offset-sm="2">
+              <p class="ion-text-center">Already have an account? <span
+                  [routerLink]="['/auth-page/log-in']">Login</span>
+              </p>
+              <app-button class="solid small" name="Create an account"></app-button>
+              <app-button class="outline small" name="Cancel"></app-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
       </form>
-      <app-button class="solid small" name="Create an account"></app-button>
-      <app-button class="outline small" name="Cancel"></app-button>
-      <p class="ion-text-center">Already have an account? <span [routerLink]="['/auth-page/log-in']">Login</span></p>
     </div>
   </section>
 </ion-content>
