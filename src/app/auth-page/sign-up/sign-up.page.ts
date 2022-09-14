@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { AuthPageService } from '../auth-page.service';
 
 @Component({
@@ -11,9 +12,7 @@ export class SignUpPage implements OnInit {
 
   ngOnInit() {}
 
-  onSubmit(email, password) {
-    this.authPageServie.signup(email, password).subscribe((resData) => {
-      console.log(resData);
-    });
+  onSubmit(form: NgForm) {
+    console.log(form);
   }
 }

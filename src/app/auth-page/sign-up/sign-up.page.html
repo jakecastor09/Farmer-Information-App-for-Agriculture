@@ -2,30 +2,56 @@
   <section class="sign-up">
     <div class="sign-up__content">
       <app-page-header title="Sign Up"></app-page-header>
-      <form action="">
+      <form #form="ngForm" (ngSubmit)="onSubmit(form)">
         <ion-grid>
           <ion-row>
             <ion-col size-sm="8" offset-sm="2">
               <ion-list>
+                <!-- First Name -->
                 <ion-item>
                   <ion-label position="floating">First Name</ion-label>
-                  <ion-input type="text" ngModel name="first name" required></ion-input>
+                  <ion-input type="text" ngModel name="first name" required #firstNameHandler="ngModel"></ion-input>
                 </ion-item>
+                <!-- First name error message -->
+                <ion-item *ngIf="!firstNameHandler.valid && firstNameHandler.touched" lines="none">
+                  <p class="sign-up__error">Please enter your first name.</p>
+                </ion-item>
+                <!-- //Last Name -->
                 <ion-item>
                   <ion-label position="floating">Last Name</ion-label>
-                  <ion-input type="text" ngModel name="last name" required></ion-input>
+                  <ion-input type="text" ngModel name="last name" required #lastNameHandler="ngModel"></ion-input>
                 </ion-item>
+                <!-- //Last name error message -->
+                <ion-item *ngIf="!lastNameHandler.valid && lastNameHandler.touched" lines="none">
+                  <p class="sign-up__error">Please enter your last name.</p>
+                </ion-item>
+                <!-- Email -->
                 <ion-item>
                   <ion-label position="floating">Email</ion-label>
-                  <ion-input type="email" ngModel name="email" required email></ion-input>
+                  <ion-input type="email" ngModel name="email" required email #emailHandler="ngModel"></ion-input>
                 </ion-item>
+                <!-- Email error message-->
+                <ion-item *ngIf="!emailHandler.valid && emailHandler.touched" lines="none">
+                  <p class="sign-up__error">Please enter a valid email address.</p>
+                </ion-item>
+                <!-- Password -->
                 <ion-item>
                   <ion-label position="floating">Password</ion-label>
-                  <ion-input type="password" ngModel name="password" required minlength="6"></ion-input>
+                  <ion-input type="password" ngModel name="password" required minlength="6" #passwordHandler="ngModel">
+                  </ion-input>
                 </ion-item>
+                <!-- Password error message -->
+                <ion-item *ngIf="!passwordHandler.valid && passwordHandler.touched">
+                  <p class="sign-up__error">Passwords must contain at least 6 characters.</p>
+                </ion-item>
+                <!-- Purok -->
                 <ion-item>
                   <ion-label position="floating">Purok</ion-label>
-                  <ion-input type="number" ngModel name="purok" required></ion-input>
+                  <ion-input type="number" ngModel name="purok" required #purokHandler="ngModel"></ion-input>
+                </ion-item>
+                <!-- Purok error message -->
+                <ion-item *ngIf="!purokHandler.valid && purokHandler.touched" lines="none">
+                  <p class="sign-up__error">Please enter your purok. (1-7)</p>
                 </ion-item>
               </ion-list>
             </ion-col>
@@ -35,7 +61,7 @@
               <p class="ion-text-center">Already have an account? <span
                   [routerLink]="['/auth-page/log-in']">Login</span>
               </p>
-              <app-button class="solid small" name="Create an account"></app-button>
+              <app-button type="submit" [isValid]='!form.valid' class="solid small" name="Create an account"></app-button>
               <app-button class="outline small" name="Cancel"></app-button>
             </ion-col>
           </ion-row>

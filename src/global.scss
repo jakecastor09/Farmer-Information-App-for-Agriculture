@@ -28,7 +28,6 @@
 
 //
 
-
 h1{
     font-weight:bold;
     font-size:40px;
@@ -44,3 +43,8 @@ p{
 li{
     list-style:none;
 }
+
+.ion-invalid.ion-touched  ion-label{
+    color:#D9534F;
+} 
+

@@ -9,6 +9,8 @@ export class ButtonComponent implements OnInit {
   @Input() name: string;
   @Input() class: string;
   @Input() click;
+  @Input() type: string;
+  @Input() isValid:boolean;
   constructor() {}
 
   ngOnInit() {}
