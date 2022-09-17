@@ -2,26 +2,40 @@
   <section class="log-in">
     <div class="log-in__content">
       <app-page-header title="Log In"></app-page-header>
-      <ion-grid>
-        <ion-row>
-          <ion-col size-sm="8" offset-sm="2">
-            <ion-item>
-              <ion-label position="floating">Email</ion-label>
-              <ion-input type="email" ngModel name="email" required email></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-label position="floating">Password</ion-label>
-              <ion-input type="password" ngModel name="password" required minlength="6"></ion-input>
-            </ion-item>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col size-sm="8" offset-sm="2">
-            <app-button class="solid" name="Login" (click)="loginClickHandler()"></app-button>
-            <p class="ion-text-center">New User? <span [routerLink]="['/auth-page/sign-up']">Sign Up</span></p>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
+      <form #form="ngForm" (ngSubmit)='onSubmit(form)'>
+        <ion-grid>
+          <ion-row>
+            <ion-col size-sm="8" offset-sm="2">
+              <!-- Email -->
+              <ion-item>
+                <ion-label position="floating">Email</ion-label>
+                <ion-input type="email" ngModel name="email" required email #emailHandler="ngModel"></ion-input>
+              </ion-item>
+              <!-- Email Error message -->
+              <ion-item *ngIf="!emailHandler.value && emailHandler.touched" lines="none">
+                <p class="error-message">Incorrect email address.</p>
+              </ion-item>
+              <!-- Password -->
+              <ion-item>
+                <ion-label position="floating">Password</ion-label>
+                <ion-input type="password" ngModel name="password" required minlength="6" #passwordHandler="ngModel">
+                </ion-input>
+              </ion-item>
+              <!-- Password error message -->
+              <ion-item *ngIf="!passwordHandler.valid && passwordHandler.touched" lines="none">
+                <p class="error-message">Incorrect Password</p>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size-sm="8" offset-sm="2">
+              <app-button class="solid" name="Login" [isValid]='!form.valid'></app-button>
+              <p class="ion-text-center ion-margin-top">New User? <span [routerLink]="['/auth-page/sign-up']">Sign
+                  Up</span></p>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </form>
     </div>
   </section>
 </ion-content>
