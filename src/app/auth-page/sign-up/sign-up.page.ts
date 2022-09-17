@@ -38,7 +38,7 @@ export class SignUpPage implements OnInit {
             loading.dismiss();
             this.showAlert(
               'Succesfully created an account!',
-              'Create Account Successful',
+              'Create Account Successfully',
               false
             );
           },

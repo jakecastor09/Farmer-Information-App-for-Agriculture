@@ -19,7 +19,6 @@ export class AuthPageService {
   private _isUserAuthenticated = false;
   private _userId = null;
   private _token = null;
-
   constructor(private http: HttpClient) {}
 
   get isUserAuthenticated() {

@@ -17,7 +17,8 @@
       </div>
     </div>
     <div class="crops-or-livestock__button">
-      <app-button class="solid" name="Next" (click)="buttonClickHandler()"></app-button>
+      <app-button class="solid" name="Next" [isValid]='!isCropsSelected && !isLivestockSelected'
+        (click)="buttonClickHandler()"></app-button>
     </div>
 
   </div>

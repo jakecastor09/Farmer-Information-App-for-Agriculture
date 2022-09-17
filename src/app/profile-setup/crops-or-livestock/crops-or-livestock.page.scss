@@ -1,6 +1,6 @@
 .crops-or-livestock {
   display: grid;
-  height: 100vh;
+  height: 90vh;
   &__choices {
     align-self: flex-end;
     display: grid;
@@ -32,7 +32,6 @@
   }
   &__button {
     align-self: flex-end;
-    margin-bottom: 2rem;
   }
 }
 

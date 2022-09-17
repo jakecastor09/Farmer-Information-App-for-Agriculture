@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ProfileSetupService } from '../profile-setup.service';
 
 @Component({
   selector: 'app-crops-or-livestock',
@@ -10,7 +11,10 @@ export class CropsOrLivestockPage implements OnInit {
   isCropsSelected = false;
   isLivestockSelected = false;
 
-  constructor(private route: Router) {}
+  constructor(
+    private route: Router,
+    private profileSetupService: ProfileSetupService
+  ) {}
 
   ngOnInit() {}
 
@@ -22,5 +26,17 @@ export class CropsOrLivestockPage implements OnInit {
   }
   buttonClickHandler() {
     this.route.navigateByUrl('/profile-setup/crops-or-livestock/select-crops');
+    this.profileSetupService.setSelectedCrops(this.isCropsSelected);
+    this.profileSetupService.setSelectedLivestock(this.isLivestockSelected);
+
+    if (this.profileSetupService.isCropsSelected) {
+      this.route.navigateByUrl(
+        '/profile-setup/crops-or-livestock/select-crops'
+      );
+    } else {
+      this.route.navigateByUrl(
+        '/profile-setup/crops-or-livestock/select-livestocks'
+      );
+    }
   }
 }

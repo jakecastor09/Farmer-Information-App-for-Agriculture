@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { HomeCropsService } from 'src/app/main/home-screen/home-crops.service';
+import { ProfileSetupService } from '../../profile-setup.service';
 
 @Component({
   selector: 'app-select-crops',
@@ -14,7 +15,8 @@ export class SelectCropsPage implements OnInit {
   constructor(
     private route: Router,
     private http: HttpClient,
-    private homeCropSvc: HomeCropsService
+    private homeCropSvc: HomeCropsService,
+    private profileSetupService: ProfileSetupService
   ) {}
 
   ngOnInit() {}
@@ -26,9 +28,14 @@ export class SelectCropsPage implements OnInit {
       });
   }
   buttonClickHandler() {
-    this.route.navigateByUrl(
-      '/profile-setup/crops-or-livestock/select-livestocks'
-    );
+    if (this.profileSetupService.isLivestockSelected) {
+      this.route.navigateByUrl(
+        '/profile-setup/crops-or-livestock/select-livestocks'
+      );
+    } else {
+      this.route.navigateByUrl('/main/tabs/home');
+    }
+
     const userCropsSelected = this.crops.filter((item) => {
       if (this.selectedCrops[item.name]) {
         return item;
