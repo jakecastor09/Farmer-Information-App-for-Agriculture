@@ -36,6 +36,9 @@ export class AddService {
   getData() {
     return this.method;
   }
+  getOneMethod(id) {
+    return this.method.filter((item) => item.id === id);
+  }
 
   setNameOfCropsOrLivestock(name: string) {
     this._cropsOrLivestockName = name;
@@ -55,5 +58,12 @@ export class AddService {
   removeMethod(id) {
     this.method = [...this.method.filter((item) => item.id !== id)];
     console.log(this.method);
+  }
+
+  updateMethod(id, title, message) {
+    const newId = id;
+    const newMethod = { title, message, img: '', id: newId };
+
+    this.method[newId - 1] = newMethod;
   }
 }
