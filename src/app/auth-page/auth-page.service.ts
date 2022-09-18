@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
-interface AuthResponseData {
+export interface AuthResponseData {
   idToken: string;
   email: string;
   refreshToken: string;
@@ -27,6 +27,10 @@ export class AuthPageService {
 
   get userId() {
     return this._userId;
+  }
+
+  setUserId(userId: string) {
+    this._userId = userId;
   }
 
   signup(email: string, password: string) {

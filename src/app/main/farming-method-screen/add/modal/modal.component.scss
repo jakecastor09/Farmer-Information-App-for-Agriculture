@@ -22,6 +22,7 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
+
     input {
       width: 7rem;
       height: 5rem;
@@ -31,6 +32,7 @@
       border-radius: 12px;
       border: 1px solid #bcc3bd;
       margin-right: 1rem;
+      color: #2e322f;
     }
     &-buttons {
     }

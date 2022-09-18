@@ -22,13 +22,13 @@
 </div>
 <ion-content class="ion-padding">
   <div class="add-modal">
-    <div class="add-modal__details">
+    <div class="add-modal__details" *ngIf="!isHaveTitleandHectares">
       <ion-item>
         <ion-label position="stacked">Crops/Livestock</ion-label>
-        <ion-input autocapitalize="on" [(ngModel)]="farmingMethod.cropsLivestockName"></ion-input>
+        <ion-input autocapitalize="on" [(ngModel)]="agriDetails.name"></ion-input>
       </ion-item>
       <div class="add-modal__hectares">
-        <input type="text" [value]="farmingMethod.hectares + ' ha'">
+        <input type="text" [value]="agriDetails.hectares + ' ha'">
         <div class="add-modal__hectares-buttons">
           <div class="add-modal__hectares-button-add" (click)="btnAdd()">
             <ion-icon name="add-outline"></ion-icon>
@@ -38,7 +38,6 @@
           </div>
         </div>
       </div>
-
     </div>
 
     <ion-list class="add-modal__input-field">

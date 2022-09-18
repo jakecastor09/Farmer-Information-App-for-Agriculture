@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
+import { timer } from 'rxjs';
 import { AuthPageService } from '../auth-page.service';
+import { AuthResponseData } from '../auth-page.service';
 
 @Component({
   selector: 'app-log-in',
@@ -10,10 +12,12 @@ import { AuthPageService } from '../auth-page.service';
   styleUrls: ['./log-in.page.scss'],
 })
 export class LogInPage implements OnInit {
+  loaded: boolean;
   constructor(
     private router: Router,
     private alertCtrl: AlertController,
-    private authService: AuthPageService
+    private authService: AuthPageService,
+    private loadingCtrl: LoadingController
   ) {}
 
   ngOnInit() {}
@@ -26,12 +30,24 @@ export class LogInPage implements OnInit {
     const { email, password } = form.value;
     //Send a request to firebase
     this.authService.login(email, password).subscribe(
-      (response) => {
-        this.router.navigate(['/profile-setup/add-image']);
+      async (response: AuthResponseData) => {
+        this.authService.setUserId(response.localId);
+
+        //show loading message
+        const loading = await this.loadingCtrl.create({
+          message: 'Login Successfully',
+          duration: 1000,
+        });
+        await loading.present();
+        //wait the loading before directing to add image page
+        setTimeout(() => {
+          this.router.navigate(['/profile-setup/add-image']);
+        }, 1000);
       },
       (error) => {
         const { message } = error.error.error;
         const errorMessage = message.replaceAll('_', ' ');
+        // error message
         if (message === 'EMAIL_NOT_FOUND') {
           this.showAlert(
             errorMessage,
