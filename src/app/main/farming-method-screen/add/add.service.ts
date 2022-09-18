@@ -34,7 +34,7 @@ export class AddService {
   constructor(private farmingMethodService: FarmingMethodService) {}
 
   getData() {
-    return [...this.method];
+    return this.method;
   }
 
   setNameOfCropsOrLivestock(name: string) {
@@ -45,10 +45,15 @@ export class AddService {
   }
 
   addMethod(data) {
-    this.method.push(data);
+    this.method.push({ ...data, id: this.method.length + 1 });
   }
 
   getIsHaveNameAndHectares(): boolean {
     return this._cropsOrLivestockName && this._hectares ? true : false;
+  }
+
+  removeMethod(id) {
+    this.method = [...this.method.filter((item) => item.id !== id)];
+    console.log(this.method);
   }
 }

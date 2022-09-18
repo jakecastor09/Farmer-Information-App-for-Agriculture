@@ -3,7 +3,14 @@
     <span class="add-farming-method__publish">Publish</span>
   </div>
   <div class="add-farming-method__content ion-padding">
-    <div class="add-farming-method__content--item" *ngFor="let data of publishData">
+    <div class="add-farming-method__content--item" *ngFor="let data of publishData ">
+      <div class="add-farming-method__content--icons">
+        <ion-icon name="create-outline" class="add-farming-method__content--icons--edit"
+          (click)="onEditClickHandler(data.id)">
+        </ion-icon>
+        <ion-icon name="trash-outline" class="add-farming-method__content--icons--delete"
+          (click)="onDeleteClickHandler(data.id)"></ion-icon>
+      </div>
       <app-title [title]="data.title"></app-title>
       <app-message [message]="data.message"></app-message>
     </div>

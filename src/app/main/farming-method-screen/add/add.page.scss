@@ -16,4 +16,16 @@
   &__content--item:nth-child(1) {
     margin-top: 10rem;
   }
+  &__content--icons {
+    position: absolute;
+    right: 1.6rem;
+    font-size: 2.5rem;
+  }
+  &__content--icons--edit {
+    color: #2e322f;
+    margin-right: 0.5rem;
+  }
+  &__content--icons--delete {
+    color: #d9534f;
+  }
 }

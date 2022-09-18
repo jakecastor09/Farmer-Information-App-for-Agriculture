@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { AddService } from './add.service';
 import { ModalComponent } from './modal/modal.component';
@@ -15,7 +16,9 @@ export class AddPage implements OnInit {
 
   constructor(
     private modalCtrl: ModalController,
-    private addService: AddService
+    private addService: AddService,
+    private router: Router,
+    private zone: NgZone
   ) {}
 
   async openModal() {
@@ -32,8 +35,19 @@ export class AddPage implements OnInit {
   }
 
   ngOnInit() {}
+
   ionViewDidEnter() {
     this.publishData = this.addService.getData();
     console.log(this.publishData);
+  }
+
+  onEditClickHandler(id: number) {
+    this.router.navigateByUrl('/main/tabs/farming-method/edit/' + id);
+  }
+  onDeleteClickHandler(id: number) {
+    this.addService.removeMethod(id);
+    this.zone.run(() => {
+      this.publishData = this.addService.getData();
+    });
   }
 }
