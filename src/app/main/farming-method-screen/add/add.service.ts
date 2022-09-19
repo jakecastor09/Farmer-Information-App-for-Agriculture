@@ -56,14 +56,19 @@ export class AddService {
   }
 
   removeMethod(id) {
-    this.method = [...this.method.filter((item) => item.id !== id)];
-    console.log(this.method);
+    const newMethod = [...this.method.filter((item) => item.id !== id)];
+
+    this.method = newMethod.map((item, index) => {
+      const newId = index + 1;
+      return { ...item, id: newId };
+    });
   }
-
   updateMethod(id, title, message) {
-    const newId = id;
-    const newMethod = { title, message, img: '', id: newId };
-
-    this.method[newId - 1] = newMethod;
+    this.method = this.method.map((item) => {
+      if (item.id === id) {
+        return { ...item, title, message };
+      }
+      return item;
+    });
   }
 }
