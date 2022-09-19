@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FarmingMethodService } from './farming-method.service';
 
 @Component({
   selector: 'app-farming-method-screen',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./farming-method-screen.page.scss'],
 })
 export class FarmingMethodScreenPage implements OnInit {
+  allFarmingMethod = [];
+  constructor(private farmingMethodService: FarmingMethodService) {}
 
-  constructor() { }
+  ngOnInit() {}
 
-  ngOnInit() {
+  ionViewDidEnter() {
+    this.allFarmingMethod = this.farmingMethodService.getAllUserFarmingMethod();
   }
-
 }

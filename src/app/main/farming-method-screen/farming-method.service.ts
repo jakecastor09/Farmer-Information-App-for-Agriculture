@@ -1,16 +1,23 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthPageService } from 'src/app/auth-page/auth-page.service';
+import { AddService } from './add/add.service';
 import { FarmingMethod } from './farming-method.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FarmingMethodService {
-  allUserFarmingMethod: Array<FarmingMethod>;
-  constructor(private authService: AuthPageService) {}
+  allUserFarmingMethod = [];
+
+  constructor(
+    private authService: AuthPageService,
+    private router: Router,
+    private addService: AddService
+  ) {}
 
   getAllUserFarmingMethod() {
-    return [...this.allUserFarmingMethod];
+    return this.allUserFarmingMethod;
   }
 
   getUserFarmingMethod() {
@@ -21,19 +28,23 @@ export class FarmingMethodService {
 
   editUserFarmingMethod(userMethodId) {}
 
-  addFarmingMethod(
-    name: string,
-    hectares: number,
-    method: Array<object>,
-    date: Date
-  ) {
+  addFarmingMethod(publishData) {
+    //Reset Add Farming method
+    this.addService.resetFarmingMethod();
+
+    const { name, hectares, methods } = publishData;
+    const date = new Date();
+
     const newFarmingMethod = new FarmingMethod(
       this.authService.userId,
       name,
       hectares,
-      method,
+      methods,
       date
     );
     this.allUserFarmingMethod.push(newFarmingMethod);
+
+    this.router.navigateByUrl('/main/tabs/farming-method');
+    console.log(this.allUserFarmingMethod);
   }
 }

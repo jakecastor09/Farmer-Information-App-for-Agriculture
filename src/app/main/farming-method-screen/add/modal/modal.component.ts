@@ -1,5 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { UiSharedModule } from 'src/app/UI/ui-shared/ui-shared.module';
 import { AddService } from '../add.service';
@@ -23,7 +24,8 @@ export class ModalComponent implements OnInit {
 
   constructor(
     private modalCtrl: ModalController,
-    private addService: AddService
+    private addService: AddService,
+    private router: Router
   ) {}
   ngOnInit(): void {
     this.isHaveTitleandHectares = this.addService.getIsHaveNameAndHectares();
@@ -37,8 +39,10 @@ export class ModalComponent implements OnInit {
     this.addService.addMethod(this.farmingMethod);
 
     if (!this.isHaveTitleandHectares) {
-      this.addService.setHectares(this.agriDetails.hectares);
-      this.addService.setNameOfCropsOrLivestock(this.agriDetails.name);
+      this.addService.setNameAndHectares(
+        this.agriDetails.name,
+        this.agriDetails.hectares
+      );
     }
 
     return this.modalCtrl.dismiss(this._name, 'confirm');

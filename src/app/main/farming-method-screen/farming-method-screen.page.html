@@ -2,17 +2,8 @@
   <div class="farming-method">
     <app-page-header title="Farming Method"></app-page-header>
     <div class="farming-method__items">
-      <div class="farming-method__item">
-        <app-card-item></app-card-item>
-      </div>
-      <div class="farming-method__item">
-        <app-card-item></app-card-item>
-      </div>
-      <div class="farming-method__item">
-        <app-card-item></app-card-item>
-      </div>
-      <div class="farming-method__item">
-        <app-card-item></app-card-item>
+      <div class="farming-method__item" *ngFor="let farmingMethod of allFarmingMethod">
+        <app-card-item [farmingMethod]="farmingMethod"></app-card-item>
       </div>
     </div>
   </div>

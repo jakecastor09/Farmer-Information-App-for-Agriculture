@@ -3,7 +3,7 @@ export class FarmingMethod {
     public userId: string,
     public name: string,
     public hectares: number,
-    public method: Array<object>,
+    public methods: Array<object>,
     public date: Date
   ) {}
 }

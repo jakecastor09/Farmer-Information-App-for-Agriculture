@@ -1,4 +1,26 @@
 .add-farming-method {
+  &__remove {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 6rem;
+  }
+  &__details {
+    display: flex;
+    color: #3e433f;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__name {
+    font-size: 4rem;
+    font-weight: bold;
+  }
+  &__hectares {
+    font-size: 1.4rem;
+    background: black;
+    color: #ffff;
+    padding: 0.8rem 1rem;
+    border-radius: 20rem;
+  }
   &__publish {
     display: block;
     font-size: 1.8rem;
@@ -14,7 +36,7 @@
   }
 
   &__content--item:nth-child(1) {
-    margin-top: 10rem;
+    margin-top: 1rem;
   }
   &__content--icons {
     position: absolute;

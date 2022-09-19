@@ -1,9 +1,17 @@
 <ion-content>
   <div class="add-farming-method">
-    <span class="add-farming-method__publish">Publish</span>
+    <span class="add-farming-method__publish" (click)="onPublishClickHandler()">Publish</span>
   </div>
+  <div class="add-farming-method__remove ion-padding" *ngIf="publishData?.name">
+    <ion-button fill="outline" color="danger" (click)="onRemoveClickHandler()">Remove</ion-button>
+  </div>
+  <div class="add-farming-method__details ion-padding-horizontal" *ngIf="publishData?.name">
+    <h1 class="add-farming-method__name">{{publishData?.name}}</h1>
+    <h1 class="add-farming-method__hectares">{{publishData?.hectares}} hectares</h1>
+  </div>
+
   <div class="add-farming-method__content ion-padding">
-    <div class="add-farming-method__content--item" *ngFor="let data of publishData ">
+    <div class="add-farming-method__content--item" *ngFor="let data of publishData?.methods ">
       <div class="add-farming-method__content--icons">
         <ion-icon name="create-outline" class="add-farming-method__content--icons--edit"
           (click)="onEditClickHandler(data.id)">
