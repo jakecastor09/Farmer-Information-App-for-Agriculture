@@ -9,6 +9,7 @@ import { FarmingMethodScreenPageRoutingModule } from './farming-method-screen-ro
 import { FarmingMethodScreenPage } from './farming-method-screen.page';
 import { UiSharedModule } from 'src/app/UI/ui-shared/ui-shared.module';
 import { CardItemComponent } from './card-item/card-item.component';
+
 @NgModule({
   imports: [
     CommonModule,

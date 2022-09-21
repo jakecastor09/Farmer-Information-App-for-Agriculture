@@ -7,14 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { DetailsPageRoutingModule } from './details-routing.module';
 
 import { DetailsPage } from './details.page';
+import { FarmingMethodShared } from '../farming-method-shared/farming-method-shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    DetailsPageRoutingModule
+    DetailsPageRoutingModule,
+    FarmingMethodShared,
   ],
-  declarations: [DetailsPage]
+  declarations: [DetailsPage],
 })
 export class DetailsPageModule {}

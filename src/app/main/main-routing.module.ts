@@ -86,7 +86,7 @@ const routes: Routes = [
               ).then((m) => m.FarmingMethodScreenPageModule),
           },
           {
-            path: 'details/:detailsId',
+            path: 'method-details/:detailsId',
             loadChildren: () =>
               import('./farming-method-screen/details/details.module').then(
                 (m) => m.DetailsPageModule

@@ -3,7 +3,7 @@
     <span class="add-farming-method__publish" (click)="onPublishClickHandler()">Publish</span>
   </div>
   <div class="add-farming-method__remove ion-padding" *ngIf="publishData?.name">
-    <ion-button fill="outline" color="danger" (click)="onRemoveClickHandler()">Remove</ion-button>
+    <ion-button fill="outline" color="danger" (click)="onRemoveClickHandler()">Remove All</ion-button>
   </div>
   <div class="add-farming-method__details ion-padding-horizontal" *ngIf="publishData?.name">
     <h1 class="add-farming-method__name">{{publishData?.name}}</h1>

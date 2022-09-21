@@ -34,6 +34,9 @@ export class AddPage implements OnInit {
   ionViewDidEnter() {
     this.publishData = this.addService.getAllMethod();
   }
+  ionViewWillEnter() {
+    this.publishData = this.addService.getAllMethod();
+  }
 
   onEditClickHandler(id: number) {
     this.router.navigateByUrl('/main/tabs/farming-method/edit/' + id);

@@ -1,9 +1,41 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>details</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-
+  <div class="farming-method-details">
+    <ion-grid class="ion-padding">
+      <ion-row>
+        <ion-col>
+          <div class="farming-method-details__header">
+            <ion-img class="farming-method-details__header--img" src="assets/farming-method/farmingMethodLogo.webp">
+            </ion-img>
+            <div class="farming-method-details__header--details">
+              <div>
+                <span class="farming-method-details__header--name">{{farmingMethod.name}}</span>
+                <span class="farming-method-details__header--date">Sept 9, 2020</span>
+              </div>
+              <div class="farming-method-details__header--hectares">{{farmingMethod.hectares}} ha</div>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <div class="farming-method-details__heading">
+            <h1 class="farming-method-details__heading--title">{{farmingMethod.name}} Farming Methods</h1>
+            <div class="farming-method-details__heading--details">
+              <span class="farming-method-details__heading--details--name">By Jake Castor</span>
+              <span class="farming-method-details__heading--details--time">2 min ago</span>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <div class="farming-method-details__content" *ngFor="let method of farmingMethod?.methods">
+            <app-title [title]="method.title"></app-title>
+            <app-message [message]="method.message"></app-message>
+            <div class="border-line"></div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 </ion-content>

@@ -8,11 +8,16 @@ import { AddPageRoutingModule } from './add-routing.module';
 
 import { AddPage } from './add.page';
 import { ModalComponent } from './modal/modal.component';
-import { TitleComponent } from './title/title.component';
-import { MessageComponent } from './message/message.component';
+import { FarmingMethodShared } from '../farming-method-shared/farming-method-shared.module';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, IonicModule, AddPageRoutingModule],
-  declarations: [AddPage, ModalComponent, TitleComponent, MessageComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    IonicModule,
+    AddPageRoutingModule,
+    FarmingMethodShared,
+  ],
+  declarations: [AddPage, ModalComponent],
 })
 export class AddPageModule {}

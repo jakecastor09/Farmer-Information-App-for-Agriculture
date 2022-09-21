@@ -20,10 +20,10 @@ export class FarmingMethodService {
     return this.allUserFarmingMethod;
   }
 
-  getUserFarmingMethod() {
-    // this.allUserFarmingMethod.filter(
-    //   (item) => item.userId === this.authService.userId
-    // );
+  getOneFarmingMethod(farmingMethodId) {
+    return this.allUserFarmingMethod.find(
+      (item) => item.farmingMethodId === farmingMethodId
+    );
   }
 
   editUserFarmingMethod(userMethodId) {}
@@ -34,9 +34,13 @@ export class FarmingMethodService {
 
     const { name, hectares, methods } = publishData;
     const date = new Date();
-
+    const userId = this.authService.userId;
+    const farmingMethodId =
+      this.authService.userId + this.allUserFarmingMethod.length;
+    console.log(farmingMethodId);
     const newFarmingMethod = new FarmingMethod(
-      this.authService.userId,
+      userId,
+      farmingMethodId,
       name,
       hectares,
       methods,
@@ -45,6 +49,5 @@ export class FarmingMethodService {
     this.allUserFarmingMethod.push(newFarmingMethod);
 
     this.router.navigateByUrl('/main/tabs/farming-method');
-    console.log(this.allUserFarmingMethod);
   }
 }
