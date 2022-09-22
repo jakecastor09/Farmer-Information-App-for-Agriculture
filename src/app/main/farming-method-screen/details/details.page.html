@@ -1,6 +1,14 @@
 <ion-content>
   <div class="farming-method-details">
+
     <ion-grid class="ion-padding">
+      <ion-row>
+        <ion-col>
+          <div class="back-btn" routerLink="/main/tabs/farming-method">
+            <ion-icon class="back-btn--icon" name="arrow-back-outline"></ion-icon>
+          </div>
+        </ion-col>
+      </ion-row>
       <ion-row>
         <ion-col>
           <div class="farming-method-details__header">
@@ -9,7 +17,8 @@
             <div class="farming-method-details__header--details">
               <div>
                 <span class="farming-method-details__header--name">{{farmingMethod.name}}</span>
-                <span class="farming-method-details__header--date">Sept 9, 2020</span>
+                <span
+                  class="farming-method-details__header--date">{{farmingMethod.date.toLocaleDateString("en-US")}}</span>
               </div>
               <div class="farming-method-details__header--hectares">{{farmingMethod.hectares}} ha</div>
             </div>
@@ -22,7 +31,7 @@
             <h1 class="farming-method-details__heading--title">{{farmingMethod.name}} Farming Methods</h1>
             <div class="farming-method-details__heading--details">
               <span class="farming-method-details__heading--details--name">By Jake Castor</span>
-              <span class="farming-method-details__heading--details--time">2 min ago</span>
+
             </div>
           </div>
         </ion-col>

@@ -6,24 +6,24 @@ import { AuthPagePage } from './auth-page.page';
 const routes: Routes = [
   {
     path: '',
-    component: AuthPagePage
+    component: AuthPagePage,
   },
-  {
-    path: 'validation',
-    loadChildren: () => import('./validation/validation.module').then( m => m.ValidationPageModule)
-  },
+
   {
     path: 'register',
-    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
+    loadChildren: () =>
+      import('./register/register.module').then((m) => m.RegisterPageModule),
   },
   {
     path: 'sign-up',
-    loadChildren: () => import('./sign-up/sign-up.module').then( m => m.SignUpPageModule)
+    loadChildren: () =>
+      import('./sign-up/sign-up.module').then((m) => m.SignUpPageModule),
   },
   {
     path: 'log-in',
-    loadChildren: () => import('./log-in/log-in.module').then( m => m.LogInPageModule)
-  }
+    loadChildren: () =>
+      import('./log-in/log-in.module').then((m) => m.LogInPageModule),
+  },
 ];
 
 @NgModule({
