@@ -8,6 +8,7 @@ import { ProfileScreenPageRoutingModule } from './profile-screen-routing.module'
 
 import { ProfileScreenPage } from './profile-screen.page';
 import { BrowserModule } from '@angular/platform-browser';
+import { UiSharedModule } from 'src/app/UI/ui-shared/ui-shared.module';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { BrowserModule } from '@angular/platform-browser';
     FormsModule,
     IonicModule,
     ProfileScreenPageRoutingModule,
+    UiSharedModule,
   ],
   declarations: [ProfileScreenPage],
 })

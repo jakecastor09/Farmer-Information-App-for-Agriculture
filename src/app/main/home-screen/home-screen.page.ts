@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
+import { MainService } from '../main.service';
 import { HomeCropsService } from './home-crops.service';
 import { HomeLivestockService } from './home-livestock.service';
 
@@ -17,6 +18,8 @@ export class HomeScreenPage implements OnInit {
     slidesPerView: 2,
   };
 
+  isDarkMode;
+
   homeDataCrops;
   homeDataLivestock;
   cropsColors;
@@ -25,7 +28,8 @@ export class HomeScreenPage implements OnInit {
   constructor(
     private homeCropSvc: HomeCropsService,
     private router: Router,
-    private homeLivestockSvc: HomeLivestockService
+    private homeLivestockSvc: HomeLivestockService,
+    private mainService: MainService
   ) {}
 
   ngOnInit() {
@@ -40,5 +44,10 @@ export class HomeScreenPage implements OnInit {
   }
   onClickLivestockDetails(id) {
     this.router.navigate(['/', 'main', 'tabs', 'home', 'livestock' + id]);
+  }
+  darkModeClickHandler() {
+    this.mainService.setIsDarkMode();
+    this.isDarkMode = this.mainService.getIsDarkMode();
+    console.log(this.isDarkMode);
   }
 }

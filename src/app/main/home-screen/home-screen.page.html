@@ -4,10 +4,15 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>Home</ion-title>
+    <ion-buttons slot="end">
+      <ion-label>Darkmode</ion-label>
+      <ion-toggle color="dark" (click)="darkModeClickHandler()"></ion-toggle>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
+
   <div class="home__header">
     <div class="home__user">
       <div class="home__user--content">
@@ -26,7 +31,7 @@
       </div>
     </div>
   </div>
-  <div class="home__content ion-padding">
+  <div class="home__content">
     <ion-grid>
       <div class="home__content--title">
         <ion-label class="home__content--name" color="primary">Crops</ion-label>
@@ -59,4 +64,5 @@
       </ion-row>
     </ion-grid>
   </div>
+
 </ion-content>

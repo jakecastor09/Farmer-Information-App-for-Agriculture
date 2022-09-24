@@ -1,43 +1,40 @@
-<ion-header>
-  <ion-toolbar mode="ios">
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>profile</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-  <div class="header">
-    <ion-img src="/img/crops/avatar.png"></ion-img>
-    <ion-label>Jake Castor</ion-label>
-  </div>
-  <div class="content">
-    <ion-list>
-      <ion-item>
-        <ion-label> Edit Data</ion-label>
-        <ion-icon name="arrow-forward-outline"></ion-icon>
-      </ion-item>
-      <ion-item>
-        <ion-label> Phone</ion-label>
-        <ion-icon name="arrow-forward-outline"></ion-icon>
-      </ion-item>
-      <ion-item>
-        <ion-label> Date of Birth</ion-label>
-        <ion-icon name="arrow-forward-outline"></ion-icon>
-      </ion-item>
-      <ion-item>
-        <ion-label> Email</ion-label>
-        <ion-icon name="arrow-forward-outline"></ion-icon>
-      </ion-item>
-      <ion-item>
-        <ion-label> Edit Crops</ion-label>
-        <ion-icon name="arrow-forward-outline"></ion-icon>
-      </ion-item>
-      <ion-item>
-        <ion-label> Address</ion-label>
-        <ion-icon name="arrow-forward-outline"></ion-icon>
-      </ion-item>
-    </ion-list>
+  <div class="profile">
+    <app-page-header title="Profile"></app-page-header>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-img></ion-img>
+          <label>Jake Castor</label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <label>My Accont</label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ul class="profile__items">
+            <div class="profile__item">
+              <ion-icon name="create-outline"></ion-icon>
+              <span class="profile__item--name">Edit profile</span>
+            </div>
+            <div class="profile__item">
+              <ion-icon></ion-icon>
+              <span class="profile__item--name">Agriculture</span>
+            </div>
+            <div class="profile__item">
+              <ion-icon></ion-icon>
+              <span class="profile__item--name">My methods</span>
+            </div>
+            <div class="profile__item">
+              <ion-icon></ion-icon>
+              <span class="profile__item--name">My favorites</span>
+            </div>
+          </ul>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
 </ion-content>
