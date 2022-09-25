@@ -1,38 +1,52 @@
 <ion-content>
-  <div class="profile">
+  <div class="profile ion-padding">
     <app-page-header title="Profile"></app-page-header>
     <ion-grid>
       <ion-row>
-        <ion-col>
-          <ion-img></ion-img>
-          <label>Jake Castor</label>
+        <ion-col class="profile__user">
+          <div class="profile__img"></div>
+          <label class="profile__name">Jake Castor</label>
         </ion-col>
       </ion-row>
       <ion-row>
-        <ion-col>
-          <label>My Accont</label>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ul class="profile__items">
-            <div class="profile__item">
-              <ion-icon name="create-outline"></ion-icon>
-              <span class="profile__item--name">Edit profile</span>
+        <ion-col class="profile__account">
+          <label class="profile__account--title">My Account</label>
+          <ul class="profile__account__items">
+            <div class="profile__account__items__item">
+              <div class="profile__account__items__item--icon-container">
+                <ion-icon name="person-outline"></ion-icon>
+              </div>
+              <span class="profile__account__items__item--name">Edit profile</span>
+              <ion-icon name="chevron-forward-outline"></ion-icon>
+
             </div>
-            <div class="profile__item">
-              <ion-icon></ion-icon>
-              <span class="profile__item--name">Agriculture</span>
+            <div class="profile__account__items__item">
+              <div class="profile__account__items__item--icon-container">
+                <ion-icon name="person-outline"></ion-icon>
+              </div>
+              <span class="profile__account__items__item--name">Agriculture</span>
+              <ion-icon name="chevron-forward-outline"></ion-icon>
             </div>
-            <div class="profile__item">
-              <ion-icon></ion-icon>
-              <span class="profile__item--name">My methods</span>
+            <div class="profile__account__items__item">
+              <div class="profile__account__items__item--icon-container">
+                <ion-icon name="person-outline"></ion-icon>
+              </div>
+              <span class="profile__account__items__item--name">My methods</span>
+              <ion-icon name="chevron-forward-outline"></ion-icon>
             </div>
-            <div class="profile__item">
-              <ion-icon></ion-icon>
-              <span class="profile__item--name">My favorites</span>
+            <div class="profile__account__items__item">
+              <div class="profile__account__items__item--icon-container">
+                <ion-icon name="person-outline"></ion-icon>
+              </div>
+              <span class="profile__account__items__item--name">My favorites</span>
+              <ion-icon name="chevron-forward-outline"></ion-icon>
             </div>
           </ul>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <app-button class="danger" name="Log out"></app-button>
         </ion-col>
       </ion-row>
     </ion-grid>

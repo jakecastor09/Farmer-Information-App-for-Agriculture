@@ -1,21 +1,59 @@
-.header {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: #519259;
-  height: 40vh;
-  width: 100%;
-}
-
-.header ion-img {
-  width: 150px;
-  height: 150px;
-}
-.header ion-label {
-  font-size: 2rem;
-  color: #fff;
-}
-
-.content {
+.profile {
+  color: #2e322f;
+  &__user {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__name {
+    font-size: 2.4rem;
+    font-weight: 700;
+    margin-top: 1.4rem;
+  }
+  &__img {
+    width: 12rem;
+    height: 12rem;
+    background-color: #2e322f;
+    border-radius: 100%;
+  }
+  &__account {
+    margin-top: 5.2rem;
+    &--title {
+      color: #79897c;
+      font-size: 1.8rem;
+      font-weight: 300;
+    }
+    &__items {
+      margin-top: 2rem;
+      padding: 0;
+      &__item {
+        display: flex;
+        align-items: center;
+        padding: 1rem 2.5rem;
+        font-size: 1.4rem;
+        background-color: #f7f7f7;
+        margin-bottom: 1.6rem;
+        border-radius: 10px;
+        &--name {
+          margin-left: 1.6rem;
+        }
+        & > *:last-child {
+          margin-left: auto;
+        }
+        &--icon-container {
+          background-color: #b1f2cd;
+          width: 4rem;
+          height: 4rem;
+          border-radius: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    }
+  }
+  ion-icon {
+    font-size: 1.6rem;
+  }
 }
