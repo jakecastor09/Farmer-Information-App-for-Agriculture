@@ -32,7 +32,7 @@
   </div>
   <div class="home__content">
     <ion-grid>
-      <div class="home__content--title">
+      <div class="home__content--title" *ngIf="homeDataCrops?.length >= 1">
         <ion-label class="home__content--name" color="primary">Crops</ion-label>
         <p class="home__content--edit-crops">Edit crops <ion-icon name="chevron-forward-outline"></ion-icon>
         </p>
@@ -47,7 +47,7 @@
           </ion-slide>
         </ion-slides>
       </ion-row>
-      <div class="home__content--title">
+      <div class="home__content--title" *ngIf="homeDataLivestock?.length >= 1">
         <ion-label class="home__content--name" color="primary">My LiveStock</ion-label>
         <p class="home__content--edit-crops">Edit crops <ion-icon name="chevron-forward-outline"></ion-icon>
       </div>

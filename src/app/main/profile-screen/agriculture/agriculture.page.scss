@@ -1,0 +1,25 @@
+.agriculture {
+  &__crops-selected,
+  &__livestock-selected {
+    &__title {
+    }
+    &__items {
+      display: flex;
+      padding: 0;
+      overflow-x: scroll;
+      scroll-behavior: smooth;
+    }
+    &__item {
+      &--avatar {
+        background-color: #f5e8c7;
+        padding: 1rem;
+        border-radius: 100%;
+        margin-right: 1.6rem;
+      }
+      &--img {
+        width: 5rem;
+        height: 5rem;
+      }
+    }
+  }
+}
