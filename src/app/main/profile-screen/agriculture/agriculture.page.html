@@ -2,8 +2,9 @@
   <div class="agriculture">
     <app-page-header title="Edit Agriculture"></app-page-header>
     <ion-grid>
-      <ion-row *ngIf="userCurrentSelectedCrops?.length>= 1">
-        <ion-col size-sm="8" offset-sm="2" class="agriculture__crops-selected">
+      <ion-row>
+        <ion-col size-sm="8" offset-sm="2" class="agriculture__crops-selected"
+          *ngIf="userCurrentSelectedCrops?.length>= 1">
           <h3 class="agriculture__crops-selected__title">Selected crops</h3>
           <ul class="agriculture__crops-selected__items">
             <li *ngFor="let agri of userCurrentSelectedCrops" lines="none" class="agriculture__crops-selected__item">
@@ -13,9 +14,8 @@
             </li>
           </ul>
         </ion-col>
-      </ion-row>
-      <ion-row *ngIf="userCurrentSelectedLivestock?.length>= 1">
-        <ion-col size-sm="8" offset-sm="2" class="agriculture__livestock-selected">
+        <ion-col size-sm="8" offset-sm="2" *ngIf="userCurrentSelectedLivestock?.length>= 1"
+          class="agriculture__livestock-selected">
           <h3 class="agriculture__livestock-selected__title">Selected livestock</h3>
           <ul class="agriculture__livestock-selected__items">
             <li *ngFor="let agri of userCurrentSelectedLivestock" lines="none"
@@ -26,6 +26,7 @@
             </li>
           </ul>
         </ion-col>
+
       </ion-row>
       <ion-row>
         <ion-col size-sm="8" offset-sm="2"></ion-col>

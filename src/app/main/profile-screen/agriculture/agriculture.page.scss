@@ -2,12 +2,18 @@
   &__crops-selected,
   &__livestock-selected {
     &__title {
+      margin-top: 0;
+      color: #79897c;
+      font-size: 1.8rem;
+      font-weight: 500;
+      margin-bottom: 2rem;
     }
     &__items {
       display: flex;
       padding: 0;
       overflow-x: scroll;
       scroll-behavior: smooth;
+      margin: 0;
     }
     &__item {
       &--avatar {
