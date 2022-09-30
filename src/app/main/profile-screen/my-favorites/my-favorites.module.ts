@@ -7,14 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { MyFavoritesPageRoutingModule } from './my-favorites-routing.module';
 
 import { MyFavoritesPage } from './my-favorites.page';
+import { UiSharedModule } from 'src/app/UI/ui-shared/ui-shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    MyFavoritesPageRoutingModule
+    MyFavoritesPageRoutingModule,
+    UiSharedModule,
   ],
-  declarations: [MyFavoritesPage]
+  declarations: [MyFavoritesPage],
 })
 export class MyFavoritesPageModule {}

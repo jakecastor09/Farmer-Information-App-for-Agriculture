@@ -17,7 +17,6 @@ export class DetailsPage implements OnInit {
   ngOnInit() {
     this.route.params.subscribe((paramMap) => {
       const farmingMethodId = paramMap.detailsId;
-      console.log(farmingMethodId);
       this.farmingMethod =
         this.farmingMethodService.getOneFarmingMethod(farmingMethodId);
     });

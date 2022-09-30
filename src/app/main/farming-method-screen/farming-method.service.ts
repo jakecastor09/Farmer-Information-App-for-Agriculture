@@ -25,7 +25,6 @@ export class FarmingMethodService {
       (item) => item.farmingMethodId === farmingMethodId
     );
   }
-
   editUserFarmingMethod(userMethodId) {}
 
   addFarmingMethod(publishData) {

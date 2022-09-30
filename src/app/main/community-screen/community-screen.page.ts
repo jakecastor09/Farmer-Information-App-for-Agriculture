@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ApiService } from 'src/app/api.service';
 
 @Component({
   selector: 'app-community-screen',
@@ -12,7 +11,7 @@ export class CommunityScreenPage implements OnInit {
   lastName;
   postsLength;
   posts;
-  constructor(private router: Router, private apiService: ApiService) {}
+  constructor(private router: Router) {}
 
   async ngOnInit() {
     // await this.getPosts();
@@ -30,40 +29,4 @@ export class CommunityScreenPage implements OnInit {
   onClickAddBtn() {
     this.router.navigateByUrl('/main/tabs/community/add');
   }
-  // getFarmer() {
-  //   this.apiService.getFirstName().subscribe(
-  //     (res: any) => {
-  //       console.log('SUCCESS ===', res);
-  //       const responseFirstName = res[res.length - 1].firstName;
-  //       this.firstName =
-  //         responseFirstName.charAt(0).toUpperCase() +
-  //         responseFirstName.slice(1);
-  //     },
-
-  //     (error: any) => {
-  //       console.log('ERROR ===', error);
-  //     }
-  //   );
-  // }
-  // getPosts() {
-  //   this.apiService.getPosts().subscribe(
-  //     (res: any) => {
-  //       this.posts = res;
-  //       this.postsLength = this.posts.length;
-  //       console.log('SUCCESS ===', res);
-  //     },
-  //     (error: any) => {
-  //       console.log('ERROR ===', error);
-  //     }
-  //   );
-  // }
-  // onClickEdit(id) {
-  //   this.router.navigateByUrl('/main/tabs/community/' + id);
-  // }
-  // onClickDelete(id) {
-  //   this.apiService.deletePost(id).subscribe((res: any) => {
-  //     console.log(res);
-  //     this.getPosts();
-  //   });
-  // }
 }

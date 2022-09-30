@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { IonicModule } from '@ionic/angular';
 import { ButtonComponent } from '../button/button.component';
 import { InputFieldComponent } from '../input-field/input-field.component';
-import { IonicModule } from '@ionic/angular';
 import { PageHeaderComponent } from '../page-header/page-header.component';
 
 @NgModule({

@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ApiService } from 'src/app/api.service';
 import { MainService } from '../main.service';
 import { HomeCropsService } from './home-crops.service';
 import { HomeLivestockService } from './home-livestock.service';

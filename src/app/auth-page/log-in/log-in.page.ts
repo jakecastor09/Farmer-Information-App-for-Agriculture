@@ -5,6 +5,8 @@ import { AlertController, LoadingController } from '@ionic/angular';
 import { timer } from 'rxjs';
 import { AuthPageService } from '../auth-page.service';
 import { AuthResponseData } from '../auth-page.service';
+import { HttpClient } from '@angular/common/http';
+import { MainService } from 'src/app/main/main.service';
 
 @Component({
   selector: 'app-log-in',
@@ -17,7 +19,9 @@ export class LogInPage implements OnInit {
     private router: Router,
     private alertCtrl: AlertController,
     private authService: AuthPageService,
-    private loadingCtrl: LoadingController
+    private loadingCtrl: LoadingController,
+    private http: HttpClient,
+    private mainService: MainService
   ) {}
 
   ngOnInit() {}
@@ -32,6 +36,20 @@ export class LogInPage implements OnInit {
     this.authService.login(email, password).subscribe(
       async (response: AuthResponseData) => {
         this.authService.setUserId(response.localId);
+
+        //request all crops data and livestock data
+        await this.http
+          .get('https://agri-app-96063-default-rtdb.firebaseio.com/crops.json')
+          .subscribe((resCropsData) => {
+            this.mainService.requestCropsData(resCropsData);
+          });
+        await this.http
+          .get(
+            'https://agri-app-96063-default-rtdb.firebaseio.com/livestock.json'
+          )
+          .subscribe((resLivestockData) => {
+            this.mainService.requestLivestockData(resLivestockData);
+          });
 
         //show loading message
         const loading = await this.loadingCtrl.create({

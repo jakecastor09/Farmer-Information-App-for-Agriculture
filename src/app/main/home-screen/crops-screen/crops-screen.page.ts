@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ApiService } from 'src/app/api.service';
 
 @Component({
   selector: 'app-crops-screen',
@@ -21,7 +20,7 @@ export class CropsScreenPage implements OnInit {
   isSelectedChicken;
   isSelectedDuck;
 
-  constructor(public apiService: ApiService, public router: Router) {}
+  constructor(public router: Router) {}
   ngOnInit() {
     this.getFarmer();
   }
@@ -83,43 +82,7 @@ export class CropsScreenPage implements OnInit {
         this.selectedLivestocks.push(item.name);
       }
     });
-
-    this.selectedCrops.forEach((cropName) => {
-      this.apiService.addCrops({ cropName }).subscribe(
-        (res: any) => {
-          console.log('Success ===', res);
-        },
-        (error: any) => {
-          console.log('ERROR ===', error);
-        }
-      );
-    });
-
-    this.selectedLivestocks.forEach((livestocksName) => {
-      this.apiService.addLivestocks({ livestocksName }).subscribe(
-        (res: any) => {
-          console.log('Success ===', res);
-        },
-        (error: any) => {
-          console.log('ERROR ===', error);
-        }
-      );
-    });
   }
 
-  getFarmer() {
-    this.apiService.getFirstName().subscribe(
-      (res: any) => {
-        console.log('SUCCESS ===', res);
-        const responseFirstName = res[res.length - 1].firstName;
-        this.firstName =
-          responseFirstName.charAt(0).toUpperCase() +
-          responseFirstName.slice(1);
-      },
-
-      (error: any) => {
-        console.log('ERROR ===', error);
-      }
-    );
-  }
+  getFarmer() {}
 }

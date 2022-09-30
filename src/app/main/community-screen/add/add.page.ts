@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ApiService } from 'src/app/api.service';
 
 @Component({
   selector: 'app-add',
@@ -12,27 +11,9 @@ export class AddPage implements OnInit {
   message = '';
   image = '';
 
-  constructor(private router: Router, private apiService: ApiService) {}
+  constructor(private router: Router) {}
 
   ngOnInit() {}
 
-  onClickBtn() {
-    const data = {
-      type: this.title,
-      message: this.message,
-      img: this.image,
-    };
-    this.apiService.addPost(data).subscribe(
-      (res: any) => {
-        console.log('Success ===', res);
-        this.title = '';
-        this.message = '';
-        this.image = '';
-      },
-      (error: any) => {
-        console.log('ERROR ===', error);
-      }
-    );
-    this.router.navigateByUrl('/main/tabs/community');
-  }
+  onClickBtn() {}
 }

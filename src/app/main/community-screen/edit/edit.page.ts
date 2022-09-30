@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { ApiService } from 'src/app/api.service';
-
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.page.html',
@@ -17,11 +15,7 @@ export class EditPage implements OnInit {
   title;
   message;
   image;
-  constructor(
-    private route: ActivatedRoute,
-    private apiService: ApiService,
-    private router: Router
-  ) {}
+  constructor(private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {}
   ionViewWillEnter() {
@@ -35,32 +29,10 @@ export class EditPage implements OnInit {
       img: this.image,
     };
 
-    this.apiService.updatePost(this.post.id, data).subscribe((res: any) => {
-      console.log('Success', res);
-    });
-
     this.router.navigateByUrl('/main/tabs/community');
   }
 
-  getPosts() {
-    this.apiService.getPosts().subscribe(
-      (res: any) => {
-        this.posts = res;
-        this.route.paramMap.subscribe((paramMap) => {
-          if (paramMap.get('editId')) {
-            this.post = this.getPost(paramMap.get('editId'));
-            this.currentTitle = this.post.type;
-            this.currentMessage = this.post.message;
-            this.currentImg = this.post.img;
-          }
-        });
-        console.log('SUCCESS ===', res);
-      },
-      (error: any) => {
-        console.log('ERROR ===', error);
-      }
-    );
-  }
+  getPosts() {}
 
   getPost(id) {
     return { ...this.posts.find((item) => item.id === id) };

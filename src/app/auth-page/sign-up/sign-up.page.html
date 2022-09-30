@@ -16,6 +16,14 @@
                 <ion-item *ngIf="!firstNameHandler.valid && firstNameHandler.touched" lines="none">
                   <p class="error-message">Please enter your first name.</p>
                 </ion-item>
+                <!-- Middle Name -->
+                <ion-item>
+                  <ion-label position="floating">Middle Name</ion-label>
+                  <ion-input type="text" ngModel name="middleName" required #middleNameHandler="ngModel"></ion-input>
+                </ion-item>
+                <ion-item *ngIf="!middleNameHandler.valid && middleNameHandler.touched" lines="none">
+                  <p class="error-message">Please enter your middle name.</p>
+                </ion-item>
                 <!-- //Last Name -->
                 <ion-item>
                   <ion-label position="floating">Last Name</ion-label>
@@ -25,9 +33,31 @@
                 <ion-item *ngIf="!lastNameHandler.valid && lastNameHandler.touched" lines="none">
                   <p class="error-message">Please enter your last name.</p>
                 </ion-item>
+                <!-- Age -->
+                <ion-item>
+                  <ion-label position="floating">Age</ion-label>
+                  <ion-input type="number" ngModel name="age" required #ageHandler="ngModel"></ion-input>
+                </ion-item>
+                <!-- Age error message -->
+                <ion-item *ngIf="!ageHandler.valid && ageHandler.touched" lines="none">
+                  <p class="error-message">Please enter your age.</p>
+                </ion-item>
+                <!-- Birthday -->
+                <ion-item>
+                  <ion-label position="floating">Birthday</ion-label>
+                  <ion-input type="date" ngModel name="birthday" required #birthdayHandler="ngModel" placeholder="">
+                  </ion-input>
+                </ion-item>
+                <!-- Birthday error Message -->
+                <ion-item *ngIf="!birthdayHandler.valid && birthdayHandler.touched" lines="none">
+                  <p class="error-message">Please enter your birthday.</p>
+
+                </ion-item>
                 <!-- Email -->
                 <ion-item>
-                  <ion-label position="floating">Email</ion-label>
+                  <ion-label position="floating">
+                    Email
+                  </ion-label>
                   <ion-input type="email" ngModel name="email" required email #emailHandler="ngModel"></ion-input>
                 </ion-item>
                 <!-- Email error message-->

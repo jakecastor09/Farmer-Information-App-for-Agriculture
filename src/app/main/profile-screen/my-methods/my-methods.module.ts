@@ -8,13 +8,16 @@ import { MyMethodsPageRoutingModule } from './my-methods-routing.module';
 
 import { MyMethodsPage } from './my-methods.page';
 
+import { UiSharedModule } from 'src/app/UI/ui-shared/ui-shared.module';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    MyMethodsPageRoutingModule
+    MyMethodsPageRoutingModule,
+    UiSharedModule,
   ],
-  declarations: [MyMethodsPage]
+  declarations: [MyMethodsPage],
 })
 export class MyMethodsPageModule {}

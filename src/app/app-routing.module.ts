@@ -21,13 +21,6 @@ const routes: Routes = [
         (m) => m.OnboardingScreenPageModule
       ),
   },
-  {
-    path: 'welcome',
-    loadChildren: () =>
-      import('./welcome-screen/welcome-screen.module').then(
-        (m) => m.WelcomeScreenPageModule
-      ),
-  },
 
   {
     path: 'main',

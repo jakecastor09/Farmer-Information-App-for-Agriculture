@@ -52,8 +52,12 @@
         }
       }
     }
-  }
-  ion-icon {
-    font-size: 1.6rem;
+    &--icon {
+      width: 70%;
+      height: auto;
+      &:nth-child(1) {
+        transform: translateX(0.2rem);
+      }
+    }
   }
 }

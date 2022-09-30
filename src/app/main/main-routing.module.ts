@@ -47,6 +47,34 @@ const routes: Routes = [
                 (m) => m.ProfileScreenPageModule
               ),
           },
+          {
+            path: 'edit/:userId',
+            loadChildren: () =>
+              import('./profile-screen/edit-profile/edit-profile.module').then(
+                (m) => m.EditProfilePageModule
+              ),
+          },
+          {
+            path: 'agriculture',
+            loadChildren: () =>
+              import('./profile-screen/agriculture/agriculture.module').then(
+                (m) => m.AgriculturePageModule
+              ),
+          },
+          {
+            path: 'my-methods',
+            loadChildren: () =>
+              import('./profile-screen/my-methods/my-methods.module').then(
+                (m) => m.MyMethodsPageModule
+              ),
+          },
+          {
+            path: 'my-favorites',
+            loadChildren: () =>
+              import('./profile-screen/my-favorites/my-favorites.module').then(
+                (m) => m.MyFavoritesPageModule
+              ),
+          },
         ],
       },
       {

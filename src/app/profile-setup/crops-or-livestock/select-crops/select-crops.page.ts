@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { HomeCropsService } from 'src/app/main/home-screen/home-crops.service';
 import { ProfileSetupService } from '../../profile-setup.service';
+import { MainService } from 'src/app/main/main.service';
 
 @Component({
   selector: 'app-select-crops',
@@ -16,16 +17,13 @@ export class SelectCropsPage implements OnInit {
     private route: Router,
     private http: HttpClient,
     private homeCropSvc: HomeCropsService,
-    private profileSetupService: ProfileSetupService
+    private profileSetupService: ProfileSetupService,
+    private mainService: MainService
   ) {}
 
   ngOnInit() {}
   ionViewDidEnter() {
-    this.http
-      .get('https://agri-app-96063-default-rtdb.firebaseio.com/crops.json')
-      .subscribe((response) => {
-        this.crops = response;
-      });
+    this.crops = this.mainService.getAllCropsData();
   }
   buttonClickHandler() {
     if (this.profileSetupService.isLivestockSelected) {
