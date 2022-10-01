@@ -10,7 +10,10 @@ import { MainService } from '../../main.service';
 export class AgriculturePage implements OnInit {
   userCurrentSelectedCrops = [];
   userCurrentSelectedLivestock = [];
-  availableAgri = [];
+  allAgri = [];
+
+  isSelectedAgri = {};
+
   constructor(
     private homeCropsService: HomeCropsService,
     private homeLivestockService: HomeLivestockService,
@@ -18,6 +21,13 @@ export class AgriculturePage implements OnInit {
   ) {}
 
   ngOnInit() {
+    //get all crops
+    this.mainService.getAllCropsData()?.map((item) => this.allAgri.push(item));
+    //get all livestock
+    this.mainService
+      .getAllLivestockData()
+      ?.map((item) => this.allAgri.push(item));
+
     //get selected crops
     this.userCurrentSelectedCrops = this.homeCropsService.getCropsData();
     //get selected crops
@@ -25,13 +35,56 @@ export class AgriculturePage implements OnInit {
       this.homeLivestockService.getLivestockData();
     console.log(this.userCurrentSelectedCrops);
 
-    //get all livestock
-    this.mainService
-      .getAllCropsData()
-      ?.map((item) => this.availableAgri.push(item));
-    //get all livestock
-    this.mainService
-      .getAllLivestockData()
-      ?.map((item) => this.availableAgri.push(item));
+    //knowing the selected item and not selected
+    this.allAgri?.forEach((item) => (this.isSelectedAgri[item.name] = false));
+
+    this.userCurrentSelectedCrops?.forEach(
+      (item) => (this.isSelectedAgri[item.name] = true)
+    );
+
+    this.userCurrentSelectedLivestock?.forEach(
+      (item) => (this.isSelectedAgri[item.name] = true)
+    );
+    console.log(this.isSelectedAgri);
   }
+
+  removeCropsClickHandler(cropsName: string) {
+    this.userCurrentSelectedCrops = this.userCurrentSelectedCrops.filter(
+      (item) => item.name !== cropsName
+    );
+    this.isSelectedAgri[cropsName] = false;
+  }
+  removeLivestockClickHandler(livestockName: string) {
+    this.userCurrentSelectedLivestock =
+      this.userCurrentSelectedLivestock.filter(
+        (item) => item.name !== livestockName
+      );
+    this.isSelectedAgri[livestockName] = false;
+  }
+  addClickHandler(agri) {
+    switch (agri.type) {
+      case 'crops':
+        this.userCurrentSelectedCrops = [
+          ...this.userCurrentSelectedCrops,
+          agri,
+        ];
+        this.isSelectedAgri[agri.name] = true;
+        break;
+      case 'livestocks':
+        this.userCurrentSelectedLivestock = [
+          ...this.userCurrentSelectedLivestock,
+          agri,
+        ];
+        this.isSelectedAgri[agri.name] = true;
+
+        break;
+    }
+  }
+  update() {
+    this.homeCropsService.addCropsData(this.userCurrentSelectedCrops);
+    this.homeLivestockService.addLivestockData(
+      this.userCurrentSelectedLivestock
+    );
+  }
+  cancel() {}
 }

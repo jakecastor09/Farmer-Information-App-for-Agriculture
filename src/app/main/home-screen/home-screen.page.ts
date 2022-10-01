@@ -31,7 +31,9 @@ export class HomeScreenPage implements OnInit {
     private mainService: MainService
   ) {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  ionViewWillEnter() {
     this.cropsColors = this.homeCropSvc.getCropsColors();
     this.homeDataCrops = this.homeCropSvc.getCropsData();
     this.livestockColors = this.homeLivestockSvc.getLivestockColors();
