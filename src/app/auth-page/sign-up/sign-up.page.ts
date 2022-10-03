@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
+import { MainService } from 'src/app/main/main.service';
 import { AuthPageService } from '../auth-page.service';
 
 @Component({
@@ -11,10 +12,11 @@ import { AuthPageService } from '../auth-page.service';
 })
 export class SignUpPage implements OnInit {
   constructor(
-    private authPageServie: AuthPageService,
+    private authPageService: AuthPageService,
     private router: Router,
     private loadingCtrl: LoadingController,
-    private alertCtrl: AlertController
+    private alertCtrl: AlertController,
+    private mainService: MainService
   ) {}
 
   ngOnInit() {}
@@ -30,17 +32,33 @@ export class SignUpPage implements OnInit {
         if (!form.valid) {
           return;
         }
-        const { firstName, lastName, email, password } = form.value;
+        const { email, password } = form.value;
 
         //Send a request to firebase
-        this.authPageServie.signup(email, password).subscribe(
+        this.authPageService.signup(email, password).subscribe(
           (response) => {
-            loading.dismiss();
-            this.showAlert(
-              'Succesfully created an account!',
-              'Create Account Successfully',
-              false
-            );
+            // add user
+            const { firstName, middleName, lastName, age, birthday, purok } =
+              form.value;
+            this.mainService
+              .addUser(
+                response.localId,
+                firstName,
+                middleName,
+                lastName,
+                age,
+                birthday,
+                email,
+                purok
+              )
+              .subscribe(() => {
+                loading.dismiss();
+                this.showAlert(
+                  'Succesfully created an account!',
+                  'Create Account Successfully',
+                  false
+                );
+              });
           },
           (error) => {
             loading.dismiss();

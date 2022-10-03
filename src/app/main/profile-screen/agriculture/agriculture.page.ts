@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
 import { HomeCropsService } from '../../home-screen/home-crops.service';
 import { HomeLivestockService } from '../../home-screen/home-livestock.service';
 import { MainService } from '../../main.service';
@@ -17,7 +19,8 @@ export class AgriculturePage implements OnInit {
   constructor(
     private homeCropsService: HomeCropsService,
     private homeLivestockService: HomeLivestockService,
-    private mainService: MainService
+    private mainService: MainService,
+    private navController: NavController
   ) {}
 
   ngOnInit() {
@@ -85,6 +88,9 @@ export class AgriculturePage implements OnInit {
     this.homeLivestockService.addLivestockData(
       this.userCurrentSelectedLivestock
     );
+    this.navController.navigateBack('/main/tabs/profile');
   }
-  cancel() {}
+  cancel() {
+    this.navController.navigateBack('/main/tabs/profile');
+  }
 }

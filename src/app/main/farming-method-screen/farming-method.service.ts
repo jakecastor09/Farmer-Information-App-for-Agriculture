@@ -33,9 +33,9 @@ export class FarmingMethodService {
 
     const { name, hectares, methods } = publishData;
     const date = new Date();
-    const userId = this.authService.userId;
+    const userId = this.authService.userLoginLocalId;
     const farmingMethodId =
-      this.authService.userId + this.allUserFarmingMethod.length;
+      this.authService.userLoginLocalId + this.allUserFarmingMethod.length;
     console.log(farmingMethodId);
     const newFarmingMethod = new FarmingMethod(
       userId,

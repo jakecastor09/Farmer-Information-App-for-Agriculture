@@ -17,20 +17,21 @@ export interface AuthResponseData {
 })
 export class AuthPageService {
   private _isUserAuthenticated = false;
-  private _userId = null;
+  private _userLoginLocalId = null;
   private _token = null;
+
   constructor(private http: HttpClient) {}
 
   get isUserAuthenticated() {
     return this._isUserAuthenticated;
   }
 
-  get userId() {
-    return this._userId;
+  get userLoginLocalId() {
+    return this._userLoginLocalId;
   }
 
   setUserId(userId: string) {
-    this._userId = userId;
+    this._userLoginLocalId = userId;
   }
 
   signup(email: string, password: string) {

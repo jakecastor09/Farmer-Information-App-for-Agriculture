@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { timer } from 'rxjs';
+
 import { AuthPageService } from '../auth-page.service';
 import { AuthResponseData } from '../auth-page.service';
 import { HttpClient } from '@angular/common/http';
@@ -15,6 +16,7 @@ import { MainService } from 'src/app/main/main.service';
 })
 export class LogInPage implements OnInit {
   loaded: boolean;
+  userIdName = null;
   constructor(
     private router: Router,
     private alertCtrl: AlertController,
@@ -35,8 +37,8 @@ export class LogInPage implements OnInit {
     //Send a request to firebase
     this.authService.login(email, password).subscribe(
       async (response: AuthResponseData) => {
+        console.log(response);
         this.authService.setUserId(response.localId);
-
         //request all crops data and livestock data
         await this.http
           .get('https://agri-app-96063-default-rtdb.firebaseio.com/crops.json')
@@ -50,6 +52,20 @@ export class LogInPage implements OnInit {
           .subscribe((resLivestockData) => {
             this.mainService.requestLivestockData(resLivestockData);
           });
+
+        //set All users
+
+        this.mainService
+          .fetchUsers()
+          .subscribe((users) => this.mainService.setAllUsers(users));
+
+        // await this.http
+        //   .get(
+        //     `https://agri-app-96063-default-rtdb.firebaseio.com/users/-NDQmuESMzuSr8P78iTX.json`
+        //   )
+        //   .subscribe((data) => {
+        //     console.log(JSON.stringify(data));
+        //   });
 
         //show loading message
         const loading = await this.loadingCtrl.create({
