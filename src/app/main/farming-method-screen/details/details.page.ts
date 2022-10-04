@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MainService } from '../../main.service';
@@ -11,13 +12,13 @@ import { FarmingMethodService } from '../farming-method.service';
   styleUrls: ['./details.page.scss'],
 })
 export class DetailsPage implements OnInit {
-  _farmingMethod: FarmingMethod;
-  _user: User;
+  farmingMethod: FarmingMethod;
+  user: User;
   data = {};
   constructor(
     private route: ActivatedRoute,
     private farmingMethodService: FarmingMethodService,
-    private user: MainService
+    private mainService: MainService
   ) {}
 
   ngOnInit() {
@@ -25,7 +26,10 @@ export class DetailsPage implements OnInit {
       const farmingMethodId = paramMap.detailsId;
       this.farmingMethodService
         .getOneFarmingMethod(farmingMethodId)
-        .subscribe((data) => console.log('FarmingMethodData ' + data));
+        .subscribe((data) => {
+          this.farmingMethod = data;
+          console.log(this.farmingMethod.methods);
+        });
     });
   }
 }

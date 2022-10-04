@@ -47,6 +47,7 @@ export class FarmingMethodService {
               );
             }
           }
+
           return farmingMethods;
         }),
         tap((farmingMethods) => {
@@ -56,15 +57,11 @@ export class FarmingMethodService {
   }
 
   getOneFarmingMethod(farmingMethodId) {
-    // return this.allUserFarmingMethod.find(
-    //   (item) => item.farmingMethodId === farmingMethodId
-    // );
-
     return this._allUserFarmingMethod.pipe(
       take(1),
-      map((items) => ({
-        ...items.find((item) => item.farmingMethodId === farmingMethodId),
-      }))
+      map((items) =>
+        items.find((item) => item.farmingMethodId === farmingMethodId)
+      )
     );
   }
   editUserFarmingMethod(userMethodId) {}
@@ -76,10 +73,11 @@ export class FarmingMethodService {
     const { name, hectares, methods } = publishData;
     const date = new Date();
     const userId = this.authService.userLoginLocalId;
-    const farmingMethodId = 'asdf';
-    //Fixed farming method id
-
-    console.log(farmingMethodId);
+    const farmingMethodId =
+      Math.floor(Math.random() * 100) +
+      Date.now() +
+      Math.floor(Math.random() * 100) +
+      '';
     const newFarmingMethod = new FarmingMethod(
       userId,
       farmingMethodId,

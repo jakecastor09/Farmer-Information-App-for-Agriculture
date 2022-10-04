@@ -29,10 +29,10 @@ export class FarmingMethodScreenPage implements OnInit {
     });
   }
 
-  onClickFarmingMethodHandler(userId: string) {
+  onClickFarmingMethodHandler(farmingMethodId: string) {
     console.log('clicked!!');
     this.router.navigateByUrl(
-      '/main/tabs/farming-method/method-details/' + userId
+      '/main/tabs/farming-method/method-details/' + farmingMethodId
     );
   }
 
@@ -42,10 +42,5 @@ export class FarmingMethodScreenPage implements OnInit {
       this.allFarmingMethod = data;
       event.target.complete();
     });
-
-    // setTimeout(() => {
-    //   console.log('Async operation has ended');
-    //   event.target.complete();
-    // }, 2000);
   }
 }
