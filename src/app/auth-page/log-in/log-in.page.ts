@@ -16,7 +16,7 @@ import { MainService } from 'src/app/main/main.service';
 })
 export class LogInPage implements OnInit {
   loaded: boolean;
-  userIdName = null;
+  userLoginLocalId = null;
   constructor(
     private router: Router,
     private alertCtrl: AlertController,

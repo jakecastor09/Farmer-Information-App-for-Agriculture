@@ -13,7 +13,7 @@
         <ion-col class="profile__account" size-sm="8" offset-sm="2">
           <label class="profile__account--title">My Account</label>
           <ul class="profile__account__items">
-            <div class="profile__account__items__item">
+            <div class="profile__account__items__item" [routerLink]="['/','main','tabs','profile','edit',user.userId]">
               <div class="profile__account__items__item--icon-container">
                 <ion-img src="assets/icon/edit-profile.webp" class="profile__account--icon"></ion-img>
               </div>

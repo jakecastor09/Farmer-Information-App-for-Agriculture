@@ -48,7 +48,11 @@ export class AddPage implements OnInit {
     });
   }
   onPublishClickHandler() {
-    this.farmingMethodService.addFarmingMethod(this.publishData);
+    this.farmingMethodService
+      .addFarmingMethod(this.publishData)
+      .subscribe(() => {
+        this.router.navigateByUrl('/main/tabs/farming-method');
+      });
   }
   onRemoveClickHandler() {
     this.addService.resetFarmingMethod();

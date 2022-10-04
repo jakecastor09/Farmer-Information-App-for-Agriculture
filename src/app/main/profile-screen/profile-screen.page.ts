@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MainService } from '../main.service';
+import { User } from '../user.model';
 
 @Component({
   selector: 'app-profile-screen',
@@ -6,10 +8,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile-screen.page.scss'],
 })
 export class ProfileScreenPage implements OnInit {
-
-  constructor() { }
+  user: User;
+  constructor(private mainService: MainService) {}
 
   ngOnInit() {
+    this.user = this.mainService.getUser();
   }
-
 }

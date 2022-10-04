@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 import { HomeCropsService } from 'src/app/main/home-screen/home-crops.service';
 import { ProfileSetupService } from '../../profile-setup.service';
 import { MainService } from 'src/app/main/main.service';
@@ -15,7 +14,6 @@ export class SelectCropsPage implements OnInit {
   selectedCrops = {};
   constructor(
     private route: Router,
-    private http: HttpClient,
     private homeCropSvc: HomeCropsService,
     private profileSetupService: ProfileSetupService,
     private mainService: MainService

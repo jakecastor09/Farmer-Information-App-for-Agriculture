@@ -16,11 +16,10 @@
             </ion-img>
             <div class="farming-method-details__header--details">
               <div>
-                <span class="farming-method-details__header--name">{{farmingMethod.name}}</span>
-                <span
-                  class="farming-method-details__header--date">{{farmingMethod.date.toLocaleDateString("en-US")}}</span>
+                <span class="farming-method-details__header--name">{{_farmingMethod.name}}</span>
+                <span class="farming-method-details__header--date">{{_farmingMethod.date | date}}</span>
               </div>
-              <div class="farming-method-details__header--hectares">{{farmingMethod.hectares}} ha</div>
+              <div class="farming-method-details__header--hectares">{{_farmingMethod.hectares}} ha</div>
             </div>
           </div>
         </ion-col>
@@ -28,7 +27,7 @@
       <ion-row>
         <ion-col>
           <div class="farming-method-details__heading">
-            <h1 class="farming-method-details__heading--title">{{farmingMethod.name}} Farming Methods</h1>
+            <h1 class="farming-method-details__heading--title">{{_farmingMethod.name}} Farming Methods</h1>
             <div class="farming-method-details__heading--details">
               <span class="farming-method-details__heading--details--name">By Jake Castor</span>
 
@@ -38,9 +37,9 @@
       </ion-row>
       <ion-row>
         <ion-col>
-          <div class="farming-method-details__content" *ngFor="let method of farmingMethod?.methods">
-            <app-title [title]="method.title"></app-title>
-            <app-message [message]="method.message"></app-message>
+          <div class="farming-method-details__content" *ngFor="let method of _farmingMethod?.methods">
+            <!-- <app-title [title]="method.title"></app-title>
+            <app-message [message]="method.message"></app-message> -->
             <div class="border-line"></div>
           </div>
         </ion-col>

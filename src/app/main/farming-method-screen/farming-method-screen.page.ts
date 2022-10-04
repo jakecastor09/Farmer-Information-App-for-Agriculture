@@ -14,10 +14,19 @@ export class FarmingMethodScreenPage implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.farmingMethodService.allUserFarmingMethod.subscribe(
+      (allUserFarmingMethod) => {
+        this.allFarmingMethod = allUserFarmingMethod;
+      }
+    );
+  }
 
   ionViewDidEnter() {
-    this.allFarmingMethod = this.farmingMethodService.getAllUserFarmingMethod();
+    this.farmingMethodService.getAllUserFarmingMethod().subscribe((data) => {
+      this.allFarmingMethod = data;
+      console.log(this.allFarmingMethod);
+    });
   }
 
   onClickFarmingMethodHandler(userId: string) {
@@ -25,5 +34,18 @@ export class FarmingMethodScreenPage implements OnInit {
     this.router.navigateByUrl(
       '/main/tabs/farming-method/method-details/' + userId
     );
+  }
+
+  doRefresh(event) {
+    console.log('Begin async operation');
+    this.farmingMethodService.getAllUserFarmingMethod().subscribe((data) => {
+      this.allFarmingMethod = data;
+      event.target.complete();
+    });
+
+    // setTimeout(() => {
+    //   console.log('Async operation has ended');
+    //   event.target.complete();
+    // }, 2000);
   }
 }

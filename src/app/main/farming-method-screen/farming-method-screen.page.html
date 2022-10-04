@@ -1,4 +1,7 @@
 <ion-content class="ion-padding">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <div class="farming-method">
     <app-page-header title="Farming Method"></app-page-header>
     <div class="farming-method__items">

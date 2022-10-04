@@ -22,8 +22,12 @@ export class AddImagePage implements OnInit {
   ngOnInit() {}
 
   ionViewWillEnter() {
+    //getting user login local id
     this.userLoginLocalId = this.authService.userLoginLocalId;
+    //get the user who logining
     this.user = this.mainService.getCurrentUser(this.userLoginLocalId);
+    //set the current user to the user who login
+    this.mainService.setCurrentUser(this.user);
   }
 
   skipHandlerClick() {

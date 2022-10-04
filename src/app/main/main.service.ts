@@ -22,7 +22,7 @@ export class MainService {
 
   //usersInfo
   getUser() {
-    return this.user;
+    return this.currentUser;
   }
 
   setAllUsers(data) {
