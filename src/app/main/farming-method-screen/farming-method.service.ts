@@ -33,8 +33,10 @@ export class FarmingMethodService {
       .pipe(
         map((reponseData) => {
           const farmingMethods = [];
+
           for (const key in reponseData) {
             if (reponseData.hasOwnProperty(key)) {
+              console.log(key);
               farmingMethods.push(
                 new FarmingMethod(
                   reponseData[key].userId,

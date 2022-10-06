@@ -55,7 +55,7 @@ export class LogInPage implements OnInit {
 
         //set All users
 
-        this.mainService
+        await this.mainService
           .fetchUsers()
           .subscribe((users) => this.mainService.setAllUsers(users));
 

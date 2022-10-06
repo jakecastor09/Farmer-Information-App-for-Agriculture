@@ -26,6 +26,7 @@ export class AddImagePage implements OnInit {
     this.userLoginLocalId = this.authService.userLoginLocalId;
     //get the user who logining
     this.user = this.mainService.getCurrentUser(this.userLoginLocalId);
+    console.log('Add Image ' + this.user);
     //set the current user to the user who login
     this.mainService.setCurrentUser(this.user);
   }

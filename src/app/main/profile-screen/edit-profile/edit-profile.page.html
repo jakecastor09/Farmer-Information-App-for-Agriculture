@@ -8,7 +8,9 @@
             <ion-avatar class="edit-profile__user--avatar">
               <ion-img src="assets/img/jake.jpg"></ion-img>
             </ion-avatar>
-            <ion-label class="edit-profile__user--name">Jake Castor</ion-label>
+            <ion-label class="edit-profile__user--name">
+              {{user.firstName.charAt(0).toUpperCase() + user.firstName.slice(1) + " " + user.lastName.charAt(0).toUpperCase() + user.lastName.slice(1)}}
+            </ion-label>
           </ion-col>
         </ion-row>
         <ion-row>
@@ -17,7 +19,8 @@
               <!-- First Name -->
               <ion-item>
                 <ion-label position="floating">First Name</ion-label>
-                <ion-input type="text" ngModel name="firstName" required #firstNameHandler="ngModel"></ion-input>
+                <ion-input type="text" ngModel={{user.firstName}} name="firstName" required #firstNameHandler="ngModel">
+                </ion-input>
               </ion-item>
               <!-- First name error message -->
               <ion-item *ngIf="!firstNameHandler.valid && firstNameHandler.touched" lines="none">
@@ -26,7 +29,8 @@
               <!-- Middle Name -->
               <ion-item>
                 <ion-label position="floating">Middle Name</ion-label>
-                <ion-input type="text" ngModel name="middleName" required #middleNameHandler="ngModel"></ion-input>
+                <ion-input type="text" ngModel={{user.middleName}} name="middleName" required
+                  #middleNameHandler="ngModel"></ion-input>
               </ion-item>
               <ion-item *ngIf="!middleNameHandler.valid && middleNameHandler.touched" lines="none">
                 <p class="error-message">Please enter your middle name.</p>
@@ -34,7 +38,8 @@
               <!-- //Last Name -->
               <ion-item>
                 <ion-label position="floating">Last Name</ion-label>
-                <ion-input type="text" ngModel name="lastName" required #lastNameHandler="ngModel"></ion-input>
+                <ion-input type="text" ngModel={{user.lastName}} name="lastName" required #lastNameHandler="ngModel">
+                </ion-input>
               </ion-item>
               <!-- //Last name error message -->
               <ion-item *ngIf="!lastNameHandler.valid && lastNameHandler.touched" lines="none">
@@ -43,7 +48,7 @@
               <!-- Age -->
               <ion-item>
                 <ion-label position="floating">Age</ion-label>
-                <ion-input type="number" ngModel name="age" required #ageHandler="ngModel"></ion-input>
+                <ion-input type="number" ngModel={{user.age}} name="age" required #ageHandler="ngModel"></ion-input>
               </ion-item>
               <!-- Age error message -->
               <ion-item *ngIf="!ageHandler.valid && ageHandler.touched" lines="none">
@@ -52,7 +57,8 @@
               <!-- Birthday -->
               <ion-item>
                 <ion-label position="floating">Birthday</ion-label>
-                <ion-input type="date" ngModel name="birthday" required #birthdayHandler="ngModel" placeholder="">
+                <ion-input type="date" ngModel={{user.birthday}} name="birthday" required #birthdayHandler="ngModel"
+                  placeholder="">
                 </ion-input>
               </ion-item>
               <!-- Birthday error Message -->
@@ -63,7 +69,8 @@
               <!-- Purok -->
               <ion-item>
                 <ion-label position="floating">Purok</ion-label>
-                <ion-input type="number" ngModel name="purok" required #purokHandler="ngModel"></ion-input>
+                <ion-input type="number" ngModel={{user.purok}} name="purok" required #purokHandler="ngModel">
+                </ion-input>
               </ion-item>
               <!-- Purok error message -->
               <ion-item *ngIf="!purokHandler.valid && purokHandler.touched" lines="none">
