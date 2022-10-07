@@ -14,4 +14,7 @@ export class ProfileScreenPage implements OnInit {
   ngOnInit() {
     this.user = this.mainService.getUser();
   }
+  ionViewWillEnter() {
+    this.user = this.mainService.getUser();
+  }
 }

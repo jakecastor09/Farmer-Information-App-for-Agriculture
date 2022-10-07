@@ -6,7 +6,8 @@
         <ion-col class="profile__user" size-sm="8" offset-sm="2">
           <div class="profile__img">
           </div>
-          <label class="profile__name">Jake Castor</label>
+          <label
+            class="profile__name">{{user.firstName.charAt(0).toUpperCase() + user.firstName.slice(1) + " " + user.lastName.charAt(0).toUpperCase() + user.lastName.slice(1)}}</label>
         </ion-col>
       </ion-row>
       <ion-row>

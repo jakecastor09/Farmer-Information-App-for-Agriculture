@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { AlertController } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
 import { MainService } from '../../main.service';
 import { User } from '../../user.model';
 
@@ -16,7 +16,8 @@ export class EditProfilePage implements OnInit {
   constructor(
     private alertCtrl: AlertController,
     private mainService: MainService,
-    private http: HttpClient
+    private http: HttpClient,
+    private loadingCtrl: LoadingController
   ) {}
 
   ngOnInit() {
@@ -39,12 +40,17 @@ export class EditProfilePage implements OnInit {
         },
         {
           text: 'Yes',
-          handler: () => {
+          handler: async () => {
             const currentUser = this.allUsers.find(
               (user) => user.userId === this.user.userId
             );
-            console.log(currentUser);
-            console.log(form.value);
+
+            //show loading message
+            const loading = await this.loadingCtrl.create({
+              message: 'Updating...',
+              duration: 1000,
+            });
+            await loading.present();
 
             this.http
               .put(
@@ -52,8 +58,12 @@ export class EditProfilePage implements OnInit {
                 { ...form.value, userId: this.user.userId }
               )
               .subscribe((response) => {
-                this.mainService.setCurrentUser(form.value);
-                this.user = form.value;
+                this.mainService.setCurrentUser({
+                  ...form.value,
+                  userId: this.user.userId,
+                });
+                this.user = { ...form.value, userId: this.user.userId };
+                this.loadingCtrl.dismiss();
               });
           },
         },
