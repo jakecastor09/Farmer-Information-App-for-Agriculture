@@ -51,9 +51,10 @@ export class EditProfilePage implements OnInit {
                 `https://agri-app-96063-default-rtdb.firebaseio.com/users/${currentUser.id}.json`,
                 { ...form.value, userId: this.user.userId }
               )
-              .subscribe((response) =>
-                console.log('CURRENT USER: ' + currentUser)
-              );
+              .subscribe((response) => {
+                this.mainService.setCurrentUser(form.value);
+                this.user = form.value;
+              });
           },
         },
       ],
