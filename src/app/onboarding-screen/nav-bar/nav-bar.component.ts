@@ -48,7 +48,7 @@ export class NavBarComponent implements OnInit {
         this.router.navigateByUrl('/onboarding/screen4');
         break;
       case 5:
-        this.router.navigateByUrl('/auth-page/sign-up');
+        this.router.navigateByUrl('/auth-page/register');
         break;
     }
   }

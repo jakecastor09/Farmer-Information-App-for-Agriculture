@@ -16,7 +16,8 @@ export class SignUpPage implements OnInit {
     private router: Router,
     private loadingCtrl: LoadingController,
     private alertCtrl: AlertController,
-    private mainService: MainService
+    private mainService: MainService,
+    private authService: AuthPageService
   ) {}
 
   ngOnInit() {}
@@ -37,6 +38,11 @@ export class SignUpPage implements OnInit {
         //Send a request to firebase
         this.authPageService.signup(email, password).subscribe(
           (response) => {
+            this.authService.setUserId(response.localId);
+            console.log('Sign up ' + response.localId);
+
+            // this.mainService.fetchCropsLivestock();
+
             // add user
             const { firstName, middleName, lastName, age, birthday, purok } =
               form.value;
@@ -52,6 +58,10 @@ export class SignUpPage implements OnInit {
                 purok
               )
               .subscribe(() => {
+                //set all user again
+                this.mainService
+                  .fetchUsers()
+                  .subscribe((users) => this.mainService.setAllUsers(users));
                 loading.dismiss();
                 this.showAlert(
                   'Succesfully created an account!',
@@ -84,7 +94,7 @@ export class SignUpPage implements OnInit {
             {
               text: 'Go to Login',
               handler: () => {
-                this.router.navigateByUrl('/auth-page/log-in');
+                this.router.navigateByUrl('/profile-setup/add-image');
               },
             },
           ],

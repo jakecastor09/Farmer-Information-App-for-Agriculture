@@ -15,6 +15,8 @@ export class DetailsPage implements OnInit {
   farmingMethod: FarmingMethod;
   user: User;
   data = {};
+  nameOfFarmer = {};
+
   constructor(
     private route: ActivatedRoute,
     private farmingMethodService: FarmingMethodService,
@@ -31,5 +33,7 @@ export class DetailsPage implements OnInit {
           console.log(this.farmingMethod.methods);
         });
     });
+
+    this.nameOfFarmer = this.farmingMethodService.getFarmernName();
   }
 }

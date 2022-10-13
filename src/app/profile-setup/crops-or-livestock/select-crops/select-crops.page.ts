@@ -37,6 +37,7 @@ export class SelectCropsPage implements OnInit {
         return item;
       }
     });
+
     this.homeCropSvc.addCropsData(userCropsSelected);
   }
   selectCropHandlerClick(name: string) {

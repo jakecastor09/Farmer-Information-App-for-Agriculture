@@ -17,8 +17,9 @@ export class HomeScreenPage implements OnInit {
     slidesPerView: 2,
   };
 
-  isDarkMode;
+  isLoading = false;
 
+  isDarkMode;
   homeDataCrops;
   homeDataLivestock;
   cropsColors;
@@ -28,16 +29,27 @@ export class HomeScreenPage implements OnInit {
     private homeCropSvc: HomeCropsService,
     private router: Router,
     private homeLivestockSvc: HomeLivestockService,
-    private mainService: MainService
+    private mainService: MainService,
+    private http: HttpClient
   ) {}
 
   ngOnInit() {}
 
   ionViewWillEnter() {
-    this.cropsColors = this.homeCropSvc.getCropsColors();
-    this.homeDataCrops = this.homeCropSvc.getCropsData();
-    this.livestockColors = this.homeLivestockSvc.getLivestockColors();
-    this.homeDataLivestock = this.homeLivestockSvc.getLivestockData();
+    this.isLoading = true;
+
+    this.mainService.fetchUserSelectedCropsAndLivestock().subscribe(() => {
+      this.isLoading = false;
+      //set All users
+      this.mainService
+        .fetchUsers()
+        .subscribe((users) => this.mainService.setAllUsers(users));
+
+      this.cropsColors = this.homeCropSvc.getCropsColors();
+      this.homeDataCrops = this.homeCropSvc.getCropsData();
+      this.livestockColors = this.homeLivestockSvc.getLivestockColors();
+      this.homeDataLivestock = this.homeLivestockSvc.getLivestockData();
+    });
   }
 
   onClickCropDetails(id) {

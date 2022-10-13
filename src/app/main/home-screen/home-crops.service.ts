@@ -44,6 +44,7 @@ export class HomeCropsService {
   constructor() {}
 
   addCropsData(data) {
+    console.log(data);
     this.cropsData = data;
   }
 

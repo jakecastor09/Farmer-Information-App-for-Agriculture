@@ -1,9 +1,11 @@
+/* eslint-disable max-len */
 /* eslint-disable no-underscore-dangle */
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from './user.model';
 import { BehaviorSubject } from 'rxjs';
 import { take, map, tap, switchMap } from 'rxjs/operators';
+import { UserSelectedCropsAndLivestock } from './userSelectedCropsAndLivestock.model';
 @Injectable({
   providedIn: 'root',
 })
@@ -17,12 +19,193 @@ export class MainService {
   private userId: string;
   private _userIdName = null;
   private currentUser: User;
+  private userSelectedCropsAndLivestock = new BehaviorSubject<
+    UserSelectedCropsAndLivestock[]
+  >([]);
 
   constructor(private http: HttpClient) {}
+
+  updateUserSelectedCropsAndLivestock(
+    userId: string,
+    crops: Array<string>,
+    livestock: Array<string>
+  ) {
+    let updatedUserSelectedCropsAndLivestock: UserSelectedCropsAndLivestock[];
+    return this.userSelectedCropsAndLivestock.pipe(
+      take(1),
+      switchMap((userSelectedCropsAndLivestock) => {
+        const updatedIndex = userSelectedCropsAndLivestock.findIndex(
+          (cl) => cl.userId === userId
+        );
+        //get all the userSelectedCropsAndLivestock
+        updatedUserSelectedCropsAndLivestock = [
+          ...userSelectedCropsAndLivestock,
+        ];
+
+        //get the old Item
+        const oldUserSelectedCropsAndLivestock =
+          updatedUserSelectedCropsAndLivestock[updatedIndex];
+
+        //updating item
+        updatedUserSelectedCropsAndLivestock[updatedIndex] =
+          new UserSelectedCropsAndLivestock(
+            userId,
+            oldUserSelectedCropsAndLivestock.id,
+            crops,
+            livestock
+          );
+
+        return this.http.put(
+          `https://agri-app-96063-default-rtdb.firebaseio.com/user-selected-crops-and-livestock/${oldUserSelectedCropsAndLivestock.id}.json`,
+          { ...updatedUserSelectedCropsAndLivestock[updatedIndex] }
+        );
+      }),
+      tap(() =>
+        this.userSelectedCropsAndLivestock.next(
+          updatedUserSelectedCropsAndLivestock
+        )
+      )
+    );
+  }
+
+  getOneUserSelectedCropsAndLivestock(userId: string) {
+    let data: UserSelectedCropsAndLivestock;
+
+    this.userSelectedCropsAndLivestock.asObservable().subscribe((res) => {
+      const singleData = res.filter((item) => item.userId === userId)[0];
+
+      data = new UserSelectedCropsAndLivestock(
+        singleData.userId,
+        singleData.id,
+        singleData.crops,
+        singleData.livestock
+      );
+    });
+
+    return this.http
+      .get<UserSelectedCropsAndLivestock>(
+        `https://agri-app-96063-default-rtdb.firebaseio.com/user-selected-crops-and-livestock/${data.id}.json`
+      )
+      .pipe(
+        map(
+          (res) =>
+            new UserSelectedCropsAndLivestock(
+              res.userId,
+              data.id,
+              res.crops,
+              res.livestock
+            )
+        )
+      );
+  }
+
+  getAllUserSelectedCropsAndLivestock() {
+    return this.userSelectedCropsAndLivestock.asObservable();
+  }
+
+  addUserSelectedCropsAndLivestock(
+    userId: string,
+    crops: Array<string>,
+    livestock: Array<string>
+  ) {
+    let generatedId: string;
+    const newUserSelectedCropsAndLivestock = new UserSelectedCropsAndLivestock(
+      userId,
+      Math.random().toString(),
+      crops,
+      livestock
+    );
+    return this.http
+      .post<{ name: string }>(
+        'https://agri-app-96063-default-rtdb.firebaseio.com/user-selected-crops-and-livestock.json',
+        { ...newUserSelectedCropsAndLivestock, id: null }
+      )
+      .pipe(
+        switchMap((res) => {
+          generatedId = res.name;
+          return this.userSelectedCropsAndLivestock;
+        }),
+        take(1),
+        tap((res) => {
+          newUserSelectedCropsAndLivestock.id = generatedId;
+          this.userSelectedCropsAndLivestock.next(
+            res.concat(newUserSelectedCropsAndLivestock)
+          );
+        })
+      );
+  }
+
+  //fetch it on home screen and add spinner
+  fetchUserSelectedCropsAndLivestock() {
+    return this.http
+      .get<{ [key: string]: UserSelectedCropsAndLivestock }>(
+        'https://agri-app-96063-default-rtdb.firebaseio.com/user-selected-crops-and-livestock.json'
+      )
+      .pipe(
+        map((res) => {
+          const selectedCropsAndLivestock = [];
+          for (const key in res) {
+            if (res.hasOwnProperty(key)) {
+              selectedCropsAndLivestock.push(
+                new UserSelectedCropsAndLivestock(
+                  res[key].userId,
+                  key,
+                  res[key].crops,
+                  res[key].livestock
+                )
+              );
+            }
+          }
+          return selectedCropsAndLivestock;
+        }),
+        tap((selectedCropsAndLivestock) => {
+          this.userSelectedCropsAndLivestock.next(selectedCropsAndLivestock);
+        })
+      );
+  }
+
+  updateCropsLivestock(documentId, data) {
+    this.http
+      .put(
+        `https://agri-app-96063-default-rtdb.firebaseio.com/crops-livestock/${documentId}.json`,
+        { ...data }
+      )
+      .subscribe();
+  }
+
+  // fetchCropsLivestock() {
+  //   this.http
+  //     .get(
+  //       'https://agri-app-96063-default-rtdb.firebaseio.com/crops-livestock.json'
+  //     )
+  //     .subscribe((data) => {
+  //       const cropsLivestockSelected = [];
+  //       for (const key in data) {
+  //         if (data.hasOwnProperty(key)) {
+  //           cropsLivestockSelected.push({
+  //             userId: this.currentUser.userId,
+  //             cropsLivestockId: key,
+  //             crops: data[key].crops,
+  //             livestock: data[key].livestock,
+  //           });
+  //         }
+  //       }
+
+  //       this.cropsLivestockSelected.push(...cropsLivestockSelected);
+  //     });
+  // }
+
+  // getCropsAndLivestockSelected() {
+  //   return this.cropsLivestockSelected;
+  // }
 
   //usersInfo
   getUser() {
     return this.currentUser;
+  }
+
+  getAllUser() {
+    return this.allUsers;
   }
 
   setAllUsers(data) {

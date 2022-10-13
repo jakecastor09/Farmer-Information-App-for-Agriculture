@@ -2,4 +2,12 @@
   display: grid;
   align-content: center;
   height: 100vh;
+  p {
+    margin-bottom: 1.6rem;
+  }
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+  }
 }

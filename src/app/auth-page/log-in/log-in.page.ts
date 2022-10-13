@@ -8,6 +8,10 @@ import { AuthPageService } from '../auth-page.service';
 import { AuthResponseData } from '../auth-page.service';
 import { HttpClient } from '@angular/common/http';
 import { MainService } from 'src/app/main/main.service';
+import { HomeCropsService } from 'src/app/main/home-screen/home-crops.service';
+import { HomeLivestockService } from 'src/app/main/home-screen/home-livestock.service';
+import { UserSelectedCropsAndLivestock } from 'src/app/main/userSelectedCropsAndLivestock.model';
+import { map, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-log-in',
@@ -17,13 +21,16 @@ import { MainService } from 'src/app/main/main.service';
 export class LogInPage implements OnInit {
   loaded: boolean;
   userLoginLocalId = null;
+  userSelectedCropsAndLivestock: UserSelectedCropsAndLivestock;
   constructor(
     private router: Router,
     private alertCtrl: AlertController,
     private authService: AuthPageService,
     private loadingCtrl: LoadingController,
     private http: HttpClient,
-    private mainService: MainService
+    private mainService: MainService,
+    private homeCropsService: HomeCropsService,
+    private homeLivestockService: HomeLivestockService
   ) {}
 
   ngOnInit() {}
@@ -37,35 +44,65 @@ export class LogInPage implements OnInit {
     //Send a request to firebase
     this.authService.login(email, password).subscribe(
       async (response: AuthResponseData) => {
-        console.log(response);
-        this.authService.setUserId(response.localId);
-        //request all crops data and livestock data
-        await this.http
-          .get('https://agri-app-96063-default-rtdb.firebaseio.com/crops.json')
-          .subscribe((resCropsData) => {
-            this.mainService.requestCropsData(resCropsData);
-          });
-        await this.http
-          .get(
-            'https://agri-app-96063-default-rtdb.firebaseio.com/livestock.json'
-          )
-          .subscribe((resLivestockData) => {
-            this.mainService.requestLivestockData(resLivestockData);
-          });
+        console.log('Log in ' + response.localId);
 
-        //set All users
+        await this.authService.setUserId(response.localId);
+
+        //loop then pass user current data
+        const currentUser = this.mainService.getCurrentUser(response.localId);
+
+        await this.mainService.setCurrentUser(currentUser);
+
+        const allCrops = this.mainService.getAllCropsData();
+        const allLivestock = this.mainService.getAllLivestockData();
+        console.log(response.localId);
+
+        //get Single userCropsandlivestock
 
         await this.mainService
-          .fetchUsers()
-          .subscribe((users) => this.mainService.setAllUsers(users));
+          .getOneUserSelectedCropsAndLivestock(response.localId)
+          .subscribe((data) => {
+            const userSelectedCrops = data.crops;
+            //assign user selected livestock to the variable userSelectedlivestock
+            const userSelectedLivestock = data.livestock;
 
-        // await this.http
-        //   .get(
-        //     `https://agri-app-96063-default-rtdb.firebaseio.com/users/-NDQmuESMzuSr8P78iTX.json`
-        //   )
-        //   .subscribe((data) => {
-        //     console.log(JSON.stringify(data));
-        //   });
+            //get the selected crops
+
+            const selectedCropsData = allCrops.filter((item) =>
+              userSelectedCrops.includes(item.name)
+            );
+
+            const selectedLivestockData = allLivestock.filter((item) =>
+              userSelectedLivestock.includes(item.name)
+            );
+
+            //Add the selected crops and livestock
+            this.homeCropsService.addCropsData(selectedCropsData);
+            this.homeLivestockService.addLivestockData(selectedLivestockData);
+          });
+
+        //assign user selected crops to the variable userSelectedCrops
+
+        // const allCropsAndLivestockSelected =
+        //   this.mainService.getCropsAndLivestockSelected();
+
+        // const userCropsAndLivestockSelected = allCropsAndLivestockSelected.find(
+        //   (item) => item.userId === this.mainService.getUser().userId
+        // );
+        // console.log('@@' + userCropsAndLivestockSelected);
+        // const userCropsNameSelected = userCropsAndLivestockSelected.crops;
+        // const userLivestockNameSelected =
+        //   userCropsAndLivestockSelected.livestock;
+
+        // const cropsData = allCrops.filter(
+        //   (item) => userCropsNameSelected[item.name]
+        // );
+
+        // const livestockData = allLivestock.filter(
+        //   (item) => userLivestockNameSelected[item.name]
+        // );
+
+        // console.log('Crops Data ' + cropsData);
 
         //show loading message
         const loading = await this.loadingCtrl.create({
@@ -75,7 +112,7 @@ export class LogInPage implements OnInit {
         await loading.present();
         //wait the loading before directing to add image page
         setTimeout(() => {
-          this.router.navigate(['/profile-setup/add-image']);
+          this.router.navigate(['/main/tabs/home']);
         }, 1000);
       },
       (error) => {

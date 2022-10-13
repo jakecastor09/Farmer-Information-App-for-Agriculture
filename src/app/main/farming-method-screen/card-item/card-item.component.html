@@ -3,8 +3,10 @@
   <div class="card-item__first">
     <img src="assets/img/jake.jpg" alt="">
     <div class="card-item__first-name-details">
-      <h3>Jake Castor</h3>
-      <span>{{farmingMethod.date.toLocaleDateString("en-US")}}</span>
+      <h3>
+        {{nameOfFarmer[farmingMethod.userId]?.firstName.charAt(0).toUpperCase() + nameOfFarmer[farmingMethod.userId]?.firstName.slice(1) + ' ' + nameOfFarmer[farmingMethod.userId]?.lastName.charAt(0).toUpperCase() + nameOfFarmer[farmingMethod.userId]?.lastName.slice(1)}}
+      </h3>
+      <span>{{farmingMethod.date.toLocaleDateString("en-US") | date}}</span>
     </div>
   </div>
   <div class="card-item__middle">

@@ -4,6 +4,7 @@ import { NavController } from '@ionic/angular';
 import { HomeCropsService } from '../../home-screen/home-crops.service';
 import { HomeLivestockService } from '../../home-screen/home-livestock.service';
 import { MainService } from '../../main.service';
+import { User } from '../../user.model';
 @Component({
   selector: 'app-agriculture',
   templateUrl: './agriculture.page.html',
@@ -13,6 +14,8 @@ export class AgriculturePage implements OnInit {
   userCurrentSelectedCrops = [];
   userCurrentSelectedLivestock = [];
   allAgri = [];
+
+  user: User;
 
   isSelectedAgri = {};
 
@@ -88,6 +91,36 @@ export class AgriculturePage implements OnInit {
     this.homeLivestockService.addLivestockData(
       this.userCurrentSelectedLivestock
     );
+
+    const userCropsSelected = this.userCurrentSelectedCrops.map(
+      (crop) => crop.name
+    );
+    const userLivestockSelected = this.userCurrentSelectedLivestock.map(
+      (livestock) => livestock.name
+    );
+
+    // const allCropsAndLivestockSelected =
+    //   this.mainService.getCropsAndLivestockSelected();
+
+    // const userCropsAndLivestockSelected = allCropsAndLivestockSelected.find(
+    //   (item) => item.userId === this.mainService.getUser().userId
+    // );
+
+    // const newCropsLivestock = {
+    //   crops: userCropsSelected,
+    //   livestock: userLivestockSelected,
+    //   userId: this.mainService.getUser().userId,
+    // };
+
+    // console.log(newCropsLivestock);
+    // console.log(userCropsAndLivestockSelected);
+
+    // //Update userCropsAndLivestocks
+    // this.mainService.updateCropsLivestock(
+    //   userCropsAndLivestockSelected.cropsLivestockId,
+    //   newCropsLivestock
+    // );
+
     this.navController.navigateBack('/main/tabs/profile');
   }
   cancel() {

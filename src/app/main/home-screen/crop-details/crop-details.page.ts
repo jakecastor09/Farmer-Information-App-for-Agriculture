@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { FarmingMethodService } from '../../farming-method-screen/farming-method.service';
 import { HomeCropsService } from '../home-crops.service';
 import { HomeLivestockService } from '../home-livestock.service';
 
@@ -32,7 +33,8 @@ export class CropDetailsPage implements OnInit {
   constructor(
     private cropsService: HomeCropsService,
     private livestockService: HomeLivestockService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private farmingMethodService: FarmingMethodService
   ) {}
 
   ngOnInit() {
@@ -68,7 +70,6 @@ export class CropDetailsPage implements OnInit {
       this.navIcon.item4 = 'assets/img/details/livestocks/icons/level.png';
       this.navIcon.item5 = 'assets/img/details/livestocks/icons/tips.png';
     }
-
     this.defaultData();
   }
   languageChange() {}

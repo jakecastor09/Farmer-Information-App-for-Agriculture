@@ -1,5 +1,5 @@
 <ion-content>
-  <div class="register ">
+  <div class="register">
     <ion-img src="assets/img/register/welcome pic.webp"></ion-img>
     <div class="register__content ion-padding">
       <ion-grid>
@@ -15,8 +15,9 @@
           </ion-col>
         </ion-row>
         <ion-row>
-          <ion-col class="ion-margin-top">
+          <ion-col class="ion-margin-top" class="register__buttons">
             <app-button (click)="registerHandlerClick()" class="solid" name="Register an Account"></app-button>
+
             <app-button (click)="loginHandlerClick()" name="Login"></app-button>
           </ion-col>
         </ion-row>

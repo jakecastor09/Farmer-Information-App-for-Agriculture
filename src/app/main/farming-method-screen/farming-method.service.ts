@@ -13,7 +13,7 @@ import { FarmingMethod } from './farming-method.model';
 })
 export class FarmingMethodService {
   private _allUserFarmingMethod = new BehaviorSubject<FarmingMethod[]>([]);
-
+  private farmerName = {};
   constructor(
     private authService: AuthPageService,
     private router: Router,
@@ -23,6 +23,14 @@ export class FarmingMethodService {
 
   get allUserFarmingMethod() {
     return this._allUserFarmingMethod.asObservable();
+  }
+
+  getFarmernName() {
+    return this.farmerName;
+  }
+
+  setFarmerName(farmerName) {
+    this.farmerName = { ...farmerName };
   }
 
   getAllUserFarmingMethod() {

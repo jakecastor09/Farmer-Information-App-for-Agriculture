@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MainService } from '../main.service';
+import { User } from '../user.model';
 import { FarmingMethodService } from './farming-method.service';
 
 @Component({
@@ -9,9 +11,12 @@ import { FarmingMethodService } from './farming-method.service';
 })
 export class FarmingMethodScreenPage implements OnInit {
   allFarmingMethod = [];
+  nameOfFarmer = {};
+
   constructor(
     private farmingMethodService: FarmingMethodService,
-    private router: Router
+    private router: Router,
+    private mainService: MainService
   ) {}
 
   ngOnInit() {
@@ -20,6 +25,17 @@ export class FarmingMethodScreenPage implements OnInit {
         this.allFarmingMethod = allUserFarmingMethod;
       }
     );
+    this.mainService.fetchUsers().subscribe((allUser) => {
+      allUser.map(
+        (user) =>
+          (this.nameOfFarmer[user.userId] = {
+            firstName: user.firstName,
+            lastName: user.lastName,
+          })
+      );
+
+      this.farmingMethodService.setFarmerName(this.nameOfFarmer);
+    });
   }
 
   ionViewDidEnter() {
@@ -30,7 +46,6 @@ export class FarmingMethodScreenPage implements OnInit {
   }
 
   onClickFarmingMethodHandler(farmingMethodId: string) {
-    console.log('clicked!!');
     this.router.navigateByUrl(
       '/main/tabs/farming-method/method-details/' + farmingMethodId
     );
