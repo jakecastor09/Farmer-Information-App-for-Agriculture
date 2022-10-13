@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NavController } from '@ionic/angular';
+import { LoadingController, NavController } from '@ionic/angular';
 import { HomeCropsService } from '../../home-screen/home-crops.service';
 import { HomeLivestockService } from '../../home-screen/home-livestock.service';
 import { MainService } from '../../main.service';
 import { User } from '../../user.model';
+import { UserSelectedCropsAndLivestock } from '../../userSelectedCropsAndLivestock.model';
 @Component({
   selector: 'app-agriculture',
   templateUrl: './agriculture.page.html',
@@ -16,6 +17,7 @@ export class AgriculturePage implements OnInit {
   allAgri = [];
 
   user: User;
+  isLoading = true;
 
   isSelectedAgri = {};
 
@@ -23,10 +25,12 @@ export class AgriculturePage implements OnInit {
     private homeCropsService: HomeCropsService,
     private homeLivestockService: HomeLivestockService,
     private mainService: MainService,
-    private navController: NavController
+    private navController: NavController,
+    private loadingCtrl: LoadingController
   ) {}
 
   ngOnInit() {
+    this.user = this.mainService.getUser();
     //get all crops
     this.mainService.getAllCropsData()?.map((item) => this.allAgri.push(item));
     //get all livestock
@@ -99,8 +103,20 @@ export class AgriculturePage implements OnInit {
       (livestock) => livestock.name
     );
 
-    // const allCropsAndLivestockSelected =
-    //   this.mainService.getCropsAndLivestockSelected();
+    console.log(this.user);
+    //Update userCropsAndLivestocks
+    this.mainService
+      .updateUserSelectedCropsAndLivestock(
+        this.user.userId,
+        userCropsSelected,
+        userLivestockSelected
+      )
+      .subscribe(() => {
+        this.showLoading();
+        setTimeout(() => {
+          this.navController.navigateBack('/main/tabs/profile');
+        }, 1500);
+      });
 
     // const userCropsAndLivestockSelected = allCropsAndLivestockSelected.find(
     //   (item) => item.userId === this.mainService.getUser().userId
@@ -114,16 +130,16 @@ export class AgriculturePage implements OnInit {
 
     // console.log(newCropsLivestock);
     // console.log(userCropsAndLivestockSelected);
-
-    // //Update userCropsAndLivestocks
-    // this.mainService.updateCropsLivestock(
-    //   userCropsAndLivestockSelected.cropsLivestockId,
-    //   newCropsLivestock
-    // );
-
-    this.navController.navigateBack('/main/tabs/profile');
   }
   cancel() {
     this.navController.navigateBack('/main/tabs/profile');
+  }
+
+  async showLoading() {
+    const loading = await this.loadingCtrl.create({
+      message: 'Updating please wait a second',
+      duration: 1000,
+    });
+    loading.present();
   }
 }
