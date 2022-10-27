@@ -5,6 +5,15 @@
 export const environment = {
   production: false,
   firebaseAPIKEY: 'AIzaSyB0mOoSlGlVDEZIqRl2oCf94DSJbOCwvy4',
+  firebaseConfig: {
+    apiKey: 'AIzaSyB0mOoSlGlVDEZIqRl2oCf94DSJbOCwvy4',
+    authDomain: 'agri-app-96063.firebaseapp.com',
+    databaseURL: 'https://agri-app-96063-default-rtdb.firebaseio.com',
+    projectId: 'agri-app-96063',
+    storageBucket: 'agri-app-96063.appspot.com',
+    messagingSenderId: '869212555378',
+    appId: '1:869212555378:web:c1cd1c5b75fe4536f79aeb',
+  },
 };
 
 /*

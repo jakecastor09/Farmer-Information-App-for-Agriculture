@@ -1,21 +1,23 @@
 <ion-content>
   <div class="register">
-    <ion-img src="assets/img/register/welcome pic.webp"></ion-img>
+    <ion-col size-sm="8" offset-sm="2">
+      <ion-img class="register__img" src="assets/img/register/welcome pic.webp"></ion-img>
+    </ion-col>
     <div class="register__content ion-padding">
       <ion-grid>
         <ion-row>
-          <ion-col class="ion-margin-top:-10px">
+          <ion-col class="ion-margin-top:-10px" size-sm="8" offset-sm="2">
             <h1 class="register__title">Welcome to Agri Information App</h1>
           </ion-col>
         </ion-row>
         <ion-row>
-          <ion-col>
+          <ion-col size-sm="8" offset-sm="2">
             <p>An application to boost productivity for all Tabon farmers as well as those interested in learning more
               about livestock and crops in Tabon</p>
           </ion-col>
         </ion-row>
         <ion-row>
-          <ion-col class="ion-margin-top" class="register__buttons">
+          <ion-col class="ion-margin-top" class="register__buttons" size-sm="8" offset-sm="2">
             <app-button (click)="registerHandlerClick()" class="solid" name="Register an Account"></app-button>
 
             <app-button (click)="loginHandlerClick()" name="Login"></app-button>

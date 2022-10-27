@@ -8,6 +8,7 @@ import { HomeScreenPageRoutingModule } from './home-screen-routing.module';
 
 import { HomeScreenPage } from './home-screen.page';
 import { CardsComponent } from './cards/cards.component';
+import { UserListComponent } from './user-list/user-list.component';
 
 @NgModule({
   imports: [
@@ -16,6 +17,6 @@ import { CardsComponent } from './cards/cards.component';
     IonicModule,
     HomeScreenPageRoutingModule,
   ],
-  declarations: [HomeScreenPage, CardsComponent],
+  declarations: [HomeScreenPage, CardsComponent, UserListComponent],
 })
 export class HomeScreenPageModule {}

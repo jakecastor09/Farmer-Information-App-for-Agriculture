@@ -1,0 +1,11 @@
+<div class="user-list">
+  <img src="assets/img/jake.jpg" alt="" class="user-list__img"
+    [class.offline]="presence?.[user.userId]?.status ==='offline'"
+    [class.online]="presence?.[user.userId]?.status ==='online'" />
+
+  <!-- 11 letters only -->
+  <h3 class="user-list__name">
+    {{(user.firstName.charAt(0).toUpperCase() + user.firstName.slice(1) + " " + user.lastName.charAt(0).toUpperCase() + user.lastName.slice(1)).slice(0,9) }}...
+  </h3>
+  <!-- <h3>{{presence?.[user.userId]?.status}}</h3> -->
+</div>

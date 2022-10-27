@@ -1,0 +1,26 @@
+.camera {
+  margin-top: 3.2rem;
+  &__image-container {
+    &--img {
+      margin-right: 2rem;
+      width: 20rem;
+      height: 20rem;
+      border-radius: 100%;
+      object-fit: cover;
+      border-radius: 100%;
+      margin-bottom: 2rem;
+    }
+  }
+}
+
+.image-list {
+  margin-top: 1rem;
+  display: flex;
+  overflow-x: scroll;
+  &__img {
+    width: 8rem;
+    height: 8rem;
+    margin-right: 2rem;
+    border-radius: 100%;
+  }
+}

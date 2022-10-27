@@ -13,6 +13,13 @@
       height: 110px;
     }
   }
+  &__user-list {
+    margin-top: 20px;
+    display: flex;
+    overflow-x: auto;
+
+    align-items: center;
+  }
   &__user {
     display: flex;
     align-items: center;
@@ -49,6 +56,7 @@
 
   &__content {
     background-color: #fff;
+
     &--title {
       margin-top: 15px;
       display: flex;

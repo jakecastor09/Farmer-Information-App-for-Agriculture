@@ -12,11 +12,17 @@
 </ion-header>
 
 <ion-content class="ion-padding" *ngIf="!isLoading">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <div class="home__header">
     <div class="home__user">
       <div class="home__user--content">
         <ion-label class="home__user--content-greetings">Good Morning, Jake</ion-label>
         <ion-label class="home__user--content-tips">Today is the perfect time to water your crops.</ion-label>
+      </div>
+      <div *ngIf="_presence | async">
+        {{_presence.status }}
       </div>
     </div>
     <div class="home__weather">
@@ -30,11 +36,16 @@
       </div>
     </div>
   </div>
+  <div class="home__user-list">
+    <div *ngFor="let user of allUser">
+      <app-user-list [user]="user" [presence]="allPresence" (click)="userClickHandler(user.userId)"></app-user-list>
+    </div>
+  </div>
   <div class="home__content">
     <ion-grid>
-      <div class="home__content--title" *ngIf="homeDataCrops?.length >= 1">
+      <div class="home__content--title" *ngIf="homeDataCrops?.length >= 1" routerLink="/main/tabs/profile/agriculture">
         <ion-label class="home__content--name" color="primary">Crops</ion-label>
-        <p class="home__content--edit-crops">Edit crops <ion-icon name="chevron-forward-outline"></ion-icon>
+        <p class="home__content--edit-crops">More crops <ion-icon name="chevron-forward-outline"></ion-icon>
         </p>
       </div>
       <ion-row>
@@ -47,9 +58,10 @@
           </ion-slide>
         </ion-slides>
       </ion-row>
-      <div class="home__content--title" *ngIf="homeDataLivestock?.length >= 1">
+      <div class="home__content--title" *ngIf="homeDataLivestock?.length >= 1"
+        routerLink="/main/tabs/profile/agriculture">
         <ion-label class="home__content--name" color="primary">My LiveStock</ion-label>
-        <p class="home__content--edit-crops">Edit crops <ion-icon name="chevron-forward-outline"></ion-icon>
+        <p class="home__content--edit-crops">More livestock <ion-icon name="chevron-forward-outline"></ion-icon>
       </div>
       <ion-row>
         <ion-slides [options]="sliderConfig">

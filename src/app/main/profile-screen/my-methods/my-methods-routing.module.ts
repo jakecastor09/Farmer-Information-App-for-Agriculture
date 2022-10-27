@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: MyMethodsPage
+  },
+  {
+    path: 'method-list',
+    loadChildren: () => import('./method-list/method-list.module').then( m => m.MethodListPageModule)
   }
 ];
 

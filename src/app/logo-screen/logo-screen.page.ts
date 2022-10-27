@@ -29,12 +29,19 @@ export class LogoScreenPage implements OnInit {
     // this.router.navigate(['/profile-setup/crops-or-livestock/select-crops']);
     // this.router.navigate(['/main/tabs/community/edit']);
 
-    // this.router.navigate(['/main/tabs/profile/edit/1']);
+    // this.router.navigate(['/main/tabs/home']);
     // this.router.navigate(['/main/tabs/profile/agriculture']);
 
-    this.router.navigate(['/onboarding/screen1']);
-    // this.router.navigate(['/auth-page/register']);
-    // this.router.navigate(['/auth-page/log-in']);
+    // this.router.navigate([
+    //   'main/tabs/profile/my-methods/Gb2yLsNquuhdUaIZWpxcXGFCQQ23',
+    // ]);
+
+    // this.router.navigate([
+    //   '/main/tabs/home/user-details/bIJjlv0RsfZ3MX1vA7M9HuZN1v73',
+    // ]);
+
+    this.router.navigate(['onboarding/screen1']);
+
     // this.router.navigate(['/main/tabs/home']);
   }
 }

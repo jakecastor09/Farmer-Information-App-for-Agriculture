@@ -1,6 +1,9 @@
 <ion-content>
   <div class="edit-profile ion-padding">
     <app-page-header title="Edit Profile"></app-page-header>
+    <div class="back-btn" routerLink="/main/tabs/profile">
+      <ion-icon class="back-btn--icon" name="arrow-back-outline"></ion-icon>
+    </div>
     <form #form="ngForm" (ngSubmit)="onSubmit(form)">
       <ion-grid>
         <ion-row>

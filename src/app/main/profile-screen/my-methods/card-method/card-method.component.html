@@ -1,0 +1,36 @@
+<div class={{cardColor}} class="card-method">
+  <div class="card-method__published-count">
+    {{methods?.length || 0}} published
+  </div>
+  <div class="card-method__crops">
+    <ion-img class="card-method__img" [src]="icon"></ion-img>
+    <ion-label class=' card-method__name'>{{name}}</ion-label>
+  </div>
+
+  <div class="card-method__message" *ngIf="!methods">
+    <p class="card-method__message--text">You don't have a {{name}} agriculture practice.</p>
+    <button class="card-method__message--btn" [routerLink]="['/main/tabs/farming-method/add']">Add Farming
+      Method</button>
+  </div>
+  <div class="method-list" *ngIf="methods">
+    <div class="card-item" *ngFor="let method of methods">
+      <div class="card-item__first">
+        <img src="assets/img/jake.jpg" alt="">
+        <div class="card-item__first-name-details">
+          <h3>
+            {{userName}}
+          </h3>
+          <span>{{method.date | date}}</span>
+        </div>
+      </div>
+      <div class="card-item__middle">
+        <p>{{method.methods[0].title.slice(0,15)}}...</p>
+      </div>
+      <div class="card-item__last">
+        <div class="card-item__last-name">{{method.name.charAt(0).toUpperCase() + method.name.slice(1)}}
+        </div>
+        <div class="card-item__last-hectares">{{method.hectares}} ha</div>
+      </div>
+    </div>
+  </div>
+</div>

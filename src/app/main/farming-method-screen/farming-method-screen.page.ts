@@ -41,7 +41,17 @@ export class FarmingMethodScreenPage implements OnInit {
   ionViewDidEnter() {
     this.farmingMethodService.getAllUserFarmingMethod().subscribe((data) => {
       this.allFarmingMethod = data;
-      console.log(this.allFarmingMethod);
+    });
+    this.mainService.fetchUsers().subscribe((allUser) => {
+      allUser.map(
+        (user) =>
+          (this.nameOfFarmer[user.userId] = {
+            firstName: user.firstName,
+            lastName: user.lastName,
+          })
+      );
+
+      this.farmingMethodService.setFarmerName(this.nameOfFarmer);
     });
   }
 

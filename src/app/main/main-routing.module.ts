@@ -34,6 +34,13 @@ const routes: Routes = [
                 (m) => m.CropDetailsPageModule
               ),
           },
+          {
+            path: 'user-details/:userId',
+            loadChildren: () =>
+              import(
+                './home-screen/user-details/user-details-routing.module'
+              ).then((m) => m.UserDetailsPageRoutingModule),
+          },
         ],
       },
 
@@ -62,11 +69,18 @@ const routes: Routes = [
               ),
           },
           {
-            path: 'my-methods',
+            path: 'my-methods/:userId',
             loadChildren: () =>
               import('./profile-screen/my-methods/my-methods.module').then(
                 (m) => m.MyMethodsPageModule
               ),
+          },
+          {
+            path: 'my-methods/:userId:/method-list/:name',
+            loadChildren: () =>
+              import(
+                './profile-screen/my-methods/method-list/method-list.module'
+              ).then((m) => m.MethodListPageModule),
           },
           {
             path: 'my-favorites',

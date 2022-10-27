@@ -10,6 +10,8 @@ import { MyMethodsPage } from './my-methods.page';
 
 import { UiSharedModule } from 'src/app/UI/ui-shared/ui-shared.module';
 
+import { CardMethodComponent } from './card-method/card-method.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -18,6 +20,6 @@ import { UiSharedModule } from 'src/app/UI/ui-shared/ui-shared.module';
     MyMethodsPageRoutingModule,
     UiSharedModule,
   ],
-  declarations: [MyMethodsPage],
+  declarations: [MyMethodsPage, CardMethodComponent],
 })
 export class MyMethodsPageModule {}

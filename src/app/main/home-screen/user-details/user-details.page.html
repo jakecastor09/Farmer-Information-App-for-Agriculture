@@ -1,0 +1,49 @@
+<ion-content class="ion-padding"
+  *ngIf="userPresence.status && userSelectedCrops && userSelectedLivestock && userFarmingMethod">
+  <div class="back-btn" routerLink="/main/tabs/home">
+    <ion-icon class="back-btn--icon" name="arrow-back-outline"></ion-icon>
+  </div>
+  <div class="user-details">
+    <div class="user-details__info">
+      <img class="user-details__info--img" src='assets/img/jake.jpg'
+        [class.online]="this.userPresence?.status==='online'" [class.offline]="this.userPresence?.status==='offline'" />
+      <div class="user-details__info--text">
+        <h1>
+          {{user.firstName.charAt(0).toUpperCase() + user.firstName.slice(1) + ' ' + user.lastName.charAt(0).toUpperCase() + user.lastName.slice(1) }}
+        </h1>
+        <div style="display:flex;">
+          <p style="margin-right: 1rem;"><b>Age:</b> {{user.age}}</p>
+          <p><b>Purok:</b> {{user.purok}}</p>
+        </div>
+        <p style="margin-top: 4px;"><b>Status:</b>
+          {{this.userPresence?.status.charAt(0).toUpperCase() + this.userPresence?.status.slice(1)}}</p>
+        <span></span>
+      </div>
+    </div>
+    <div class="border-line"></div>
+    <div class="user-details__agriculture">
+      <div class="user-details__agriculture__crops">
+        <h3>Crops Selected</h3>
+        <div class="user-details__agriculture__crops--selected">
+          <div class="user-details__agriculture__crops--selected--img" *ngFor="let crop of userSelectedCrops">
+            <img src={{crop.img}} alt="">
+          </div>
+        </div>
+      </div>
+      <div class="user-details__agriculture__livestock">
+        <h3>Livestock Selected</h3>
+        <div class="user-details__agriculture__livestock--selected">
+          <div class="user-details__agriculture__livestock--selected--img"
+            *ngFor="let livestock of userSelectedLivestock">
+            <img src={{livestock.img}} alt=""></div>
+        </div>
+      </div>
+
+    </div>
+    <div class="border-line"></div>
+    <div class="user-details__farming-methods">
+      <h3>Posted farming methods</h3>
+    </div>
+  </div>
+
+</ion-content>

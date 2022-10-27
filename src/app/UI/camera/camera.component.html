@@ -1,0 +1,29 @@
+<div class="camera">
+  <div class="camera__image-container">
+    <div>
+      <img role="button" (click)="onPickImage()" class="camera__image--img" [src]="selectedImage"
+        *ngIf="selectedImage" />
+      <img *ngIf="!selectedImage" class='camera__image-container--img'
+        src="assets/img/profile-setup/add-picture/default-avatar.webp" />
+
+    </div>
+    <app-button *ngIf="!selectedImage" class="yellow small" name="Add Picture" (click)="onPickImage()">
+      <ion-icon name="camera" slot="start"></ion-icon>
+    </app-button>
+
+  </div>
+  <div style="margin-top:10rem">
+    <h3 style="font-size:1.5rem; text-align: left;">Choose avatar:</h3>
+    <div class="image-list">
+      <img src="assets/img/profile-setup/add-picture/default-avatar.webp" class="image-list__img"
+        (click)="imageClickHandler(0)" />
+      <img src="assets/avatar/avatar-1.webp" class="image-list__img" (click)="imageClickHandler(1)" />
+      <img src="assets/avatar/avatar-2.webp" class="image-list__img" (click)="imageClickHandler(2)" />
+      <img src="assets/avatar/avatar-3.webp" class="image-list__img" (click)="imageClickHandler(3)" />
+      <img src="assets/avatar/avatar-4.webp" class="image-list__img" (click)="imageClickHandler(4)" />
+      <img src="assets/avatar/avatar-5.webp" class="image-list__img" (click)="imageClickHandler(5)" />
+    </div>
+
+  </div>
+
+</div>

@@ -117,19 +117,6 @@ export class AgriculturePage implements OnInit {
           this.navController.navigateBack('/main/tabs/profile');
         }, 1500);
       });
-
-    // const userCropsAndLivestockSelected = allCropsAndLivestockSelected.find(
-    //   (item) => item.userId === this.mainService.getUser().userId
-    // );
-
-    // const newCropsLivestock = {
-    //   crops: userCropsSelected,
-    //   livestock: userLivestockSelected,
-    //   userId: this.mainService.getUser().userId,
-    // };
-
-    // console.log(newCropsLivestock);
-    // console.log(userCropsAndLivestockSelected);
   }
   cancel() {
     this.navController.navigateBack('/main/tabs/profile');

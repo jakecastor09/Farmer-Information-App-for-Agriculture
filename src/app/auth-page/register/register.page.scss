@@ -1,13 +1,22 @@
 .register {
   display: grid;
   align-content: center;
-  height: 100vh;
+  &__title {
+    font-size: 4rem;
+  }
+  &__img {
+    width: 95%;
+    margin: 8rem auto 0 auto;
+  }
   p {
-    margin-bottom: 1.6rem;
+    font-size: 2.2rem;
+    color: #626563;
+    line-height: 1.3;
   }
   &__buttons {
     display: flex;
     flex-direction: column;
-    row-gap: 1rem;
+    row-gap: 1.4rem;
+    margin-top: 3rem;
   }
 }

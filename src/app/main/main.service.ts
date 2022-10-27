@@ -173,32 +173,6 @@ export class MainService {
       .subscribe();
   }
 
-  // fetchCropsLivestock() {
-  //   this.http
-  //     .get(
-  //       'https://agri-app-96063-default-rtdb.firebaseio.com/crops-livestock.json'
-  //     )
-  //     .subscribe((data) => {
-  //       const cropsLivestockSelected = [];
-  //       for (const key in data) {
-  //         if (data.hasOwnProperty(key)) {
-  //           cropsLivestockSelected.push({
-  //             userId: this.currentUser.userId,
-  //             cropsLivestockId: key,
-  //             crops: data[key].crops,
-  //             livestock: data[key].livestock,
-  //           });
-  //         }
-  //       }
-
-  //       this.cropsLivestockSelected.push(...cropsLivestockSelected);
-  //     });
-  // }
-
-  // getCropsAndLivestockSelected() {
-  //   return this.cropsLivestockSelected;
-  // }
-
   //usersInfo
   getUser() {
     return this.currentUser;
