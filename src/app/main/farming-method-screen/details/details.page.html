@@ -1,10 +1,9 @@
 <ion-content>
   <div class="farming-method-details">
-
     <ion-grid class="ion-padding">
       <ion-row>
         <ion-col>
-          <div class="back-btn" routerLink="/main/tabs/farming-method">
+          <div class="back-btn" (click)="backBtnHandler()" defaultHref="'/main/tabs/farming-method'">
             <ion-icon class="back-btn--icon" name="arrow-back-outline"></ion-icon>
           </div>
         </ion-col>

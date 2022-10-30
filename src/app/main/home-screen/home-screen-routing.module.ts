@@ -25,7 +25,17 @@ const routes: Routes = [
   },
   {
     path: 'user-details',
-    loadChildren: () => import('./user-details/user-details.module').then( m => m.UserDetailsPageModule)
+    loadChildren: () =>
+      import('./user-details/user-details.module').then(
+        (m) => m.UserDetailsPageModule
+      ),
+  },
+  {
+    path: 'weather-details',
+    loadChildren: () =>
+      import('./weather-details/weather-details.module').then(
+        (m) => m.WeatherDetailsPageModule
+      ),
   },
 ];
 

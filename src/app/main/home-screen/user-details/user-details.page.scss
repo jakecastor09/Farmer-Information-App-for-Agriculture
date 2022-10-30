@@ -65,6 +65,13 @@
       font-size: 20px;
     }
   }
+  &__farming-methods {
+    color: #2e322f;
+    margin-top: 4.4rem;
+    & h3 {
+      font-size: 20px;
+    }
+  }
 }
 
 .border-line {
@@ -98,5 +105,71 @@
     transform: translate(-50%, -50%);
     font-size: 23px;
     color: #333;
+  }
+}
+
+.card-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #2e322f;
+  margin-top: 1rem;
+
+  border-radius: 15px;
+  padding: 1.4rem;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  &__first {
+    display: flex;
+    min-width: 120px;
+    img {
+      width: 45px;
+      height: 45px;
+      border-radius: 100%;
+      object-fit: contain;
+      margin-right: 1rem;
+    }
+    &-name-details {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      h3 {
+        font-size: 1rem;
+        font-weight: bold;
+        margin: 0;
+      }
+      span {
+      }
+    }
+  }
+  &__middle {
+    p {
+      font-size: 1.3rem;
+      font-weight: bold;
+      padding: 0 0.5rem;
+      color: #2e322f;
+    }
+  }
+  &__last {
+    display: grid;
+    &-name {
+      background-image: var(--ion-color-gradient);
+      border-radius: 25px;
+      color: #ffffff;
+      font-size: 0.8rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      padding: 0.4rem 0.8rem;
+      text-align: center;
+    }
+    &-hectares {
+      background-color: transparent;
+      border-radius: 25px;
+      color: #2e322f;
+      font-size: 0.8rem;
+      font-weight: bold;
+      border: 1px solid #2e322f;
+      padding: 0.4rem 0.8rem;
+      text-align: center;
+    }
   }
 }

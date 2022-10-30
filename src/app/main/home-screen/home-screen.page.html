@@ -15,21 +15,32 @@
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-  <div class="home__header">
+  <div class="home__header" *ngIf="weatherIcon && weatherData">
     <div class="home__user">
       <div class="home__user--content">
         <ion-label class="home__user--content-greetings">Good Morning, Jake</ion-label>
-        <ion-label class="home__user--content-tips">Today is the perfect time to water your crops.</ion-label>
+        <div class="home__user--content__weather">
+          <img [src]=weatherIcon alt="">
+          <div class="home__user--content__weather--details">
+            <h1 class="home__user--content__weather--degree">{{weatherTemp}}°C</h1>
+            <ion-label class="home__user--content__weather--desc">{{weatherData?.current.weather[0].description}}
+            </ion-label>
+          </div>
+        </div>
+        <p class="home__user--content__weather--address">Tabon, San Isidro, Nueva Ecija
+        </p>
       </div>
-      <div *ngIf="_presence | async">
+      <!-- <div *ngIf="_presence | async">
         {{_presence.status }}
-      </div>
+      </div> -->
     </div>
     <div class="home__weather">
-      <ion-label class="home__weather-updates">Tabon, San Isidro, Nueva Ecija
-        Sunday 9:00 AM
-        Mostly cloudy</ion-label>
-      <div class="home__weather-button">
+      <div *ngIf="weatherData" class="home__weather__details">
+        <h1 class="home__weather__today">Today</h1>
+        <p class="home__weather__updates">{{weatherDate | date}}</p>
+        <p class="home__weather__feels-like">Feels like {{weatherFeelsLike}}°C</p>
+      </div>
+      <div class="home__weather-button" routerLink="/main/tabs/home/weather/weather-details/tabon">
         <ion-icon name="sunny-outline"></ion-icon>
         <span>weather</span>
         <ion-icon name="chevron-forward-outline"></ion-icon>

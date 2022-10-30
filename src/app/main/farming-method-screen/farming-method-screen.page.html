@@ -5,8 +5,8 @@
   <div class="farming-method">
     <app-page-header title="Farming Method"></app-page-header>
     <div class="farming-method__items">
-      <div class="farming-method__item" *ngFor="let farmingMethod of allFarmingMethod"
-        (click)="onClickFarmingMethodHandler(farmingMethod.farmingMethodId)">
+      <div class="farming-method__item" *ngFor="let farmingMethod of allFarmingMethod" (click)="onClickFarmingMethodHandler(farmingMethod.farmingMethodId
+        )">
         <app-card-item [farmingMethod]="farmingMethod" [nameOfFarmer]="nameOfFarmer"></app-card-item>
       </div>
     </div>

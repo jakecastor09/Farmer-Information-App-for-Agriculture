@@ -7,7 +7,7 @@
     margin-top: 3rem;
     background-image: var(--ion-color-gradient);
     border-radius: 15px;
-    padding: 2rem;
+    padding: 1.5rem 2rem;
     &-logo {
       width: 110px;
       height: 110px;
@@ -17,7 +17,6 @@
     margin-top: 20px;
     display: flex;
     overflow-x: auto;
-
     align-items: center;
   }
   &__user {
@@ -26,21 +25,58 @@
     color: #fff;
 
     &--content {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      display: grid;
+      &-tips {
+        margin-top: 4px;
+      }
 
       &-greetings {
-        font-size: 1.6rem;
+        font-size: 1.4rem;
         font-weight: 500;
+      }
+      &__weather {
+        transform: translate(-20px, -19px);
+        display: flex;
+        align-items: center;
+
+        &--details {
+        }
+        &--degree {
+          color: #ffffff;
+          font-size: 2.8rem;
+        }
+        &--desc {
+          word-break: break-word;
+        }
+        &--address {
+          font-size: 1.2rem;
+          color: #ffffff;
+          transform: translateY(-36px);
+        }
       }
     }
   }
   &__weather {
-    align-self: center;
-    &-updates {
-      color: #fff;
+    justify-self: end;
+    align-self: flex-start;
+
+    &__details {
+      display: flex;
+      flex-direction: column;
     }
+    &__today {
+      font-size: 2.8rem;
+      color: #ffffff;
+    }
+    &__updates {
+      color: #ffffff;
+      font-size: 1.2rem;
+    }
+    &__feels-like {
+      color: #ffffff;
+      font-size: 1.2rem;
+    }
+
     &-button {
       display: flex;
       align-items: center;
@@ -50,7 +86,8 @@
       padding: 0.4rem;
       border-radius: 25px;
       width: fit-content;
-      margin-top: 1rem;
+      margin-top: 0.8rem;
+      transform: translateX(-5px);
     }
   }
 

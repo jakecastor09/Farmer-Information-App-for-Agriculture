@@ -1,7 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { AlertController, LoadingController } from '@ionic/angular';
+import { Router } from '@angular/router';
+import {
+  AlertController,
+  LoadingController,
+  NavController,
+} from '@ionic/angular';
 import { MainService } from '../../main.service';
 import { User } from '../../user.model';
 
@@ -17,7 +22,8 @@ export class EditProfilePage implements OnInit {
     private alertCtrl: AlertController,
     private mainService: MainService,
     private http: HttpClient,
-    private loadingCtrl: LoadingController
+    private loadingCtrl: LoadingController,
+    private navController: NavController
   ) {}
 
   ngOnInit() {
@@ -70,5 +76,8 @@ export class EditProfilePage implements OnInit {
       ],
     });
     alert.present();
+  }
+  backBtnHandler() {
+    this.navController.navigateBack('/main/tabs/profile');
   }
 }

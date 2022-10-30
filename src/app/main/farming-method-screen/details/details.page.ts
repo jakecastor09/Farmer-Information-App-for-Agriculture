@@ -5,6 +5,7 @@ import { MainService } from '../../main.service';
 import { User } from '../../user.model';
 import { FarmingMethod } from '../farming-method.model';
 import { FarmingMethodService } from '../farming-method.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-details',
@@ -20,7 +21,8 @@ export class DetailsPage implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private farmingMethodService: FarmingMethodService,
-    private mainService: MainService
+    private mainService: MainService,
+    private location: Location
   ) {}
 
   ngOnInit() {
@@ -35,5 +37,9 @@ export class DetailsPage implements OnInit {
     });
 
     this.nameOfFarmer = this.farmingMethodService.getFarmernName();
+  }
+  backBtnHandler() {
+    // '/main/tabs/farming-method'
+    this.location.back();
   }
 }

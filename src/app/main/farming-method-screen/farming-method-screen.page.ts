@@ -42,6 +42,7 @@ export class FarmingMethodScreenPage implements OnInit {
     this.farmingMethodService.getAllUserFarmingMethod().subscribe((data) => {
       this.allFarmingMethod = data;
     });
+
     this.mainService.fetchUsers().subscribe((allUser) => {
       allUser.map(
         (user) =>
@@ -56,6 +57,7 @@ export class FarmingMethodScreenPage implements OnInit {
   }
 
   onClickFarmingMethodHandler(farmingMethodId: string) {
+    console.log(farmingMethodId);
     this.router.navigateByUrl(
       '/main/tabs/farming-method/method-details/' + farmingMethodId
     );

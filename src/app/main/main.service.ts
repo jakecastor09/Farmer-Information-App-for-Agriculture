@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable max-len */
 /* eslint-disable no-underscore-dangle */
 import { Injectable } from '@angular/core';
@@ -6,6 +7,20 @@ import { User } from './user.model';
 import { BehaviorSubject } from 'rxjs';
 import { take, map, tap, switchMap } from 'rxjs/operators';
 import { UserSelectedCropsAndLivestock } from './userSelectedCropsAndLivestock.model';
+import { environment } from 'src/environments/environment';
+
+const weatherApiUrl = environment.weatherApiUrl;
+const weatherApiKey = environment.weatherApiKey;
+
+interface WeatherResponseData {
+  current: object;
+  hourly: Array<object>;
+  lat: number;
+  lon: number;
+  minutely: Array<object>;
+  timezone: string;
+  timezone_offset: number;
+}
 @Injectable({
   providedIn: 'root',
 })
@@ -19,11 +34,27 @@ export class MainService {
   private userId: string;
   private _userIdName = null;
   private currentUser: User;
+  private weatherData;
   private userSelectedCropsAndLivestock = new BehaviorSubject<
     UserSelectedCropsAndLivestock[]
   >([]);
 
   constructor(private http: HttpClient) {}
+
+  fetchWeatherData() {
+    return this.http
+      .get<WeatherResponseData>(
+        `${weatherApiUrl}onecall?lat=${15.266623}&lon=${120.915913}&units=metric&exclude=daily&appid=${weatherApiKey}`
+      )
+      .subscribe((data) => {
+        this.weatherData = data;
+        return data;
+      });
+  }
+
+  getWeatherData() {
+    return this.weatherData;
+  }
 
   updateUserSelectedCropsAndLivestock(
     userId: string,

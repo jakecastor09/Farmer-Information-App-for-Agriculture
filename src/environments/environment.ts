@@ -14,6 +14,8 @@ export const environment = {
     messagingSenderId: '869212555378',
     appId: '1:869212555378:web:c1cd1c5b75fe4536f79aeb',
   },
+  weatherApiKey: 'fb192db1f54b1abd2e316b8ddf80680d',
+  weatherApiUrl: 'https://api.openweathermap.org/data/2.5/',
 };
 
 /*

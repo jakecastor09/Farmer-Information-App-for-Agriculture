@@ -28,6 +28,13 @@ const routes: Routes = [
               ),
           },
           {
+            path: 'weather/weather-details/tabon',
+            loadChildren: () =>
+              import(
+                './home-screen/weather-details/weather-details.module'
+              ).then((m) => m.WeatherDetailsPageModule),
+          },
+          {
             path: ':cropsId',
             loadChildren: () =>
               import('./home-screen/crop-details/crop-details.module').then(
@@ -37,9 +44,9 @@ const routes: Routes = [
           {
             path: 'user-details/:userId',
             loadChildren: () =>
-              import(
-                './home-screen/user-details/user-details-routing.module'
-              ).then((m) => m.UserDetailsPageRoutingModule),
+              import('./home-screen/user-details/user-details.module').then(
+                (m) => m.UserDetailsPageModule
+              ),
           },
         ],
       },

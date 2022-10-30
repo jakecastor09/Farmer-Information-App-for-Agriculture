@@ -30,6 +30,7 @@ export class RegisterPage implements OnInit {
         this.mainService.requestLivestockData(resLivestockData);
       });
 
+    this.mainService.fetchWeatherData();
     this.mainService.fetchUserSelectedCropsAndLivestock().subscribe();
 
     //Set all users

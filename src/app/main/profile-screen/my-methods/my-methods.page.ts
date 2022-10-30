@@ -1,6 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
 import { FarmingMethodService } from '../../farming-method-screen/farming-method.service';
 import { MainService } from '../../main.service';
 
@@ -19,7 +20,8 @@ export class MyMethodsPage implements OnInit {
     private route: ActivatedRoute,
     private farmingMethodService: FarmingMethodService,
     private mainService: MainService,
-    private router: Router
+    private router: Router,
+    private navController: NavController
   ) {}
 
   ngOnInit() {
@@ -86,5 +88,8 @@ export class MyMethodsPage implements OnInit {
     this.router.navigateByUrl(
       `/main/tabs/profile/my-methods/${this._userId}/method-list/${name}`
     );
+  }
+  backBtnHandler() {
+    this.navController.navigateBack('/main/tabs/profile');
   }
 }

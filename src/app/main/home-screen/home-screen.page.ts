@@ -30,6 +30,11 @@ export class HomeScreenPage implements OnInit {
   livestockColors;
   allUser;
   allPresence = {};
+  weatherData;
+  weatherIcon;
+  weatherDate;
+  weatherTemp: number;
+  weatherFeelsLike: number;
 
   _presence;
 
@@ -55,6 +60,17 @@ export class HomeScreenPage implements OnInit {
     this.presence
       .getAllPresence()
       .subscribe((item) => (this.allPresence = item));
+
+    this.weatherData = this.mainService.getWeatherData();
+    this.weatherTemp = Math.trunc(+this.weatherData?.current.temp);
+    this.weatherFeelsLike = Math.trunc(+this.weatherData?.current.feels_like);
+    console.log(this.weatherData);
+    this.weatherIcon = `http://openweathermap.org/img/wn/${this.weatherData?.current.weather[0].icon}@2x.png`;
+
+    const unix = this.weatherData?.current.dt;
+    const date = new Date(unix * 1000);
+    this.weatherDate = date.toUTCString();
+    console.log(this.weatherDate);
   }
 
   ionViewWillEnter() {
@@ -101,4 +117,6 @@ export class HomeScreenPage implements OnInit {
   userClickHandler(userId) {
     this.route.navigateForward(`/main/tabs/home/user-details/${userId}`);
   }
+
+  fetchweatherData() {}
 }

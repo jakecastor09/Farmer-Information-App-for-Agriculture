@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PresenceService } from 'src/app/auth-page/presence.service';
 import { FarmingMethod } from '../../farming-method-screen/farming-method.model';
 import { FarmingMethodService } from '../../farming-method-screen/farming-method.service';
@@ -22,7 +22,8 @@ export class UserDetailsPage implements OnInit {
     private mainService: MainService,
     private route: ActivatedRoute,
     private farmingMethodSrvc: FarmingMethodService,
-    private presenceSrvc: PresenceService
+    private presenceSrvc: PresenceService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -52,6 +53,8 @@ export class UserDetailsPage implements OnInit {
           // this.userSelectedLivestock = data.livestock;
         });
 
+      this.userFarmingMethod = [];
+
       this.farmingMethodSrvc.getAllUserFarmingMethod().subscribe((data) =>
         data.filter((item) => {
           if (item.userId === this.user.userId) {
@@ -64,5 +67,11 @@ export class UserDetailsPage implements OnInit {
         this.userPresence = data[this.user.userId];
       });
     });
+  }
+
+  onClickFarmingMethodHandler(farmingMethodId: string) {
+    this.router.navigateByUrl(
+      '/main/tabs/farming-method/method-details/' + farmingMethodId
+    );
   }
 }
