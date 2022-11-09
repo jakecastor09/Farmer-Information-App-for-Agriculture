@@ -1,9 +1,190 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>weather-details</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="ion-padding">
+  <div class="weather-details">
+    <div class="back-btn" routerLink="/main/tabs/home">
+      <ion-icon class="back-btn--icon" name="arrow-back-outline"></ion-icon>
+    </div>
 
-<ion-content>
+    <div class="weather-details__header">
+      <div class="weather-details__header--loc">
+        <ion-icon name="location" size="large"></ion-icon>
+        <h3 class="weather-details__header--address">Tabon, San Isidro, Nueva Ecija</h3>
+      </div>
+      <div class="weather-details__header--date">
+        {{currentDate}}
+      </div>
+    </div>
+
+    <div class="weather-details__current-weather">
+      <h4 class="weather-details__title">{{titleCurrentWeather}}</h4>
+      <div class="weather-details__current-weather__container">
+        <div class="weather-details__current-weather__container__top">
+          <img [src]="currentWeatherData.icon" alt="">
+          <div class="weather-details__current-weather__container__top--details">
+            <h1 class="weather-details__current-weather__container__top--details--degree">{{currentWeatherData.temp}}°C
+            </h1>
+            <h1 class="weather-details__current-weather__container__top--details--status">{{currentWeatherData.main}}
+            </h1>
+            <p class="weather-details__current-weather__container__top--details--desc">
+              {{currentWeatherData.description}}</p>
+            <p class="weather-details__current-weather__container__top--details--feels">Feels Like
+              {{currentWeatherData.feels}}°C</p>
+          </div>
+        </div>
+        <div class="weather-details__current-weather__container__bot">
+          <div class="weather-details__current-weather__container__bot--card">
+            <img class="weather-details__current-weather__container__bot--card--img"
+              src="/assets/img/weather/humidity.png" alt="">
+            <p class="weather-details__current-weather__container__bot--card--name">Humidity</p>
+            <p class="weather-details__current-weather__container__bot--card--value">{{currentWeatherData.humidity}}%
+            </p>
+          </div>
+          <div class="weather-details__current-weather__container__bot--card">
+            <img class="weather-details__current-weather__container__bot--card--img"
+              src="/assets/img/weather/pressure.png" alt="">
+            <p class="weather-details__current-weather__container__bot--card--name">Pressure</p>
+            <p class="weather-details__current-weather__container__bot--card--value">{{currentWeatherData.pressure}}mb
+            </p>
+          </div>
+          <div class="weather-details__current-weather__container__bot--card">
+            <img class="weather-details__current-weather__container__bot--card--img"
+              src="/assets/img/weather/dewpoint.png" alt="">
+            <p class="weather-details__current-weather__container__bot--card--name">Dew Point</p>
+            <p class="weather-details__current-weather__container__bot--card--value">{{currentWeatherData.dewpoint}}°
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="weather-details__current-weather__hourly">
+      <h4>Hourly Weather Forecast</h4>
+      <div class="weather-details__current-weather__hourly__items">
+        <div class="weather-details__current-weather__hourly__card"
+          *ngFor="let hourly of hourlyWeatherData;let i = index" (click)="hourlyWeatherHandlerClick(hourly,i)"
+          [class.clickedCard]="i === clickedIndex">
+          <p class="weather-details__current-weather__hourly__card--time">
+            {{formatTime(hourly.dt)}} </p>
+          <img class="weather-details__current-weather__hourly__card--img" [src]="formatIconImg(hourly.weather[0].icon)"
+            alt="">
+          <p class="weather-details__current-weather__hourly__card--degree">{{formatTemp(hourly?.temp)}}°C</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="border-line"></div>
+
+    <div class="weather-details__daily">
+      <h4 class="weather-details__title" style="margin-bottom:0;">Tomorrow</h4>
+      <p class="weather-details__daily__date">Firday, May 27</p>
+
+      <div class="weather-details__daily__container">
+        <div class="weather-details__daily__container__details">
+          <img [src]="tomorrowWeatherData.icon" alt="">
+          <div class="weather-details__daily__container__details__text">
+            <h1 class="weather-details__daily__container__details__text--temp">{{tomorrowWeatherData.temp}}°C</h1>
+            <h1 class="weather-details__daily__container__details__text--main">{{tomorrowWeatherData.main}}</h1>
+            <p class="weather-details__daily__container__details__text--desc">{{tomorrowWeatherData.desc}}</p>
+          </div>
+        </div>
+        <div class="weather-details__daily__container__temps">
+          <div class="weather-details__daily__container__temps__temp">
+            <h6 class="weather-details__daily__container__temps--h">Temp</h6>
+            <div class="weather-details__daily__container__temps__temp__moreve">
+              <div class="weather-details__daily__container__temps__temp--item">
+                <span>Morning </span>
+                <span>{{tomorrowWeatherData.tempMor}}°C</span>
+              </div>
+              <div class="weather-details__daily__container__temps__temp--item">
+                <span>Evening </span>
+                <span>{{tomorrowWeatherData.tempEve}}°C</span>
+              </div>
+            </div>
+          </div>
+          <div class="weather-details__daily__container__temps__temp" style="margin-left:1rem">
+            <h5 class="weather-details__daily__container__temps--h">Feels Like</h5>
+            <div class="weather-details__daily__container__temps__temp__moreve">
+              <div class="weather-details__daily__container__temps__temp--item">
+                <span>Morning </span>
+                <span>{{tomorrowWeatherData.feelsMor}}°C</span>
+              </div>
+              <div class="weather-details__daily__container__temps__temp--item">
+                <span>Morning </span>
+                <span>{{tomorrowWeatherData.feelsEve}}°C</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="weather-details__daily__container__cards">
+          <div class="weather-details__daily__container__cards__item">
+            <img class="weather-details__daily__container__cards__item--img" src="/assets/img/weather/humidity.png"
+              alt="">
+            <p class="weather-details__daily__container__cards__item--name">Humidity</p>
+            <p class="weather-details__daily__container__cards__item--value">{{tomorrowWeatherData.humidity}}%
+            </p>
+          </div>
+
+          <div class="weather-details__daily__container__cards__item">
+            <img class="weather-details__daily__container__cards__item--img" src="/assets/img/weather/pressure.png"
+              alt="">
+            <p class="weather-details__daily__container__cards__item--name">Pressure</p>
+            <p class="weather-details__daily__container__cards__item--value">{{tomorrowWeatherData.pressure}}mb
+            </p>
+          </div>
+
+          <div class="weather-details__daily__container__cards__item">
+            <img class="weather-details__daily__container__cards__item--img" src="/assets/img/weather/dewpoint.png"
+              alt="">
+            <p class="weather-details__daily__container__cards__item--name">Dew Point</p>
+            <p class="weather-details__daily__container__cards__item--value">{{tomorrowWeatherData.dewpoint}}°
+            </p>
+          </div>
+
+          <div class="weather-details__daily__container__cards__item">
+            <img class="weather-details__daily__container__cards__item--img" src="/assets/img/weather/clouds.png"
+              alt="">
+            <p class="weather-details__daily__container__cards__item--name">Clouds</p>
+            <p class="weather-details__daily__container__cards__item--value">{{tomorrowWeatherData.clouds}}
+            </p>
+          </div>
+
+          <div class="weather-details__daily__container__cards__item">
+            <img class="weather-details__daily__container__cards__item--img" src="/assets/img/weather/windspeed.png"
+              alt="">
+            <p class="weather-details__daily__container__cards__item--name">Wind Speed</p>
+            <p class="weather-details__daily__container__cards__item--value">{{tomorrowWeatherData.windspeed}}km/h
+            </p>
+          </div>
+
+          <div class="weather-details__daily__container__cards__item">
+            <img class="weather-details__daily__container__cards__item--img" src="/assets/img/weather/sunrise.png"
+              alt="">
+            <p class="weather-details__daily__container__cards__item--name">Sunrise</p>
+            <p class="weather-details__daily__container__cards__item--value">{{tomorrowWeatherData.sunrise}}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="weather-details__daily__7days">
+        <h4 class="weather-details__daily__7days__title">7 Days weather forecast</h4>
+        <div class="weather-details__daily__7days__list">
+          <ion-list>
+            <div class="weather-details__daily__7days__item" *ngFor="let data of dailyWeatherData">
+              <p style="text-align:left"><b>{{format7DaysWeatherForecastDate(data.dt)}}
+                  {{format7DaysWeatherForecastMonth(data.dt)}},</b> <span>
+                  {{format7DaysWeatherForecastDay(data.dt)}}</span></p>
+              <div style="display:flex;align-items: center;">
+                <img [src]="formatIconImg(data.weather[0].icon)" style="width: 4rem;" alt="">
+                <p style="text-align:center"><b>{{formatTemp(data.temp.day)}}°C</b></p>
+              </div>
+              <p>Cloudy</p>
+            </div>
+          </ion-list>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
 
 </ion-content>

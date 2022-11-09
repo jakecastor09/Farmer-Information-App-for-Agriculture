@@ -40,6 +40,7 @@ export class LogoScreenPage implements OnInit {
     //   '/main/tabs/home/user-details/bIJjlv0RsfZ3MX1vA7M9HuZN1v73',
     // ]);
 
+    // this.router.navigate(['/main/tabs/home/weather/weather-details/tabon']);
     this.router.navigate(['onboarding/screen1']);
 
     // this.router.navigate(['/main/tabs/home']);

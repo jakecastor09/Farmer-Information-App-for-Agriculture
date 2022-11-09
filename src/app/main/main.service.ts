@@ -17,7 +17,7 @@ interface WeatherResponseData {
   hourly: Array<object>;
   lat: number;
   lon: number;
-  minutely: Array<object>;
+  daily: Array<object>;
   timezone: string;
   timezone_offset: number;
 }
@@ -44,7 +44,7 @@ export class MainService {
   fetchWeatherData() {
     return this.http
       .get<WeatherResponseData>(
-        `${weatherApiUrl}onecall?lat=${15.266623}&lon=${120.915913}&units=metric&exclude=daily&appid=${weatherApiKey}`
+        `${weatherApiUrl}onecall?lat=${15.266623}&lon=${120.915913}&units=metric&exclude=minutely&appid=${weatherApiKey}`
       )
       .subscribe((data) => {
         this.weatherData = data;
