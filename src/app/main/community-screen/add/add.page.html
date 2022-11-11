@@ -1,20 +1,21 @@
-<ion-content>
-  <div class="container">
+<ion-content class="ion-padding">
+  <div class="community__add">
     <app-page-header title="Write Post"></app-page-header>
-    <div class="form">
-      <ion-item>
-        <ion-label position="floating">Title</ion-label>
-        <ion-input type="text" [(ngModel)]="title"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">Message</ion-label>
-        <ion-input type="text" [(ngModel)]="message"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">Image</ion-label>
-        <ion-input type="text" [(ngModel)]="image"></ion-input>
-      </ion-item>
+    <div class="community__add__main">
+      <div class="community__add__main__write-post">
+        <img class="community__add__main__img" src="assets/img/jake.jpg" alt="">
+
+        <textarea class="community__add__main__text-area" name="write-post" id="write-post" cols="30" rows="8"
+          placeholder="Write post..."></textarea>
+      </div>
     </div>
+
+    <div class="community__add__img-post">
+      <img class="community__add__img-post__img" [src]="selectedImage" alt="">
+
+    </div>
+    <ion-button style="margin-bottom:2.4rem" color="dark" (click)="addImageClickHandler()">Add Image</ion-button>
+
     <app-button (click)="onClickBtn()" name="Add Post" class="solid"></app-button>
   </div>
 </ion-content>

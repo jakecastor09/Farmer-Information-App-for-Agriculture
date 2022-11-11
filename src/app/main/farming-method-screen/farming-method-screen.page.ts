@@ -31,6 +31,7 @@ export class FarmingMethodScreenPage implements OnInit {
           (this.nameOfFarmer[user.userId] = {
             firstName: user.firstName,
             lastName: user.lastName,
+            imgUrl: user.imgUrl,
           })
       );
 
@@ -49,6 +50,7 @@ export class FarmingMethodScreenPage implements OnInit {
           (this.nameOfFarmer[user.userId] = {
             firstName: user.firstName,
             lastName: user.lastName,
+            imgUrl: user.imgUrl,
           })
       );
 
@@ -65,6 +67,22 @@ export class FarmingMethodScreenPage implements OnInit {
 
   doRefresh(event) {
     console.log('Begin async operation');
+    this.farmingMethodService.getAllUserFarmingMethod().subscribe((data) => {
+      this.allFarmingMethod = data;
+    });
+
+    this.mainService.fetchUsers().subscribe((allUser) => {
+      allUser.map(
+        (user) =>
+          (this.nameOfFarmer[user.userId] = {
+            firstName: user.firstName,
+            lastName: user.lastName,
+            imgUrl: user.imgUrl,
+          })
+      );
+
+      this.farmingMethodService.setFarmerName(this.nameOfFarmer);
+    });
     this.farmingMethodService.getAllUserFarmingMethod().subscribe((data) => {
       this.allFarmingMethod = data;
       event.target.complete();

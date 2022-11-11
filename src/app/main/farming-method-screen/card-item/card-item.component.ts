@@ -10,7 +10,6 @@ import { User } from '../../user.model';
 export class CardItemComponent implements OnInit {
   @Input() farmingMethod;
   @Input() nameOfFarmer;
-
   constructor() {}
 
   ngOnInit() {}

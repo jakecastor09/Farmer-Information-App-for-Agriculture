@@ -8,6 +8,7 @@ export class User {
     public age: number,
     public birthday: Date,
     public email: string,
-    public purok: number
+    public purok: number,
+    public imgUrl: string
   ) {}
 }

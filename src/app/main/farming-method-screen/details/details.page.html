@@ -28,7 +28,10 @@
           <div class="farming-method-details__heading">
             <h1 class="farming-method-details__heading--title">{{farmingMethod.name}} Farming Methods</h1>
             <div class="farming-method-details__heading--details">
-              <span class="farming-method-details__heading--details--name">By
+              <span>By</span>
+              <img class="farming-method-details__heading--details--img"
+                [src]="nameOfFarmer[farmingMethod.userId]?.imgUrl" alt="">
+              <span class="farming-method-details__heading--details--name">
                 {{nameOfFarmer[farmingMethod.userId]?.firstName.charAt(0).toUpperCase()+ nameOfFarmer[farmingMethod.userId]?.firstName.slice(1) + ' ' + nameOfFarmer[farmingMethod.userId]?.lastName.charAt(0).toUpperCase() + nameOfFarmer[farmingMethod.userId]?.lastName.slice(1)}}</span>
             </div>
           </div>

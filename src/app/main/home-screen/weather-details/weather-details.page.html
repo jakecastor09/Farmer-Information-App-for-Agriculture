@@ -176,7 +176,7 @@
                 <img [src]="formatIconImg(data.weather[0].icon)" style="width: 4rem;" alt="">
                 <p style="text-align:center"><b>{{formatTemp(data.temp.day)}}°C</b></p>
               </div>
-              <p>Cloudy</p>
+              <p>{{data.weather[0].main}}</p>
             </div>
           </ion-list>
         </div>

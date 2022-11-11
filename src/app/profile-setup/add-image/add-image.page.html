@@ -4,12 +4,11 @@
       <h1 class="add-image__title">Welcome, {{user?.firstName.charAt(0).toUpperCase() + user?.firstName.slice(1)}}</h1>
       <p class="add-image__message">Add photos so that other users can know you</p>
     </div>
-    <app-camera (imagePick)="onImagePicked($event)"></app-camera>
+    <app-camera (imagePick)="onImagePicked($event)" (selectedImage)="onAvatarPicked($event)"></app-camera>
     <div class="add-image__buttons">
       <!-- <app-button class="solid" name="Upload a photo"></app-button> -->
-      <app-button name="Done" class="solid" (click)="doneClickHandler()"></app-button>
-      <app-button name="Skip for now" class="ion-margin-top" (click)="skipHandlerClick()"></app-button>
-    </div>
+      <app-button name="Done" [isValid]="!hasPickedImage" class="solid" (click)="doneClickHandler()"></app-button>
 
+    </div>
   </div>
 </ion-content>

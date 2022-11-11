@@ -227,13 +227,13 @@ export class MainService {
             data[key].age,
             data[key].birthday,
             data[key].email,
-            data[key].purok
+            data[key].purok,
+            data[key].imgUrl
           )
         );
       }
     }
     this.allUsers = users;
-    console.log(this.allUsers[1]);
   }
 
   getCurrentUser(userId: string) {
@@ -262,7 +262,8 @@ export class MainService {
                   responseData[key].age,
                   responseData[key].birthday,
                   responseData[key].email,
-                  responseData[key].purok
+                  responseData[key].purok,
+                  responseData[key].imgUrl
                 )
               );
             }
@@ -287,6 +288,7 @@ export class MainService {
   ) {
     let generatedIdFromFirebase: string;
     const temporaryId = firstName.length + 1 + '';
+    const temporaryImgUrl = '';
     const newUser = new User(
       temporaryId,
       userId,
@@ -296,7 +298,8 @@ export class MainService {
       age,
       birthday,
       email,
-      purok
+      purok,
+      temporaryImgUrl
     );
     return this.http
       .post<{ name: string }>(
@@ -319,6 +322,39 @@ export class MainService {
           ///user id not showing on the database
         })
       );
+  }
+
+  //Update User
+  updateUser(userId: string, imgUrl: string) {
+    imgUrl = imgUrl + 'ss';
+    let oldUser;
+    this.users.subscribe((data) =>
+      data.map((item) => {
+        if (item.userId === userId) {
+          oldUser = item;
+        }
+      })
+    );
+
+    const updatedUser = new User(
+      oldUser.id,
+      oldUser.userId,
+      oldUser.firstName,
+      oldUser.middleName,
+      oldUser.lastName,
+      oldUser.age,
+      oldUser.birthday,
+      oldUser.email,
+      oldUser.purok,
+      imgUrl
+    );
+    console.log(oldUser.id);
+    return this.http
+      .put(
+        `https://agri-app-96063-default-rtdb.firebaseio.com/users/${oldUser.id}.json`,
+        { ...updatedUser, id: null }
+      )
+      .subscribe();
   }
 
   //Dark mode

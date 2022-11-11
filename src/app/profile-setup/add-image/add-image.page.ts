@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
 import { AuthPageService } from 'src/app/auth-page/auth-page.service';
 import { MainService } from 'src/app/main/main.service';
 import { User } from 'src/app/main/user.model';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
+import firebase from 'firebase/compat/app';
 
 const base64toBlob = (base64Data, contentType) => {
   contentType = contentType || '';
@@ -33,12 +36,20 @@ const base64toBlob = (base64Data, contentType) => {
 export class AddImagePage implements OnInit {
   user: User;
   userLoginLocalId: string;
-  havePickImage = false;
+  imageFileChoose;
+  hasPickedImage = false;
+  imageId;
+  imagePath;
+  avatarPath: string;
+  isAvatarSelected = false;
 
   constructor(
     private mainService: MainService,
     private authService: AuthPageService,
-    private route: Router
+    private route: Router,
+    private loadingCtrl: LoadingController,
+    private storage: AngularFireStorage,
+    private authSrvc: AuthPageService
   ) {}
 
   ngOnInit() {}
@@ -53,24 +64,77 @@ export class AddImagePage implements OnInit {
     this.mainService.setCurrentUser(this.user);
   }
   doneClickHandler() {
-    //add image in database
-  }
+    if (!this.isAvatarSelected) {
+      //add image in database
+      this.uploadImage(this.imageFileChoose);
 
-  skipHandlerClick() {
-    this.route.navigateByUrl('/profile-setup/crops-or-livestock');
+      setTimeout(() => {
+        const storage = firebase.storage();
+        storage
+          .ref(`Avatar/${this.imageId}`)
+          .getDownloadURL()
+          .then((url) => {
+            this.mainService.updateUser(this.authService.userLoginLocalId, url);
+          });
+        this.route.navigateByUrl('/profile-setup/crops-or-livestock');
+      }, 1500);
+    } else {
+      setTimeout(() => {
+        const storage = firebase.storage();
+        storage
+          .ref(`user-avatar/${this.avatarPath}`)
+          .getDownloadURL()
+          .then((url) => {
+            this.mainService.updateUser(this.authService.userLoginLocalId, url);
+          });
+        this.route.navigateByUrl('/profile-setup/crops-or-livestock');
+      }, 1500);
+    }
   }
 
   onImagePicked(imageData: string) {
-    this.havePickImage = true;
     try {
       const imageFile = base64toBlob(
         imageData.replace('data:image/jpeg;base64,', ''),
         'image/jpeg'
       );
+      this.imageFileChoose = imageFile;
+      this.isAvatarSelected = false;
+      this.hasPickedImage = true;
     } catch (error) {
       //prompt the user that the image provided can't use
       console.log(error);
       return;
     }
+  }
+
+  onAvatarPicked(imageData: string) {
+    if (imageData === 'avatar-0') {
+      this.hasPickedImage = false;
+      this.isAvatarSelected = false;
+
+      return;
+    }
+    this.isAvatarSelected = true;
+    this.hasPickedImage = true;
+    this.avatarPath = imageData;
+  }
+
+  async uploadImage(itemBlob) {
+    const loading = await this.loadingCtrl.create({
+      message: 'Create your avatar.',
+      backdropDismiss: false,
+      animated: true,
+    });
+    await loading.present();
+
+    const fileBlob = itemBlob;
+    const code =
+      Math.random() * 1000 + Math.random() * 1000 + Math.random() * 100;
+    const id = this.user.userId + code;
+    this.imageId = id;
+    const uploadTask = this.storage.upload(`Avatar/${id}`, fileBlob);
+
+    uploadTask.then((res) => loading.dismiss());
   }
 }

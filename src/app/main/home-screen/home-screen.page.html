@@ -60,14 +60,12 @@
         </p>
       </div>
       <ion-row>
-        <ion-slides [options]="sliderConfig">
-          <ion-slide *ngFor="let cropsData of homeDataCrops">
-            <ion-col>
-              <app-cards [item]="cropsData" [color]="cropsColors" (click)="onClickCropDetails(cropsData.id)">
-              </app-cards>
-            </ion-col>
-          </ion-slide>
-        </ion-slides>
+        <div class='home__content__slide'>
+          <div *ngFor="let cropsData of homeDataCrops">
+            <app-cards [item]="cropsData" [color]="cropsColors" (click)="onClickCropDetails(cropsData.id)">
+            </app-cards>
+          </div>
+        </div>
       </ion-row>
       <div class="home__content--title" *ngIf="homeDataLivestock?.length >= 1"
         routerLink="/main/tabs/profile/agriculture">
@@ -75,14 +73,12 @@
         <p class="home__content--edit-crops">More livestock <ion-icon name="chevron-forward-outline"></ion-icon>
       </div>
       <ion-row>
-        <ion-slides [options]="sliderConfig">
-          <ion-slide *ngFor="let livestockData of homeDataLivestock">
-            <ion-col>
-              <app-cards [item]="livestockData" [color]="livestockColors"
-                (click)="onClickLivestockDetails(livestockData.id)"></app-cards>
-            </ion-col>
-          </ion-slide>
-        </ion-slides>
+        <div class='home__content__slide'>
+          <div *ngFor="let livestockData of homeDataLivestock">
+            <app-cards [item]="livestockData" [color]="livestockColors"
+              (click)="onClickLivestockDetails(livestockData.id)"></app-cards>
+          </div>
+        </div>
       </ion-row>
     </ion-grid>
   </div>

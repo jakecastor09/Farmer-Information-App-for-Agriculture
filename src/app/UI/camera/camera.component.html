@@ -1,13 +1,13 @@
 <div class="camera">
   <div class="camera__image-container">
     <div>
-      <img role="button" (click)="onPickImage()" class="camera__image--img" [src]="selectedImage"
-        *ngIf="selectedImage" />
-      <img *ngIf="!selectedImage" class='camera__image-container--img'
+      <img role="button" (click)="onPickImage()" class="camera__image--img" [src]="selectingImage"
+        *ngIf="selectingImage" />
+      <img *ngIf="!selectingImage" class='camera__image-container--img'
         src="assets/img/profile-setup/add-picture/default-avatar.webp" />
 
     </div>
-    <app-button *ngIf="!selectedImage" class="yellow small" name="Add Picture" (click)="onPickImage()">
+    <app-button *ngIf="!selectingImage" class="yellow small" name="Add Picture" (click)="onPickImage()">
       <ion-icon name="camera" slot="start"></ion-icon>
     </app-button>
 

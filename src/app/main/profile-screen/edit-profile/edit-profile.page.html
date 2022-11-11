@@ -10,7 +10,8 @@
         <ion-row>
           <ion-col size-sm="8" offset-sm="2" class="edit-profile__user">
             <ion-avatar class="edit-profile__user--avatar">
-              <ion-img src="assets/img/jake.jpg"></ion-img>
+              <ion-img [src]="user.imgUrl"></ion-img>
+              <ion-icon (click)="onClickEditPic()" name="camera" class="edit-profile__user--icon"></ion-icon>
             </ion-avatar>
             <ion-label class="edit-profile__user--name">
               {{user.firstName.charAt(0).toUpperCase() + user.firstName.slice(1) + " " + user.lastName.charAt(0).toUpperCase() + user.lastName.slice(1)}}

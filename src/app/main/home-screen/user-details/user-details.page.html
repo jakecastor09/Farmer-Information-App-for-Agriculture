@@ -5,8 +5,8 @@
   </div>
   <div class="user-details">
     <div class="user-details__info">
-      <img class="user-details__info--img" src='assets/img/jake.jpg'
-        [class.online]="this.userPresence?.status==='online'" [class.offline]="this.userPresence?.status==='offline'" />
+      <img class="user-details__info--img" [src]='user.imgUrl' [class.online]="this.userPresence?.status==='online'"
+        [class.offline]="this.userPresence?.status==='offline'" />
       <div class="user-details__info--text">
         <h1>
           {{user.firstName.charAt(0).toUpperCase() + user.firstName.slice(1) + ' ' + user.lastName.charAt(0).toUpperCase() + user.lastName.slice(1) }}
@@ -47,7 +47,7 @@
       )">
 
         <div class="card-item__first">
-          <img src="assets/img/jake.jpg" alt="">
+          <img [src]="user.imgUrl" alt="">
           <div class="card-item__first-name-details">
             <h3>
               {{user.firstName.charAt(0).toUpperCase() + user.firstName.slice(1) + ' ' + user.lastName.charAt(0).toUpperCase() + user.lastName.slice(1) }}

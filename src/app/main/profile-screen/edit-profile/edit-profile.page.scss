@@ -13,6 +13,15 @@
       height: 100% !important;
       max-width: 10rem !important; //any size
       max-height: 10rem !important; //any size
+      position: relative;
+    }
+    &--icon {
+      position: absolute;
+      font-size: 2.5rem;
+      bottom: 0rem;
+      right: 10px;
+
+      z-index: 100;
     }
   }
 }

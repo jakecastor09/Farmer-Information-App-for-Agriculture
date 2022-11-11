@@ -94,6 +94,13 @@
   &__content {
     background-color: #fff;
 
+    &__slide {
+      display: flex;
+      margin-right: 1rem;
+      overflow-x: scroll;
+      width: 100%;
+    }
+
     &--title {
       margin-top: 15px;
       display: flex;

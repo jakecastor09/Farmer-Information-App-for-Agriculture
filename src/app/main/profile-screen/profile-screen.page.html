@@ -1,13 +1,12 @@
 <ion-content>
   <div class="profile ion-padding">
     <app-page-header title="Profile"></app-page-header>
-    <div class="back-btn" routerLink="/main/tabs/profile">
-      <ion-icon class="back-btn--icon" name="arrow-back-outline"></ion-icon>
-    </div>
+
     <ion-grid>
       <ion-row>
         <ion-col class="profile__user" size-sm="8" offset-sm="2">
           <div class="profile__img">
+            <img class="profile__img--avatar" [src]="user.imgUrl" alt="">
           </div>
           <label
             class="profile__name">{{user.firstName.charAt(0).toUpperCase() + user.firstName.slice(1) + " " + user.lastName.charAt(0).toUpperCase() + user.lastName.slice(1)}}</label>

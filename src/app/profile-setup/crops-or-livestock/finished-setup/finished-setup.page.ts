@@ -26,7 +26,9 @@ export class FinishedSetupPage implements OnInit {
   ngOnInit() {}
   getStartedButtonHandlerClick() {
     //Fetch all Crops livestock
+
     this.user = this.mainService.getUser();
+
     this.crops = this.homeCropsService.getCropsData();
     this.livestock = this.homeLivestockService.getLivestockData();
 

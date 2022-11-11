@@ -54,12 +54,25 @@ export class HomeScreenPage implements OnInit {
       this.authService.userLoginLocalId
     );
 
-    this.allUser = this.mainService.getAllUser();
+    this.mainService
+      .fetchUsers()
+      .subscribe((users) => this.mainService.setAllUsers(users));
 
-    console.log(this.allUser);
-    this.presence
-      .getAllPresence()
-      .subscribe((item) => (this.allPresence = item));
+    this.presence.getAllPresence().subscribe((item) => {
+      this.allPresence = item;
+      const currentUser = this.mainService.getCurrentUser(
+        this.authService.userLoginLocalId
+      );
+      currentUser.firstName = 'You';
+      currentUser.lastName = '';
+
+      this.allUser = [
+        currentUser,
+        ...this.mainService
+          .getAllUser()
+          .filter((user) => user.userId !== currentUser.userId),
+      ];
+    });
 
     this.weatherData = this.mainService.getWeatherData();
     this.weatherTemp = Math.trunc(+this.weatherData?.current.temp);
@@ -105,7 +118,19 @@ export class HomeScreenPage implements OnInit {
       this.authService.userLoginLocalId
     );
 
-    this.allUser = this.mainService.getAllUser();
+    const currentUser = this.mainService.getCurrentUser(
+      this.authService.userLoginLocalId
+    );
+
+    currentUser.firstName = 'You';
+    currentUser.lastName = '';
+
+    this.allUser = [
+      currentUser,
+      ...this.mainService
+        .getAllUser()
+        .filter((user) => user.userId !== currentUser.userId),
+    ];
 
     this.presence
       .getAllPresence()

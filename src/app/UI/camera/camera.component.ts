@@ -8,7 +8,8 @@ import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 })
 export class CameraComponent implements OnInit {
   @Output() imagePick = new EventEmitter<string>();
-  selectedImage: string;
+  @Output() selectedImage = new EventEmitter<string>();
+  selectingImage;
 
   constructor() {}
 
@@ -16,15 +17,18 @@ export class CameraComponent implements OnInit {
 
   imageClickHandler(num) {
     if (num === 0) {
-      this.selectedImage = '';
+      this.selectingImage = '';
+      this.selectedImage.emit(`avatar-${num}`);
       return;
     }
-    this.selectedImage = `assets/avatar/avatar-${num}.webp`;
+    this.selectingImage = `assets/avatar/avatar-${num}.webp`;
+
+    this.selectedImage.emit(`avatar-${num}.webp`);
   }
 
   onPickImage() {
     Camera.getPhoto({
-      quality: 50,
+      quality: 90,
       allowEditing: true,
       source: CameraSource.Prompt,
       correctOrientation: true,
@@ -33,7 +37,7 @@ export class CameraComponent implements OnInit {
       resultType: CameraResultType.DataUrl,
     })
       .then((image) => {
-        this.selectedImage = image.dataUrl;
+        this.selectingImage = image.dataUrl;
         this.imagePick.emit(image.dataUrl);
       })
       .catch((error) => {
