@@ -15,6 +15,7 @@ export class MyMethodsPage implements OnInit {
   cropsName = [];
   livestockName = [];
   userName;
+  userImg;
   _userId;
   constructor(
     private route: ActivatedRoute,
@@ -31,6 +32,8 @@ export class MyMethodsPage implements OnInit {
       this._userId = userId;
 
       const userInfo = this.mainService.getCurrentUser(userId);
+
+      this.userImg = userInfo.imgUrl;
       this.userName =
         userInfo.firstName.charAt(0).toUpperCase() +
         userInfo.firstName.slice(1) +

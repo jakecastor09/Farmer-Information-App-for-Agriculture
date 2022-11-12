@@ -11,6 +11,7 @@ export class CardMethodComponent implements OnInit {
   @Input() cardColor;
   @Input() methods;
   @Input() userName;
+  @Input() userImg;
   constructor() {}
 
   ngOnInit() {}

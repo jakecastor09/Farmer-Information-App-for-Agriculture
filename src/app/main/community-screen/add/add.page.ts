@@ -6,6 +6,7 @@ import { MainService } from '../../main.service';
 import { User } from '../../user.model';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import firebase from 'firebase/compat/app';
+import { CommunityService } from '../community.service';
 
 const base64toBlob = (base64Data, contentType) => {
   contentType = contentType || '';
@@ -40,13 +41,17 @@ export class AddPage implements OnInit {
   user: User;
   imageId;
   imageFileChoose;
+  allImageSelected = [];
+  allImageId = [];
+  allImageFileChoose = [];
 
   constructor(
     private router: Router,
     private mainService: MainService,
     private authSrvc: AuthPageService,
     private storage: AngularFireStorage,
-    private route: Router
+    private route: Router,
+    private communitySrvc: CommunityService
   ) {}
 
   ngOnInit() {
@@ -55,22 +60,73 @@ export class AddPage implements OnInit {
         (user) => user.userId === this.authSrvc.userLoginLocalId
       );
       this.user = currentUser[0];
+      console.log(this.user);
+    });
+  }
+  ionViewWillEnter() {
+    this.mainService.fetchUsers().subscribe((users) => {
+      const currentUser = users.filter(
+        (user) => user.userId === this.authSrvc.userLoginLocalId
+      );
+      this.user = currentUser[0];
+      console.log(this.user);
     });
   }
 
-  onClickBtn() {
-    this.uploadImage(this.imageFileChoose);
+  async onClickBtn() {
+    const userFullName =
+      this.user.firstName.charAt(0).toUpperCase() +
+      this.user.firstName.slice(1) +
+      ' ' +
+      this.user.lastName.charAt(0).toUpperCase() +
+      this.user.lastName.slice(1);
+    const userImg = this.user.imgUrl;
+    const allImageSelectedUrl = [];
 
-    setTimeout(() => {
-      const storage = firebase.storage();
-      storage
-        .ref(`Avatar/${this.imageId}`)
-        .getDownloadURL()
-        .then((url) => {
-          this.mainService.updateUser(this.authSrvc.userLoginLocalId, url);
+    if (this.allImageFileChoose.length >= 1) {
+      this.allImageFileChoose.map((item) => this.uploadImage(item));
+
+      setTimeout(() => {
+        this.allImageId.map((id, key) => {
+          const storage = firebase.storage();
+          storage
+            .ref(`community-post/${id}`)
+            .getDownloadURL()
+            .then((url) => {
+              allImageSelectedUrl.push(url);
+            })
+            .then(() => {
+              if (key === this.allImageId.length - 1) {
+                this.communitySrvc.addPost(
+                  this.message,
+                  allImageSelectedUrl,
+                  [],
+                  this.user.userId,
+                  userFullName,
+                  new Date(),
+                  userImg
+                );
+              }
+            })
+            .then(() => {
+              setTimeout(() => {
+                this.router.navigate(['/main/tabs/community']);
+              }, 2000);
+            });
         });
-      this.route.navigateByUrl('/main/tabs/community');
-    }, 1500);
+      }, 2000);
+    } else {
+      this.communitySrvc.addPost(
+        this.message,
+        allImageSelectedUrl,
+        [],
+        this.user.userId,
+        userFullName,
+        new Date(),
+        userImg
+      );
+      this.router.navigate(['/main/tabs/community']);
+    }
   }
 
   addImageClickHandler() {
@@ -91,6 +147,8 @@ export class AddPage implements OnInit {
           );
           this.selectedImage = image.dataUrl;
           this.imageFileChoose = imageFile;
+          this.allImageFileChoose.push(imageFile);
+          this.allImageSelected.push(this.selectedImage);
         } catch (error) {
           //prompt the user that the image provided can't use
           console.log(error);
@@ -109,6 +167,14 @@ export class AddPage implements OnInit {
       Math.random() * 1000 + Math.random() * 1000 + Math.random() * 100;
     const id = this.user.userId + code;
     this.imageId = id;
-    this.storage.upload(`Avatar/${id}`, fileBlob);
+    this.allImageId.push(this.imageId);
+    this.storage.upload(`community-post/${id}`, fileBlob);
+  }
+
+  deleteImgClickHandler(index: number) {
+    this.allImageSelected = [
+      ...this.allImageSelected.filter((item, i) => index !== i),
+    ];
+    this.allImageId = [...this.allImageId.filter((id, i) => index !== i)];
   }
 }

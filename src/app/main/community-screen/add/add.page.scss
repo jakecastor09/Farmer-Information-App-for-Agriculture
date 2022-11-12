@@ -5,9 +5,9 @@
       margin-bottom: 2.4rem;
     }
     &__img {
-      width: 5rem;
+      min-width: 5rem;
       height: 5rem;
-      object-fit: contain;
+      object-fit: cover;
       border-radius: 100%;
       box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
       margin-right: 1.4rem;
@@ -29,11 +29,26 @@
   }
   &__img-post {
     margin-bottom: 1.6rem;
+    display: flex;
+    overflow-x: scroll;
+
+    &__img-list {
+      margin-right: 1.6rem;
+      position: relative;
+    }
     &__img {
-      width: 18rem;
+      min-width: 18rem;
       height: 11rem;
       border-radius: 10px;
       object-fit: cover;
+    }
+    &__icon {
+      position: absolute;
+      right: 8px;
+      top: 8px;
+      color: #d9534f;
+      font-size: 2.4rem;
+      box-shadow: rgba(99, 99, 99, 0.5) 0px 2px 8px 0px;
     }
   }
 }

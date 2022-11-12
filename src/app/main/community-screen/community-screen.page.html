@@ -1,121 +1,38 @@
 <ion-content class="ion-padding">
+
   <div class="community">
     <app-page-header title="Community"></app-page-header>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
     <div class="community__header">
       <div class="community__avatar">
         <img class="community__avatar--img" src="assets/img/jake.jpg" alt="">
         <span class="community__avatar--post">2 posts</span>
       </div>
       <ion-searchbar class="community__searchbar" mode="ios" color="light"></ion-searchbar>
-
       <div class="community__sort">sort</div>
     </div>
     <div class="community__content">
       <ion-grid class="ion-no-padding ion-margin-top">
-        <ion-row>
+        <ion-row *ngFor="let post of allPosts">
           <ion-col>
             <div class="card">
               <div class="card__header">
                 <div class="card__header--details">
-                  <img class="card__header--img" src="assets/img/jake.jpg" />
+                  <img class="card__header--img" [src]="post.userImg" />
                   <div class="card__header--post-details">
-                    <div class="card__header--name">Jake Castor</div>
-                    <span class="card__header--time">2 hours</span>
+                    <div class="card__header--name">{{post.fullName}}</div>
+                    <span class="card__header--time">{{post.date | date}}</span>
                   </div>
                 </div>
                 <div class="card__header--dropdown">
                   <ion-icon class="card__header--dropdown-icon" name="ellipsis-horizontal-outline"></ion-icon>
                 </div>
               </div>
-              <img class="card__img" src="assets/exampleBugsEatingPlants.jpeg" />
+              <img class="card__img" *ngIf="post.image" [src]="post.image?.[0]" />
               <div class="card__content">
-                <h3>Watermelon</h3>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aut harum vel amet dolor facilis? Error
-                  saepe corrupti assumenda, eos</p>
-              </div>
-              <div class="comment">
-                <ion-input placeholder="Write a comment"></ion-input>
-                <ion-icon name="chatbox-ellipses-outline"></ion-icon>
-              </div>
-            </div>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>
-            <div class="card">
-              <div class="card__header">
-                <div class="card__header--details">
-                  <img class="card__header--img" src="assets/img/jake.jpg" />
-                  <div class="card__header--post-details">
-                    <div class="card__header--name">Jake Castor</div>
-                    <span class="card__header--time">2 hours</span>
-                  </div>
-                </div>
-                <div class="card__header--dropdown">
-                  <ion-icon class="card__header--dropdown-icon" name="ellipsis-horizontal-outline"></ion-icon>
-                </div>
-              </div>
-              <img class="card__img" src="assets/exampleBugsEatingPlants.jpeg" />
-              <div class="card__content">
-                <h3>Watermelon</h3>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aut harum vel amet dolor facilis? Error
-                  saepe corrupti assumenda, eos</p>
-              </div>
-              <div class="comment">
-                <ion-input placeholder="Write a comment"></ion-input>
-                <ion-icon name="chatbox-ellipses-outline"></ion-icon>
-              </div>
-            </div>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>
-            <div class="card">
-              <div class="card__header">
-                <div class="card__header--details">
-                  <img class="card__header--img" src="assets/img/jake.jpg" />
-                  <div class="card__header--post-details">
-                    <div class="card__header--name">Jake Castor</div>
-                    <span class="card__header--time">2 hours</span>
-                  </div>
-                </div>
-                <div class="card__header--dropdown">
-                  <ion-icon class="card__header--dropdown-icon" name="ellipsis-horizontal-outline"></ion-icon>
-                </div>
-              </div>
-              <img class="card__img" src="assets/exampleBugsEatingPlants.jpeg" />
-              <div class="card__content">
-                <h3>Watermelon</h3>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aut harum vel amet dolor facilis? Error
-                  saepe corrupti assumenda, eos</p>
-              </div>
-              <div class="comment">
-                <ion-input placeholder="Write a comment"></ion-input>
-                <ion-icon name="chatbox-ellipses-outline"></ion-icon>
-              </div>
-            </div>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>
-            <div class="card">
-              <div class="card__header">
-                <div class="card__header--details">
-                  <img class="card__header--img" src="assets/img/jake.jpg" />
-                  <div class="card__header--post-details">
-                    <div class="card__header--name">Jake Castor</div>
-                    <span class="card__header--time">2 hours</span>
-                  </div>
-                </div>
-                <div class="card__header--dropdown">
-                  <ion-icon class="card__header--dropdown-icon" name="ellipsis-horizontal-outline"></ion-icon>
-                </div>
-              </div>
-              <img class="card__img" src="assets/exampleBugsEatingPlants.jpeg" />
-              <div class="card__content">
-                <h3>Watermelon</h3>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aut harum vel amet dolor facilis? Error
-                  saepe corrupti assumenda, eos</p>
+                <p class="card__content--message">{{post.message}}</p>
               </div>
               <div class="comment">
                 <ion-input placeholder="Write a comment"></ion-input>

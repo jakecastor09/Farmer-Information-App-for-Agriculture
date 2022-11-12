@@ -15,7 +15,7 @@
   <div class="method-list" *ngIf="methods">
     <div class="card-item" *ngFor="let method of methods">
       <div class="card-item__first">
-        <img src="assets/img/jake.jpg" alt="">
+        <img [src]="userImg" alt="">
         <div class="card-item__first-name-details">
           <h3>
             {{userName}}

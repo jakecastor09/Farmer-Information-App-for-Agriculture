@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CommunityPost } from './community-post.model';
+import { CommunityService } from './community.service';
 
 @Component({
   selector: 'app-community-screen',
@@ -7,26 +9,32 @@ import { Router } from '@angular/router';
   styleUrls: ['./community-screen.page.scss'],
 })
 export class CommunityScreenPage implements OnInit {
-  firstName;
-  lastName;
-  postsLength;
-  posts;
-  constructor(private router: Router) {}
+  allPosts;
+  constructor(
+    private router: Router,
+    private communitySrvc: CommunityService
+  ) {}
 
-  async ngOnInit() {
-    // await this.getPosts();
-    // await this.getFarmer();
+  ngOnInit() {
+    this.allPosts = this.communitySrvc.fethPosts();
+  }
+  ionViewDidEnter() {
+    this.allPosts = this.communitySrvc.fethPosts();
   }
   ionViewWillEnter() {
-    // this.getPosts();
-    // this.getFarmer();
-  }
-  ionViewWillLeave() {
-    // this.getPosts();
-    // this.getFarmer();
+    this.allPosts = this.communitySrvc.fethPosts();
   }
 
   onClickAddBtn() {
+    this.allPosts = this.communitySrvc.fethPosts();
     this.router.navigateByUrl('/main/tabs/community/add');
+  }
+
+  doRefresh(event) {
+    setTimeout(() => {
+      this.allPosts = this.communitySrvc.fethPosts();
+
+      event.target.complete();
+    }, 2000);
   }
 }

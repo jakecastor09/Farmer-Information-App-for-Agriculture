@@ -1,17 +1,20 @@
 <ion-content class="ion-padding">
   <div class="community__add">
     <app-page-header title="Write Post"></app-page-header>
-    <div class="community__add__main">
+    <div class="community__add__main" *ngIf="user">
       <div class="community__add__main__write-post">
-        <img class="community__add__main__img" src="assets/img/jake.jpg" alt="">
-
+        <img class="community__add__main__img" [src]="user?.imgUrl" alt="">
         <textarea class="community__add__main__text-area" name="write-post" id="write-post" cols="30" rows="8"
-          placeholder="Write post..."></textarea>
+          placeholder="Write post..." [(ngModel)]="message"></textarea>
       </div>
     </div>
 
-    <div class="community__add__img-post">
-      <img class="community__add__img-post__img" [src]="selectedImage" alt="">
+    <div class="community__add__img-post" *ngIf="selectedImage">
+      <div class="community__add__img-post__img-list" *ngFor="let image of allImageSelected; let i = index">
+        <img class="community__add__img-post__img" [src]="image" alt="">
+        <ion-icon class="community__add__img-post__icon" name="close-circle-sharp" (click)="deleteImgClickHandler(i)">
+        </ion-icon>
+      </div>
 
     </div>
     <ion-button style="margin-bottom:2.4rem" color="dark" (click)="addImageClickHandler()">Add Image</ion-button>

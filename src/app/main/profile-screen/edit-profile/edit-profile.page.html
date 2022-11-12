@@ -1,5 +1,5 @@
 <ion-content>
-  <div class="edit-profile ion-padding">
+  <div class="edit-profile ion-padding" *ngIf="user">
     <app-page-header title="Edit Profile"></app-page-header>
     <div class="back-btn" (click)="backBtnHandler()">
       <ion-icon class=" back-btn--icon" name="arrow-back-outline">

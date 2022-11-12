@@ -1,4 +1,4 @@
-<ion-content>
+<ion-content *ngIf="user">
   <div class="profile ion-padding">
     <app-page-header title="Profile"></app-page-header>
 
@@ -6,17 +6,17 @@
       <ion-row>
         <ion-col class="profile__user" size-sm="8" offset-sm="2">
           <div class="profile__img">
-            <img class="profile__img--avatar" [src]="user.imgUrl" alt="">
+            <img class="profile__img--avatar" [src]="user?.imgUrl" alt="">
           </div>
           <label
-            class="profile__name">{{user.firstName.charAt(0).toUpperCase() + user.firstName.slice(1) + " " + user.lastName.charAt(0).toUpperCase() + user.lastName.slice(1)}}</label>
+            class="profile__name">{{user?.firstName.charAt(0).toUpperCase() + user?.firstName.slice(1) + " " + user?.lastName.charAt(0).toUpperCase() + user?.lastName.slice(1)}}</label>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col class="profile__account" size-sm="8" offset-sm="2">
           <label class="profile__account--title">My Account</label>
           <ul class="profile__account__items">
-            <div class="profile__account__items__item" [routerLink]="['/','main','tabs','profile','edit',user.userId]">
+            <div class="profile__account__items__item" [routerLink]="['/','main','tabs','profile','edit',user?.userId]">
               <div class="profile__account__items__item--icon-container">
                 <ion-img src="assets/icon/edit-profile.webp" class="profile__account--icon"></ion-img>
               </div>
