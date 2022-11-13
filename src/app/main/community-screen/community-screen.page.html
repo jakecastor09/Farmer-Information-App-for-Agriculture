@@ -13,7 +13,7 @@
       <ion-searchbar class="community__searchbar" mode="ios" color="light"></ion-searchbar>
       <div class="community__sort">sort</div>
     </div>
-    <div class="community__content">
+    <div class="community__content" *ngIf="user">
       <ion-grid class="ion-no-padding ion-margin-top">
         <ion-row *ngFor="let post of allPosts">
           <ion-col>
@@ -26,8 +26,19 @@
                     <span class="card__header--time">{{post.date | date}}</span>
                   </div>
                 </div>
-                <div class="card__header--dropdown">
-                  <ion-icon class="card__header--dropdown-icon" name="ellipsis-horizontal-outline"></ion-icon>
+                <div class="card__header--dropdown" *ngIf="post.userId === post.userId">
+                  <ion-icon class="card__header--dropdown-icon" name="ellipsis-horizontal-outline"
+                    (click)="dropdownClickHandler(post.postId)"
+                    [class.dropdownClicked]='userPostId === post.postId && showMore'>
+                  </ion-icon>
+                  <div class="card__header--more" *ngIf="userPostId === post.postId && showMore">
+                    <h6 class="card__header--item">
+                      <ion-icon name="create-outline"></ion-icon> <span class="card__header--text">Edit</span>
+                    </h6>
+                    <h6 class="card__header--item" (click)="deletePostClickHandler(post.postId)">
+                      <ion-icon name="trash-outline"></ion-icon> <span class="card__header--text">Delete Post</span>
+                    </h6>
+                  </div>
                 </div>
               </div>
               <img class="card__img" *ngIf="post.image" [src]="post.image?.[0]" />

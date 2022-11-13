@@ -1,6 +1,7 @@
 export class CommunityPost {
   constructor(
-    public id: string,
+    public key: string,
+    public postId: string,
     public message: string,
     public image: Array<string>,
     public comment: Array<string>,

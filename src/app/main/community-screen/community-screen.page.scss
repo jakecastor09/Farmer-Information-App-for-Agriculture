@@ -53,12 +53,42 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: 1rem;
+    position: relative;
     &--details {
       display: flex;
-      align-items: center;
+      justify-content: center;
+    }
+    &--more {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      box-shadow: rgb(50 50 93 / 25%) 0px 2px 5px -1px,
+        rgb(0 0 0 / 30%) 0px 1px 3px -1px;
+      padding: 1rem;
+      position: absolute;
+      top: 50px;
+      right: 16px;
+      z-index: 100;
+      background-color: #ffffff;
+    }
+    &--item {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      &:last-child {
+        margin-top: 1rem;
+      }
+    }
+    &--text {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin: 0;
+      align-self: end;
+      margin-left: 8px;
     }
     &--post-details {
       margin-left: 1rem;
+      align-self: center;
     }
     &--img {
       display: block;
@@ -69,6 +99,7 @@
       box-shadow: rgb(60 64 67 / 30%) 0px 1px 2px 0px,
         rgb(60 64 67 / 15%) 0px 1px 3px 1px;
     }
+
     &--dropdown-icon {
       font-size: 2rem;
     }
@@ -114,4 +145,8 @@
   top: 12px;
   right: 12px;
   font-size: 30px;
+}
+
+.dropdownClicked {
+  background: #ebebeb;
 }

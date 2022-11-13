@@ -7,6 +7,7 @@ import { User } from '../../user.model';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import firebase from 'firebase/compat/app';
 import { CommunityService } from '../community.service';
+import { LoadingController } from '@ionic/angular';
 
 const base64toBlob = (base64Data, contentType) => {
   contentType = contentType || '';
@@ -51,7 +52,8 @@ export class AddPage implements OnInit {
     private authSrvc: AuthPageService,
     private storage: AngularFireStorage,
     private route: Router,
-    private communitySrvc: CommunityService
+    private communitySrvc: CommunityService,
+    private loadingCtrl: LoadingController
   ) {}
 
   ngOnInit() {
@@ -97,35 +99,37 @@ export class AddPage implements OnInit {
             })
             .then(() => {
               if (key === this.allImageId.length - 1) {
-                this.communitySrvc.addPost(
-                  this.message,
-                  allImageSelectedUrl,
-                  [],
-                  this.user.userId,
-                  userFullName,
-                  new Date(),
-                  userImg
-                );
+                this.communitySrvc
+                  .addPost(
+                    this.message,
+                    allImageSelectedUrl,
+                    [],
+                    this.user.userId,
+                    userFullName,
+                    new Date(),
+                    userImg
+                  )
+                  .subscribe(async () => {
+                    this.router.navigate(['/main/tabs/community']);
+                  });
               }
-            })
-            .then(() => {
-              setTimeout(() => {
-                this.router.navigate(['/main/tabs/community']);
-              }, 2000);
             });
         });
       }, 2000);
     } else {
-      this.communitySrvc.addPost(
-        this.message,
-        allImageSelectedUrl,
-        [],
-        this.user.userId,
-        userFullName,
-        new Date(),
-        userImg
-      );
-      this.router.navigate(['/main/tabs/community']);
+      this.communitySrvc
+        .addPost(
+          this.message,
+          allImageSelectedUrl,
+          [],
+          this.user.userId,
+          userFullName,
+          new Date(),
+          userImg
+        )
+        .subscribe(() => {
+          this.router.navigate(['/main/tabs/community']);
+        });
     }
   }
 
