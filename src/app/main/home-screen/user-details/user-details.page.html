@@ -12,7 +12,7 @@
           {{user.firstName.charAt(0).toUpperCase() + user.firstName.slice(1) + ' ' + user.lastName.charAt(0).toUpperCase() + user.lastName.slice(1) }}
         </h1>
         <div style="display:flex;">
-          <p style="margin-right: 1rem;"><b>Age:</b> {{user.age}}</p>
+          <p style="margin-right: 1rem;"><b>Age:</b> {{getAge(user.birthday)}}</p>
           <p><b>Purok:</b> {{user.purok}}</p>
         </div>
         <p style="margin-top: 4px;"><b>Status:</b>

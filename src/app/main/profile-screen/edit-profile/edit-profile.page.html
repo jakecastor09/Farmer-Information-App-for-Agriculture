@@ -50,15 +50,6 @@
               <ion-item *ngIf="!lastNameHandler.valid && lastNameHandler.touched" lines="none">
                 <p class="error-message">Please enter your last name.</p>
               </ion-item>
-              <!-- Age -->
-              <ion-item>
-                <ion-label position="floating">Age</ion-label>
-                <ion-input type="number" ngModel={{user.age}} name="age" required #ageHandler="ngModel"></ion-input>
-              </ion-item>
-              <!-- Age error message -->
-              <ion-item *ngIf="!ageHandler.valid && ageHandler.touched" lines="none">
-                <p class="error-message">Please enter your age.</p>
-              </ion-item>
               <!-- Birthday -->
               <ion-item>
                 <ion-label position="floating">Birthday</ion-label>

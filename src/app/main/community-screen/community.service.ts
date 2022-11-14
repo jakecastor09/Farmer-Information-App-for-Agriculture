@@ -100,4 +100,36 @@ export class CommunityService {
         })
       );
   }
+
+  updatePost(documentId: string, image: Array<string>, message: string) {
+    console.log('Update Post');
+    let oldPost;
+    this._allPost.subscribe((post) =>
+      post.map((item) => {
+        if (item.key === documentId) {
+          oldPost = item;
+          console.log(oldPost);
+        }
+      })
+    );
+
+    const updatedPost = new CommunityPost(
+      oldPost.key,
+      oldPost.postId,
+      message,
+      image,
+      oldPost.comment,
+      oldPost.userId,
+      oldPost.fullName,
+      oldPost.date,
+      oldPost.userImg
+    );
+
+    return this.http
+      .put(
+        `https://agri-app-96063-default-rtdb.firebaseio.com/community-post/${documentId}.json`,
+        { ...updatedPost }
+      )
+      .subscribe();
+  }
 }

@@ -59,24 +59,26 @@ export class CommunityScreenPage implements OnInit {
     this.showMore = !this.showMore;
     this.userPostId = postId;
   }
+
   async deletePostClickHandler(postId: string) {
+    const loading = await this.loadingCtrl.create({
+      message: 'Deleting post...',
+    });
+    loading.present();
+
     const postToDelete = this.allPosts.filter(
       (post) => post.postId === postId
     )[0];
 
     this.communitySrvc.deletePost(postToDelete.key).subscribe(async () => {
-      const loading = await this.loadingCtrl.create({
-        message: 'Deleting post...',
-        duration: 1500,
-      });
-
-      loading.present().then(() => {
-        this.communitySrvc
-          .fethPosts()
-          .subscribe((data) => (this.allPosts = data));
-
+      this.communitySrvc.fethPosts().subscribe((data) => {
+        this.allPosts = data;
         loading.dismiss();
       });
     });
+  }
+
+  editPostClickHandler(postId: string) {
+    this.router.navigateByUrl('/main/tabs/community/edit/' + postId);
   }
 }

@@ -62,7 +62,6 @@ export class AddPage implements OnInit {
         (user) => user.userId === this.authSrvc.userLoginLocalId
       );
       this.user = currentUser[0];
-      console.log(this.user);
     });
   }
   ionViewWillEnter() {
@@ -76,6 +75,11 @@ export class AddPage implements OnInit {
   }
 
   async onClickBtn() {
+    const loading = await this.loadingCtrl.create({
+      message: 'Adding post...',
+    });
+
+    loading.present();
     const userFullName =
       this.user.firstName.charAt(0).toUpperCase() +
       this.user.firstName.slice(1) +
@@ -110,6 +114,7 @@ export class AddPage implements OnInit {
                     userImg
                   )
                   .subscribe(async () => {
+                    loading.dismiss();
                     this.router.navigate(['/main/tabs/community']);
                   });
               }
@@ -128,6 +133,7 @@ export class AddPage implements OnInit {
           userImg
         )
         .subscribe(() => {
+          loading.dismiss();
           this.router.navigate(['/main/tabs/community']);
         });
     }

@@ -19,6 +19,6 @@
     </div>
     <ion-button style="margin-bottom:2.4rem" color="dark" (click)="addImageClickHandler()">Add Image</ion-button>
 
-    <app-button (click)="onClickBtn()" name="Add Post" class="solid"></app-button>
+    <app-button (click)="onClickBtn()" [isValid]="!message" name="Add Post" class="solid"></app-button>
   </div>
 </ion-content>

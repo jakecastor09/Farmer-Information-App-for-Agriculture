@@ -44,7 +44,7 @@ export class SignUpPage implements OnInit {
             // this.mainService.fetchCropsLivestock();
 
             // add user
-            const { firstName, middleName, lastName, age, birthday, purok } =
+            const { firstName, middleName, lastName, birthday, purok } =
               form.value;
             this.mainService
               .addUser(
@@ -52,7 +52,6 @@ export class SignUpPage implements OnInit {
                 firstName,
                 middleName,
                 lastName,
-                age,
                 birthday,
                 email,
                 purok

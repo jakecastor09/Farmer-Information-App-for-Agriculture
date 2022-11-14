@@ -116,7 +116,7 @@ const routes: Routes = [
               ),
           },
           {
-            path: ':editId',
+            path: 'edit/:editId',
             loadChildren: () =>
               import('./community-screen/edit/edit.module').then(
                 (m) => m.EditPageModule

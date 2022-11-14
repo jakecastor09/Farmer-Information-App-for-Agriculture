@@ -1,20 +1,27 @@
-<ion-content>
-  <div class="container">
-    <app-page-header title="Edit Post"></app-page-header>
-    <div class="form">
-      <ion-item>
-        <ion-label position="floating">Title</ion-label>
-        <ion-input type="text" [(ngModel)]="title" [value]="currentTitle"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">Message</ion-label>
-        <ion-input type="text" [(ngModel)]="message" [value]="currentMessage"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">Image</ion-label>
-        <ion-input type="text" [(ngModel)]="image" [value]="currentImg"></ion-input>
-      </ion-item>
-    </div>
-    <app-button name="Edit" class="solid" (click)="onClickBtn()"></app-button>
+<ion-content class="ion-padding">
+  <div class="community__edit">
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+      <app-page-header title="Edit Post"></app-page-header>
+      <div class="community__edit__main" *ngIf="user">
+        <div class="community__edit__main__write-post">
+          <img class="community__edit__main__img" [src]="user?.imgUrl" alt="">
+          <textarea class="community__edit__main__text-area" name="write-post" id="write-post" cols="30" rows="8"
+            placeholder="Write post..." required ngModel={{selectedPost?.message}}></textarea>
+        </div>
+      </div>
+
+      <div class="community__edit__img-post">
+        <div class="community__edit__img-post__img-list" *ngFor="let image of allImageSelected; let i = index">
+          <img class="community__edit__img-post__img" [src]="image" alt="">
+          <ion-icon class="community__edit__img-post__icon" name="close-circle-sharp"
+            (click)="deleteImgClickHandler(i)">
+          </ion-icon>
+        </div>
+
+      </div>
+      <ion-button style="margin-bottom:2.4rem" color="dark" (click)="addImageClickHandler()">Add Image</ion-button>
+
+      <app-button type="submit" [isValid]="!form.valid" name="Edit Post" class="solid"></app-button>
+    </form>
   </div>
 </ion-content>

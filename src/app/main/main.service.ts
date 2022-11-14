@@ -224,7 +224,7 @@ export class MainService {
             data[key].firstName,
             data[key].middleName,
             data[key].lastName,
-            data[key].age,
+
             data[key].birthday,
             data[key].email,
             data[key].purok,
@@ -259,7 +259,7 @@ export class MainService {
                   responseData[key].firstName,
                   responseData[key].middleName,
                   responseData[key].lastName,
-                  responseData[key].age,
+
                   responseData[key].birthday,
                   responseData[key].email,
                   responseData[key].purok,
@@ -281,7 +281,7 @@ export class MainService {
     firstName: string,
     middleName: string,
     lastName: string,
-    age: number,
+
     birthday: Date,
     email: string,
     purok: number
@@ -295,7 +295,6 @@ export class MainService {
       firstName,
       middleName,
       lastName,
-      age,
       birthday,
       email,
       purok,
@@ -342,7 +341,6 @@ export class MainService {
       oldUser.firstName,
       oldUser.middleName,
       oldUser.lastName,
-      oldUser.age,
       oldUser.birthday,
       oldUser.email,
       oldUser.purok,

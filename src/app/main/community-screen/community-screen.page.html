@@ -19,21 +19,22 @@
           <ion-col>
             <div class="card">
               <div class="card__header">
-                <div class="card__header--details">
+                <div class="card__header--details" [routerLink]="['/main/tabs/home/user-details/',post.userId]">
                   <img class="card__header--img" [src]="post.userImg" />
-                  <div class="card__header--post-details">
+                  <div class=" card__header--post-details">
                     <div class="card__header--name">{{post.fullName}}</div>
                     <span class="card__header--time">{{post.date | date}}</span>
                   </div>
                 </div>
-                <div class="card__header--dropdown" *ngIf="post.userId === post.userId">
+                <div class="card__header--dropdown" *ngIf="post.userId === user.userId">
                   <ion-icon class="card__header--dropdown-icon" name="ellipsis-horizontal-outline"
                     (click)="dropdownClickHandler(post.postId)"
                     [class.dropdownClicked]='userPostId === post.postId && showMore'>
                   </ion-icon>
                   <div class="card__header--more" *ngIf="userPostId === post.postId && showMore">
                     <h6 class="card__header--item">
-                      <ion-icon name="create-outline"></ion-icon> <span class="card__header--text">Edit</span>
+                      <ion-icon name="create-outline"></ion-icon> <span class="card__header--text"
+                        (click)="editPostClickHandler(post.postId)">Edit</span>
                     </h6>
                     <h6 class="card__header--item" (click)="deletePostClickHandler(post.postId)">
                       <ion-icon name="trash-outline"></ion-icon> <span class="card__header--text">Delete Post</span>
@@ -41,7 +42,11 @@
                   </div>
                 </div>
               </div>
-              <img class="card__img" *ngIf="post.image" [src]="post.image?.[0]" />
+              <div class="card__images">
+                <div *ngFor="let image of post.image">
+                  <img class="card__img" *ngIf="image" [src]="image" />
+                </div>
+              </div>
               <div class="card__content">
                 <p class="card__content--message">{{post.message}}</p>
               </div>
