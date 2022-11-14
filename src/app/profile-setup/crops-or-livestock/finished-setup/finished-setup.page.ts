@@ -33,7 +33,9 @@ export class FinishedSetupPage implements OnInit {
     this.livestock = this.homeLivestockService.getLivestockData();
 
     const userId = this.user.userId;
+
     const allSelectedCropsName = this.crops.map((crop) => crop.name);
+
     const allSelectedLivestockName = this.livestock.map((item) => item.name);
 
     //Adding user selected crops and livestock in database

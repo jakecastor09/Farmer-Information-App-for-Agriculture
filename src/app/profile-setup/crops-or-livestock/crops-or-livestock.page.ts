@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
 import { ProfileSetupService } from '../profile-setup.service';
 
 @Component({
@@ -13,7 +14,8 @@ export class CropsOrLivestockPage implements OnInit {
 
   constructor(
     private route: Router,
-    private profileSetupService: ProfileSetupService
+    private profileSetupService: ProfileSetupService,
+    private navController: NavController
   ) {}
 
   ngOnInit() {}
@@ -38,5 +40,9 @@ export class CropsOrLivestockPage implements OnInit {
         '/profile-setup/crops-or-livestock/select-livestocks'
       );
     }
+  }
+
+  backBtnHandler() {
+    this.navController.navigateBack('/profile-setup/add-image');
   }
 }
