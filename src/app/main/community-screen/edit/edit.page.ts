@@ -65,8 +65,10 @@ export class EditPage implements OnInit {
           (post) => post.postId === postId
         )[0];
 
-        this.allImageSelected = this.selectedPost.image;
-        console.log(this.allImageSelected);
+        this.selectedPost.image.map((img) => this.allImageSelected.push(img));
+
+        // this.allImageSelected = [...this.selectedPost.image];
+        // console.log(this.allImageSelected);
       });
     });
     this.mainService.fetchUsers().subscribe((users) => {
@@ -87,43 +89,51 @@ export class EditPage implements OnInit {
       });
     }
     const allImageSelectedUrl = [];
-    if (this.allImageId.length >= 1 || this.allImageSelected.length >= 1) {
+    if (this.allImageId.length >= 1 || this.allImageSelected?.length >= 1) {
       setTimeout(() => {
-        this.allImageId.map((id, key) => {
-          const storage = firebase.storage();
-          storage
-            .ref(`community-post/${id}`)
-            .getDownloadURL()
-            .then((url) => {
-              allImageSelectedUrl.push(url);
-            })
-            .then(() => {
-              console.log('hellow ');
-              if (key === this.allImageId.length - 1) {
-                const alreadySelectedImage = this.allImageSelected.filter(
-                  (image) => image.slice(0, 5) === 'https'
-                );
-                const allSelectedImages = [
-                  ...alreadySelectedImage,
-                  ...allImageSelectedUrl,
-                ];
-                // const imagesSaveToDatabase =
-                console.log('update post');
-                this.communitySrvc.updatePost(
-                  this.selectedPost.key,
-                  allSelectedImages,
-                  form.value['write-post']
-                );
-              } else {
-                console.log('update Post');
-                this.communitySrvc.updatePost(
-                  this.selectedPost.key,
-                  allImageSelectedUrl,
-                  form.value['write-post']
-                );
-              }
-            });
-        });
+        if (this.allImageId.length >= 1) {
+          this.allImageId.map((id, key) => {
+            const storage = firebase.storage();
+            storage
+              .ref(`community-post/${id}`)
+              .getDownloadURL()
+              .then((url) => {
+                allImageSelectedUrl.push(url);
+              })
+              .then(() => {
+                console.log('hellow ');
+                if (key === this.allImageId.length - 1) {
+                  const alreadySelectedImage = this.allImageSelected.filter(
+                    (image) => image.slice(0, 5) === 'https'
+                  );
+                  const allSelectedImages = [
+                    ...alreadySelectedImage,
+                    ...allImageSelectedUrl,
+                  ];
+                  // const imagesSaveToDatabase =
+                  console.log('update post');
+                  this.communitySrvc.updatePost(
+                    this.selectedPost.key,
+                    allSelectedImages,
+                    form.value['write-post']
+                  );
+                } else {
+                  console.log('update Post');
+                  this.communitySrvc.updatePost(
+                    this.selectedPost.key,
+                    allImageSelectedUrl,
+                    form.value['write-post']
+                  );
+                }
+              });
+          });
+        } else {
+          this.communitySrvc.updatePost(
+            this.selectedPost.key,
+            this.allImageSelected,
+            form.value['write-post']
+          );
+        }
       }, 2000);
     } else {
       this.communitySrvc.updatePost(
