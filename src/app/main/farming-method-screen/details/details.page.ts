@@ -20,6 +20,7 @@ export class DetailsPage implements OnInit {
   data = {};
   nameOfFarmer = {};
   isSaved = false;
+  allFavorites = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -42,37 +43,69 @@ export class DetailsPage implements OnInit {
         });
     });
 
+    this.myFavoritesSrvc.fetchFavorites().subscribe((data) => {
+      this.allFavorites = data;
+      data.map((favorite) => {
+        if (favorite.farmingMethodId === this.farmingMethod.farmingMethodId) {
+          this.isSaved = true;
+        }
+      });
+    });
+
     this.nameOfFarmer = this.farmingMethodService.getFarmernName();
   }
   backBtnHandler() {
+    if (this.isSaved) {
+      const isAlreadySaved = this.allFavorites.some(
+        (favorites) =>
+          favorites.farmingMethodId === this.farmingMethod.farmingMethodId
+      );
+      if (!isAlreadySaved) {
+        this.myFavoritesSrvc
+          .addFavorite(this.farmingMethod.farmingMethodId, this.user.userId)
+          .subscribe(async () => {
+            const toast = await this.toastController.create({
+              message: 'Saved!',
+              duration: 800,
+              position: 'top',
+              color: 'light',
+            });
+
+            this.myFavoritesSrvc.fetchFavorites().subscribe((data) => {
+              this.allFavorites = data;
+            });
+
+            await toast.present();
+          });
+      }
+    }
+    if (!this.isSaved) {
+      const favoriteToDelete = this.allFavorites.filter(
+        (favorite) =>
+          favorite.farmingMethodId === this.farmingMethod.farmingMethodId
+      )[0];
+      if (favoriteToDelete) {
+        this.myFavoritesSrvc
+          .deleteFavorites(favoriteToDelete.key)
+          .subscribe(async () => {
+            const toast = await this.toastController.create({
+              message: 'Unsaved!',
+              duration: 800,
+              position: 'top',
+              color: 'danger',
+            });
+            this.myFavoritesSrvc.fetchFavorites().subscribe((data) => {
+              this.allFavorites = data;
+            });
+
+            await toast.present();
+          });
+      }
+    }
     // '/main/tabs/farming-method'
     this.location.back();
   }
   async saveClickHandler() {
     this.isSaved = !this.isSaved;
-    if (this.isSaved) {
-      const toast = await this.toastController.create({
-        message: 'Saved!',
-        duration: 800,
-        position: 'top',
-        color: 'light',
-      });
-
-      await toast.present();
-
-      this.myFavoritesSrvc
-        .addFavorite(this.farmingMethod.farmingMethodId, this.user.userId)
-        .subscribe();
-    }
-    if (!this.isSaved) {
-      const toast = await this.toastController.create({
-        message: 'Unsaved!',
-        duration: 800,
-        position: 'top',
-        color: 'danger',
-      });
-
-      await toast.present();
-    }
   }
 }
