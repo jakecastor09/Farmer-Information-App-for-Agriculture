@@ -2,5 +2,28 @@
   <div class="my-favorites">
     <app-page-header title="My Favorites"></app-page-header>
 
+    <div class="user-details__farming-methods">
+
+      <div class="card-item" *ngFor="let farmingMethod of userFarmingMethodSaved" (click)="onClickFarmingMethodHandler(farmingMethod.farmingMethodId
+            )">
+        <div class="card-item__first">
+          <img [src]="user.imgUrl" alt="">
+          <div class="card-item__first-name-details">
+            <h3>
+              {{user.firstName.charAt(0).toUpperCase() + user.firstName.slice(1) + ' ' + user.lastName.charAt(0).toUpperCase() + user.lastName.slice(1) }}
+            </h3>
+            <span>{{farmingMethod.date.toLocaleDateString("en-US") | date}}</span>
+          </div>
+        </div>
+        <div class="card-item__middle">
+          <p>{{farmingMethod.methods[0].title}}</p>
+        </div>
+        <div class="card-item__last">
+          <div class="card-item__last-name">{{farmingMethod.name}}
+          </div>
+          <div class="card-item__last-hectares">{{farmingMethod.hectares}} ha</div>
+        </div>
+      </div>
+    </div>
   </div>
 </ion-content>

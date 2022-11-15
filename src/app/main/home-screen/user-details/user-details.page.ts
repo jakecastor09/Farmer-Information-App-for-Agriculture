@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PresenceService } from 'src/app/auth-page/presence.service';
@@ -23,7 +24,8 @@ export class UserDetailsPage implements OnInit {
     private route: ActivatedRoute,
     private farmingMethodSrvc: FarmingMethodService,
     private presenceSrvc: PresenceService,
-    private router: Router
+    private router: Router,
+    private location: Location
   ) {}
 
   ngOnInit() {
@@ -90,5 +92,8 @@ export class UserDetailsPage implements OnInit {
     }
 
     return yearsDifference;
+  }
+  backBtn() {
+    this.location.back();
   }
 }

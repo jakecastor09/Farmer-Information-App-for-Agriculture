@@ -4,6 +4,7 @@ import { HomeCropsService } from 'src/app/main/home-screen/home-crops.service';
 import { ProfileSetupService } from '../../profile-setup.service';
 import { MainService } from 'src/app/main/main.service';
 import { NavController } from '@ionic/angular';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-select-crops',
@@ -18,7 +19,8 @@ export class SelectCropsPage implements OnInit {
     private homeCropSvc: HomeCropsService,
     private profileSetupService: ProfileSetupService,
     private mainService: MainService,
-    private navController: NavController
+    private navController: NavController,
+    private location: Location
   ) {}
 
   ngOnInit() {}
@@ -46,6 +48,6 @@ export class SelectCropsPage implements OnInit {
     this.selectedCrops[name] = !this.selectedCrops[name];
   }
   backBtnHandler() {
-    this.navController.navigateBack('/profile-setup/crops-or-livestock');
+    this.location.back();
   }
 }

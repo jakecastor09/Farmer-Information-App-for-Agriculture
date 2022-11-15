@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -16,7 +17,8 @@ export class SelectLivestocksPage implements OnInit {
     private http: HttpClient,
     private router: Router,
     private homeLivestockSvc: HomeLivestockService,
-    private mainService: MainService
+    private mainService: MainService,
+    private location: Location
   ) {}
 
   ngOnInit() {
@@ -35,5 +37,8 @@ export class SelectLivestocksPage implements OnInit {
   }
   selectLivestockHandlerClick(name: string) {
     this.selectedLivestock[name] = !this.selectedLivestock[name];
+  }
+  backBtnHandler() {
+    this.location.back();
   }
 }

@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoadingController, NavController } from '@ionic/angular';
@@ -26,7 +27,8 @@ export class AgriculturePage implements OnInit {
     private homeLivestockService: HomeLivestockService,
     private mainService: MainService,
     private navController: NavController,
-    private loadingCtrl: LoadingController
+    private loadingCtrl: LoadingController,
+    private location: Location
   ) {}
 
   ngOnInit() {
@@ -119,7 +121,7 @@ export class AgriculturePage implements OnInit {
       });
   }
   cancel() {
-    this.navController.navigateBack('/main/tabs/profile');
+    this.location.back();
   }
 
   async showLoading() {

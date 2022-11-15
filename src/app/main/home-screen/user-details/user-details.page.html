@@ -1,6 +1,6 @@
 <ion-content class="ion-padding"
   *ngIf="userPresence.status && userSelectedCrops && userSelectedLivestock && userFarmingMethod">
-  <div class="back-btn" routerLink="/main/tabs/home">
+  <div class="back-btn" (click)="backBtn()">
     <ion-icon class="back-btn--icon" name="arrow-back-outline"></ion-icon>
   </div>
   <div class="user-details">
@@ -45,7 +45,6 @@
       <h3>Posted farming methods</h3>
       <div class="card-item" *ngFor="let farmingMethod of userFarmingMethod" (click)="onClickFarmingMethodHandler(farmingMethod.farmingMethodId
       )">
-
         <div class="card-item__first">
           <img [src]="user.imgUrl" alt="">
           <div class="card-item__first-name-details">
