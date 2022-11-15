@@ -11,7 +11,11 @@ import { MyFavoritesService } from './my-favorites.service';
   styleUrls: ['./my-favorites.page.scss'],
 })
 export class MyFavoritesPage implements OnInit {
+  farmingMethodUserInfo = {
+    farminMethodId: { firstName: '', lastName: '', imgUrl: '' },
+  };
   user: User;
+  allUser = [];
   allFavorites = [];
   allFarmingMethods = [];
   userSavedFavorites = [];
@@ -42,14 +46,29 @@ export class MyFavoritesPage implements OnInit {
           })
         );
 
+        this.mainService.getAllUser().map((user) => {
+          console.log(user);
+          this.userFarmingMethodSaved.map((farmingMethod) => {
+            if (user.userId === farmingMethod.userId) {
+              this.farmingMethodUserInfo[farmingMethod.farmingMethodId] = {
+                firstName: user.firstName,
+                lastName: user.lastName,
+                imgUrl: user.imgUrl,
+              };
+            }
+          });
+        });
+
         //this data i need to display favorites
         console.log(this.userFarmingMethodSaved);
+        console.log(this.farmingMethodUserInfo);
       });
     });
   }
 
   ionViewWillEnter() {
     this.user = this.mainService.getUser();
+
     this.farmingMethodService.getAllUserFarmingMethod().subscribe((method) => {
       this.allFarmingMethods = method;
       this.favoriteService.fetchFavorites().subscribe((data) => {
@@ -65,6 +84,19 @@ export class MyFavoritesPage implements OnInit {
             }
           })
         );
+
+        this.mainService.getAllUser().map((user) => {
+          console.log(user);
+          this.userFarmingMethodSaved.map((farmingMethod) => {
+            if (user.userId === farmingMethod.userId) {
+              this.farmingMethodUserInfo[farmingMethod.farmingMethodId] = {
+                firstName: user.firstName,
+                lastName: user.lastName,
+                imgUrl: user.imgUrl,
+              };
+            }
+          });
+        });
 
         //this data i need to display favorites
         console.log(this.userFarmingMethodSaved);
