@@ -39,4 +39,7 @@ export class ProfileScreenPage implements OnInit {
       '/main/tabs/profile/my-methods/' + this.user.userId
     );
   }
+  myFavorites() {
+    this.router.navigateByUrl('/main/tabs/profile/my-favorites');
+  }
 }
