@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { AuthPageService } from 'src/app/auth-page/auth-page.service';
 import { PresenceService } from 'src/app/auth-page/presence.service';
+import { FarmingMethodService } from '../farming-method-screen/farming-method.service';
 import { MainService } from '../main.service';
 import { HomeCropsService } from './home-crops.service';
 import { HomeLivestockService } from './home-livestock.service';
@@ -46,10 +47,14 @@ export class HomeScreenPage implements OnInit {
     private authService: AuthPageService,
     private http: HttpClient,
     private presence: PresenceService,
-    private route: NavController
+    private route: NavController,
+    private farmingMethodService: FarmingMethodService
   ) {}
 
   ngOnInit() {
+    //Testing
+    this.farmingMethodService.allUserFarmingMethod.subscribe();
+    // -------------------------
     this._presence = this.presence.getPresence(
       this.authService.userLoginLocalId
     );

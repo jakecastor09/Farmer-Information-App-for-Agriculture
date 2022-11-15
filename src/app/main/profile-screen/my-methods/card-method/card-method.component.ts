@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-card-method',
@@ -12,7 +13,16 @@ export class CardMethodComponent implements OnInit {
   @Input() methods;
   @Input() userName;
   @Input() userImg;
-  constructor() {}
+  @Input() userId;
+  constructor(private router: Router) {}
 
   ngOnInit() {}
+
+  navigateMethodList(name) {
+    if (this.userName) {
+      this.router.navigateByUrl(
+        `/main/tabs/profile/my-methods/${this.userId}/method-list/${name}`
+      );
+    }
+  }
 }

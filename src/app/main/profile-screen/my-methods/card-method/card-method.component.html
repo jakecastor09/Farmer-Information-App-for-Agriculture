@@ -8,11 +8,11 @@
   </div>
 
   <div class="card-method__message" *ngIf="!methods">
-    <p class="card-method__message--text">You don't have a {{name}} agriculture practice.</p>
+    <p class="card-method__message--text">You don't have {{name}} agriculture practices.</p>
     <button class="card-method__message--btn" [routerLink]="['/main/tabs/farming-method/add']">Add Farming
       Method</button>
   </div>
-  <div class="method-list" *ngIf="methods">
+  <div class="method-list" *ngIf="methods" (click)="navigateMethodList(name)">
     <div class="card-item" *ngFor="let method of methods">
       <div class="card-item__first">
         <img [src]="userImg" alt="">

@@ -9,7 +9,7 @@
       <app-card-method *ngFor="let name of cropsName" [userImg]="userImg"
         [name]="name.charAt(0).toUpperCase() + name.slice(1)" [icon]="setIcon(name)"
         [cardColor]="setColor('crops',cropsName.indexOf(name))" [methods]="userFarmingMethod[name.toLowerCase()]"
-        [userName]="userName" (click)="navigateMethodList(name)">
+        [userName]="userName" [userId]="_userId">
       </app-card-method>
 
     </div>
@@ -17,8 +17,7 @@
       <h3>Livestock</h3>
       <app-card-method *ngFor="let name of livestockName" [userImg]="userImg"
         [name]="name.charAt(0).toUpperCase() + name.slice(1)"
-        [cardColor]="setColor('livestock',livestockName.indexOf(name))" [icon]="setIcon(name)"
-        (click)="navigateMethodList(name)">
+        [cardColor]="setColor('livestock',livestockName.indexOf(name))" [icon]="setIcon(name)" [userId]="_userId">
       </app-card-method>
 
 

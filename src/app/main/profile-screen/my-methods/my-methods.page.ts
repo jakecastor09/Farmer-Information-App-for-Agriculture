@@ -87,11 +87,6 @@ export class MyMethodsPage implements OnInit {
     }
   }
 
-  navigateMethodList(name) {
-    this.router.navigateByUrl(
-      `/main/tabs/profile/my-methods/${this._userId}/method-list/${name}`
-    );
-  }
   backBtnHandler() {
     this.navController.navigateBack('/main/tabs/profile');
   }
