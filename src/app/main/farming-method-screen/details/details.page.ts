@@ -54,7 +54,7 @@ export class DetailsPage implements OnInit {
 
     this.nameOfFarmer = this.farmingMethodService.getFarmernName();
   }
-  backBtnHandler() {
+  ionViewDidLeave() {
     if (this.isSaved) {
       const isAlreadySaved = this.allFavorites.some(
         (favorites) =>
@@ -64,18 +64,9 @@ export class DetailsPage implements OnInit {
         this.myFavoritesSrvc
           .addFavorite(this.farmingMethod.farmingMethodId, this.user.userId)
           .subscribe(async () => {
-            const toast = await this.toastController.create({
-              message: 'Saved!',
-              duration: 800,
-              position: 'top',
-              color: 'light',
-            });
-
             this.myFavoritesSrvc.fetchFavorites().subscribe((data) => {
               this.allFavorites = data;
             });
-
-            await toast.present();
           });
       }
     }
@@ -88,24 +79,37 @@ export class DetailsPage implements OnInit {
         this.myFavoritesSrvc
           .deleteFavorites(favoriteToDelete.key)
           .subscribe(async () => {
-            const toast = await this.toastController.create({
-              message: 'Unsaved!',
-              duration: 800,
-              position: 'top',
-              color: 'danger',
-            });
             this.myFavoritesSrvc.fetchFavorites().subscribe((data) => {
               this.allFavorites = data;
             });
-
-            await toast.present();
           });
       }
     }
+  }
+  backBtnHandler() {
     // '/main/tabs/farming-method'
     this.location.back();
   }
   async saveClickHandler() {
     this.isSaved = !this.isSaved;
+
+    if (this.isSaved) {
+      const toast = await this.toastController.create({
+        message: 'Saved!',
+        duration: 800,
+        position: 'top',
+        color: 'danger',
+      });
+
+      await toast.present();
+    } else {
+      const toast = await this.toastController.create({
+        message: 'Unsaved!',
+        duration: 800,
+        position: 'top',
+        color: 'light',
+      });
+      await toast.present();
+    }
   }
 }
