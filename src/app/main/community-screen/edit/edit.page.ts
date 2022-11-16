@@ -9,6 +9,7 @@ import firebase from 'firebase/compat/app';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { NgForm } from '@angular/forms';
 import { timeStamp } from 'console';
+import { LoadingController } from '@ionic/angular';
 
 const base64toBlob = (base64Data, contentType) => {
   contentType = contentType || '';
@@ -52,7 +53,8 @@ export class EditPage implements OnInit {
     private mainService: MainService,
     private authSrvc: AuthPageService,
     private communitySrvc: CommunityService,
-    private storage: AngularFireStorage
+    private storage: AngularFireStorage,
+    private loadingCtrl: LoadingController
   ) {}
 
   ngOnInit() {
@@ -80,7 +82,11 @@ export class EditPage implements OnInit {
   }
   ionViewWillEnter() {}
 
-  onSubmit(form: NgForm) {
+  async onSubmit(form: NgForm) {
+    const loading = await this.loadingCtrl.create({
+      message: 'Updating post...',
+    });
+    loading.present();
     if (this.allImageFileChoose.length >= 1) {
       this.allImageFileChoose.map((item) => {
         if (item.slice(0, 5) !== 'https') {
@@ -142,6 +148,11 @@ export class EditPage implements OnInit {
         form.value['write-post']
       );
     }
+
+    setTimeout(() => {
+      this.loadingCtrl.dismiss();
+      this.router.navigateByUrl('/main/tabs/community');
+    }, 3000);
   }
 
   getPosts() {}
