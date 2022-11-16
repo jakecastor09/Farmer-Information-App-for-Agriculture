@@ -1,6 +1,6 @@
 <div class="edit__header-button">
   <div class="add-modal__header-button--cancel" (click)="cancel()">Cancel</div>
-  <div class="add-modal__header-button--add" (click)="confirm()">Add</div>
+  <div class="add-modal__header-button--add" *ngIf="title && message" (click)="confirm()">Add</div>
 </div>
 
 <ion-content class="ion-padding">

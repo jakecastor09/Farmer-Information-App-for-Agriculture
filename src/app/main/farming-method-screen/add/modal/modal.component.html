@@ -1,6 +1,9 @@
 <div class="add-modal__header-button">
   <div class="add-modal__header-button--cancel" (click)="cancel()">Cancel</div>
-  <div class="add-modal__header-button--add" (click)="confirm()">Add</div>
+  <div class="add-modal__header-button--add" *ngIf="agriDetails.name &&
+  agriDetails.hectares &&
+  farmingMethod.title &&
+  farmingMethod.message" (click)="confirm()">Add</div>
 </div>
 <ion-content class="ion-padding">
   <div class="add-modal">

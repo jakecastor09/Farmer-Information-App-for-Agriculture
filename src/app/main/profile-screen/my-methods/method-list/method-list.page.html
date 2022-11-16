@@ -3,27 +3,39 @@
   <div class="back-btn" (click)="backBtn()">
     <ion-icon class="back-btn--icon" name="arrow-back-outline"></ion-icon>
   </div>
-  <div class="method-list">
-    <div class="card-item" *ngFor="let farmingMethod of allSelectedMethod" (click)="onClickFarmingMethodHandler(farmingMethod.farmingMethodId
-  )">
-      <div class="card-item__first">
-        <img [src]="user.imgUrl" alt="">
-        <div class="card-item__first-name-details">
-          <h3>
-            {{user.firstName.charAt(0).toUpperCase() + user.firstName.slice(1) + ' ' + user.lastName.charAt(0).toUpperCase() + user.lastName.slice(1) }}
-          </h3>
-          <span>{{farmingMethod.date.toLocaleDateString("en-US") | date}}</span>
-        </div>
-      </div>
-      <div class="card-item__middle">
-        <p>{{farmingMethod.methods[0].title}}</p>
-      </div>
-      <div class="card-item__last">
-        <div class="card-item__last-name">{{farmingMethod.name}}
-        </div>
-        <div class="card-item__last-hectares">{{farmingMethod.hectares}} ha</div>
+  <ion-list>
+    <div class="method-list">
+      <div class="method-list__item" *ngFor="let farmingMethod of allSelectedMethod" style="margin-bottom:1rem">
+        <ion-item-sliding>
+          <ion-item lines="none" class="ion-no-padding">
+            <div class="card-item" (click)="onClickFarmingMethodHandler(farmingMethod.farmingMethodId
+            )">
+              <div class="card-item__first">
+                <img [src]="user.imgUrl" alt="">
+                <div class="card-item__first-name-details">
+                  <h3>
+                    {{user.firstName.charAt(0).toUpperCase() + user.firstName.slice(1) + ' ' + user.lastName.charAt(0).toUpperCase() + user.lastName.slice(1) }}
+                  </h3>
+                  <span>{{farmingMethod.date.toLocaleDateString("en-US") | date}}</span>
+                </div>
+              </div>
+              <div class="card-item__middle">
+                <p>{{farmingMethod.methods[0].title}}</p>
+              </div>
+              <div class="card-item__last">
+                <div class="card-item__last-name">{{farmingMethod.name}}
+                </div>
+                <div class="card-item__last-hectares">{{farmingMethod.hectares}} ha</div>
+              </div>
+            </div>
+          </ion-item>
+          <ion-item-options>
+            <ion-item-option color="danger"
+              (click)="deleteClickHandler(farmingMethod.key,farmingMethod.farmingMethodId)">Delete</ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
       </div>
     </div>
-  </div>
+  </ion-list>
 
 </ion-content>

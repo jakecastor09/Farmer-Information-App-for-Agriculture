@@ -1,15 +1,18 @@
 .method-list {
   margin-top: 4rem;
+  &__item {
+    border-top: 1px solid rgba(60, 64, 67, 0.3);
+    border-bottom: 1px solid rgba(60, 64, 67, 0.3);
+  }
 }
 .card-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: #2e322f;
-  margin-top: 1rem;
   border-radius: 15px;
   padding: 1.4rem;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  width: 100%;
   &__first {
     display: flex;
     min-width: 120px;

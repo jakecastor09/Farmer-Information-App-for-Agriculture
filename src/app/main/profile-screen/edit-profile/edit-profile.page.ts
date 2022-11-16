@@ -160,6 +160,7 @@ export class EditProfilePage implements OnInit {
             'image/jpeg'
           );
           this.imageFileChoose = imageFile;
+          this.selectedImage = image.dataUrl;
         } catch (error) {
           //prompt the user that the image provided can't use
           console.log(error);

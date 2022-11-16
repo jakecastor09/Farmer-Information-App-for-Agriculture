@@ -29,6 +29,7 @@ export class MethodListPage implements OnInit {
   ngOnInit() {
     this.user = this.mainService.getUser();
     this.farmingMethodService.getAllUserFarmingMethod().subscribe((data) => {
+      console.log(data);
       this.allSelectedMethod = data.filter((farmingMethod) => {
         if (
           farmingMethod.userId === this.user.userId &&
@@ -47,5 +48,26 @@ export class MethodListPage implements OnInit {
   }
   backBtn() {
     this.location.back();
+  }
+  deleteClickHandler(key: string, farmingMethodId: string) {
+    this.farmingMethodService
+      .deleteFarmingMethod(key, farmingMethodId)
+      .subscribe(() => {
+        this.user = this.mainService.getUser();
+        this.farmingMethodService
+          .getAllUserFarmingMethod()
+          .subscribe((data) => {
+            console.log(data);
+            this.allSelectedMethod = data.filter((farmingMethod) => {
+              if (
+                farmingMethod.userId === this.user.userId &&
+                farmingMethod.name.toLowerCase() === this.name.toLowerCase()
+              ) {
+                return farmingMethod;
+              }
+            });
+            console.log(this.allSelectedMethod);
+          });
+      });
   }
 }

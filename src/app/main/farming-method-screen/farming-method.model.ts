@@ -1,5 +1,6 @@
 export class FarmingMethod {
   constructor(
+    public key: string,
     public userId: string,
     public farmingMethodId: string,
     public name: string,

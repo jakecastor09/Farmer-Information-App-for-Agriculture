@@ -13,8 +13,8 @@ import { ProfileSetupService } from '../../profile-setup.service';
 })
 export class FinishedSetupPage implements OnInit {
   user: User;
-  crops;
-  livestock;
+  crops = [];
+  livestock = [];
   constructor(
     private router: Router,
     private profileSetupService: ProfileSetupService,
@@ -34,7 +34,7 @@ export class FinishedSetupPage implements OnInit {
 
     const userId = this.user.userId;
 
-    const allSelectedCropsName = this.crops.map((crop) => crop.name);
+    const allSelectedCropsName = this.crops?.map((crop) => crop.name);
 
     const allSelectedLivestockName = this.livestock.map((item) => item.name);
 

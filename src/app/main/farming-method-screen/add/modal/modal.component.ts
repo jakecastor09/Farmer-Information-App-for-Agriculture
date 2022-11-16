@@ -36,16 +36,23 @@ export class ModalComponent implements OnInit {
   }
 
   confirm() {
-    this.addService.addMethod(this.farmingMethod);
+    if (
+      this.agriDetails.name &&
+      this.agriDetails.hectares &&
+      this.farmingMethod.title &&
+      this.farmingMethod.message
+    ) {
+      this.addService.addMethod(this.farmingMethod);
 
-    if (!this.isHaveTitleandHectares) {
-      this.addService.setNameAndHectares(
-        this.agriDetails.name,
-        this.agriDetails.hectares
-      );
+      if (!this.isHaveTitleandHectares) {
+        this.addService.setNameAndHectares(
+          this.agriDetails.name,
+          this.agriDetails.hectares
+        );
+      }
+
+      return this.modalCtrl.dismiss(this._name, 'confirm');
     }
-
-    return this.modalCtrl.dismiss(this._name, 'confirm');
   }
 
   btnAdd() {

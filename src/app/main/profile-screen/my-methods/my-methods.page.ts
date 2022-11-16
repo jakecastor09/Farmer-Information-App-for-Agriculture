@@ -64,7 +64,6 @@ export class MyMethodsPage implements OnInit {
       .sort();
 
     //get all the livestock name and assign to livestockname variable
-
     this.livestockName = this.mainService
       .getAllLivestockData()
       .map((item) => item.name)
@@ -87,6 +86,11 @@ export class MyMethodsPage implements OnInit {
     }
   }
 
+  navigateMethodList(name) {
+    this.router.navigateByUrl(
+      `/main/tabs/profile/my-methods/${this._userId}/method-list/${name}`
+    );
+  }
   backBtnHandler() {
     this.navController.navigateBack('/main/tabs/profile');
   }

@@ -47,6 +47,7 @@ export class FarmingMethodService {
               console.log(key);
               farmingMethods.push(
                 new FarmingMethod(
+                  key,
                   reponseData[key].userId,
                   reponseData[key].farmingMethodId,
                   reponseData[key].name,
@@ -82,6 +83,7 @@ export class FarmingMethodService {
 
     const { name, hectares, methods } = publishData;
     const date = new Date();
+    const key = '';
     const userId = this.authService.userLoginLocalId;
     const farmingMethodId =
       Math.floor(Math.random() * 100) +
@@ -89,6 +91,7 @@ export class FarmingMethodService {
       Math.floor(Math.random() * 100) +
       '';
     const newFarmingMethod = new FarmingMethod(
+      key,
       userId,
       farmingMethodId,
       name,
@@ -100,7 +103,7 @@ export class FarmingMethodService {
     return this.http
       .post(
         'https://agri-app-96063-default-rtdb.firebaseio.com/farming-methods.json',
-        { ...newFarmingMethod }
+        { ...newFarmingMethod, key: null }
       )
       .pipe(
         switchMap((responseData) => this._allUserFarmingMethod),
@@ -116,5 +119,22 @@ export class FarmingMethodService {
     // this.allUserFarmingMethod.push(newFarmingMethod);
 
     // this.router.navigateByUrl('/main/tabs/farming-method');
+  }
+  deleteFarmingMethod(documentId: string, farmingMethodId: string) {
+    return this.http
+      .delete(
+        `https://agri-app-96063-default-rtdb.firebaseio.com/farming-methods/${documentId}.json`
+      )
+      .pipe(
+        switchMap((reponseData) => this._allUserFarmingMethod),
+        take(1),
+        tap((farmingMethod) => {
+          this._allUserFarmingMethod.next(
+            farmingMethod.filter(
+              (item) => item.farmingMethodId === farmingMethodId
+            )
+          );
+        })
+      );
   }
 }
