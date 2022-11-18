@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthPageService } from 'src/app/auth-page/auth-page.service';
 import { FarmingMethodService } from '../../farming-method-screen/farming-method.service';
 import { MainService } from '../../main.service';
 import { User } from '../../user.model';
@@ -24,12 +25,15 @@ export class MyFavoritesPage implements OnInit {
     private mainService: MainService,
     private favoriteService: MyFavoritesService,
     private farmingMethodService: FarmingMethodService,
-    private router: Router
+    private router: Router,
+    private authService: AuthPageService
   ) {}
 
   ngOnInit() {}
   ionViewDidEnter() {
-    this.user = this.mainService.getUser();
+    this.user = this.mainService.getCurrentUser(
+      this.authService.userLoginLocalId
+    );
     this.farmingMethodService.getAllUserFarmingMethod().subscribe((method) => {
       this.allFarmingMethods = method;
       this.favoriteService.fetchFavorites().subscribe((data) => {
@@ -67,7 +71,9 @@ export class MyFavoritesPage implements OnInit {
   }
 
   ionViewWillEnter() {
-    this.user = this.mainService.getUser();
+    this.user = this.mainService.getCurrentUser(
+      this.authService.userLoginLocalId
+    );
 
     this.farmingMethodService.getAllUserFarmingMethod().subscribe((method) => {
       this.allFarmingMethods = method;

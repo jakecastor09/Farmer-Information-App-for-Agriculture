@@ -135,14 +135,21 @@
 .comment {
   display: flex;
   justify-content: space-between;
+  padding: 0.6rem 1.2rem;
+  width: 12rem;
   align-items: center;
-  background-color: #e5e5e5;
-  padding: 1rem;
-  border-radius: 5px;
-  font-size: 1.6rem;
+  background: #2e322f;
+  color: #ffffff;
+  border-radius: 1rem;
+  margin: 1rem;
+  transform: translateY(-12px);
+}
+.comment__text,
+.comment__count {
+  font-size: 1.1rem;
 }
 .comment > ion-icon {
-  font-size: 2rem;
+  font-size: 1.8rem;
 }
 
 .icons {

@@ -81,4 +81,7 @@ export class CommunityScreenPage implements OnInit {
   editPostClickHandler(postId: string) {
     this.router.navigateByUrl('/main/tabs/community/edit/' + postId);
   }
+  commentsClickHandler(postId: string) {
+    this.router.navigateByUrl('/main/tabs/community/comments/' + postId);
+  }
 }

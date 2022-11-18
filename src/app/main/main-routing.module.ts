@@ -122,6 +122,13 @@ const routes: Routes = [
                 (m) => m.EditPageModule
               ),
           },
+          {
+            path: 'comments/:commentId',
+            loadChildren: () =>
+              import('./community-screen/comment/comment.module').then(
+                (m) => m.CommentPageModule
+              ),
+          },
         ],
       },
       {

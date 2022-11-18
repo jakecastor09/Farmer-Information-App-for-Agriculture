@@ -15,7 +15,7 @@ export class CommunityService {
   addPost(
     message: string,
     image: Array<string>,
-    comment: Array<string>,
+    comment: Array<object>,
     userId: string,
     fullName: string,
     date: Date,
@@ -102,7 +102,6 @@ export class CommunityService {
   }
 
   updatePost(documentId: string, image: Array<string>, message: string) {
-    console.log('Update Post');
     let oldPost;
     this._allPost.subscribe((post) =>
       post.map((item) => {
@@ -131,5 +130,52 @@ export class CommunityService {
         { ...updatedPost }
       )
       .subscribe();
+  }
+
+  addComments(
+    documentId: string,
+    fullName: string,
+    comment: string,
+    userImg: string
+  ) {
+    let oldPost;
+    this._allPost.subscribe((post) =>
+      post.map((item) => {
+        if (item.key === documentId) {
+          oldPost = item;
+          console.log(oldPost);
+        }
+      })
+    );
+
+    let commentData;
+    if (oldPost?.comment?.length >= 1) {
+      commentData = [...oldPost.comment, { fullName, comment, userImg }];
+    } else {
+      commentData = [{ fullName, comment, userImg }];
+    }
+
+    const updatedPost = new CommunityPost(
+      oldPost.key,
+      oldPost.postId,
+      oldPost.message,
+      oldPost.image,
+      commentData,
+      oldPost.userId,
+      fullName,
+      oldPost.date,
+      userImg
+    );
+
+    return this.http
+      .put(
+        `https://agri-app-96063-default-rtdb.firebaseio.com/community-post/${documentId}.json`,
+        { ...updatedPost }
+      )
+      .pipe(
+        switchMap((responseData) => this._allPost),
+        take(1),
+        tap((post) => this._allPost.next(post))
+      );
   }
 }

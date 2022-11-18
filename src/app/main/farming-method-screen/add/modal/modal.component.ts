@@ -36,12 +36,7 @@ export class ModalComponent implements OnInit {
   }
 
   confirm() {
-    if (
-      this.agriDetails.name &&
-      this.agriDetails.hectares &&
-      this.farmingMethod.title &&
-      this.farmingMethod.message
-    ) {
+    if (this.farmingMethod.title && this.farmingMethod.message) {
       this.addService.addMethod(this.farmingMethod);
 
       if (!this.isHaveTitleandHectares) {

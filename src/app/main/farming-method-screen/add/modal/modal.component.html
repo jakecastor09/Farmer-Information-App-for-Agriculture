@@ -1,7 +1,6 @@
 <div class="add-modal__header-button">
   <div class="add-modal__header-button--cancel" (click)="cancel()">Cancel</div>
-  <div class="add-modal__header-button--add" *ngIf="agriDetails.name &&
-  agriDetails.hectares &&
+  <div class="add-modal__header-button--add" *ngIf="
   farmingMethod.title &&
   farmingMethod.message" (click)="confirm()">Add</div>
 </div>
@@ -10,7 +9,7 @@
     <div class="add-modal__details" *ngIf="!isHaveTitleandHectares">
       <ion-item>
         <ion-label position="stacked">Crops/Livestock</ion-label>
-        <ion-input autocapitalize="on" [(ngModel)]="agriDetails.name"></ion-input>
+        <ion-input autocapitalize="on" type="text" [(ngModel)]="agriDetails.name"></ion-input>
       </ion-item>
       <div class="add-modal__hectares">
         <input type="text" [value]="agriDetails.hectares + ' ha'">

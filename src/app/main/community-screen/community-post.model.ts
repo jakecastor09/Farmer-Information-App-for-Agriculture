@@ -4,7 +4,7 @@ export class CommunityPost {
     public postId: string,
     public message: string,
     public image: Array<string>,
-    public comment: Array<string>,
+    public comment: Array<object>,
     public userId: string,
     public fullName: string,
     public date: Date,

@@ -1,0 +1,58 @@
+<ion-content class="ion-padding-vertical">
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <app-page-header title="Comments"></app-page-header>
+  <div class="back-btn" (click)="backBtnHandler()" defaultHref="'/main/tabs/farming-method'">
+    <ion-icon class="back-btn--icon" name="arrow-back-outline"></ion-icon>
+  </div>
+  <div class="border-line" style="margin-top:2rem"></div>
+  <div class="user-post">
+    <div class="user-post__header">
+      <img class="user-post__profile" [src]="user?.imgUrl" alt="">
+      <div class="user-post__details">
+        <h3 class="user-post__name">{{post.fullName}}</h3>
+        <span class="user-post__time">2 hours ago</span>
+      </div>
+      <div class="user-post__dropdown"></div>
+    </div>
+    <div class="user-post__images" *ngIf="post">
+      <div *ngFor="let image of post.image">
+        <img class="user-post__img" *ngIf="image" [src]="image" />
+      </div>
+    </div>
+    <div class="user-post__content">
+      {{post.message}}
+    </div>
+    <div class="border-line" style="margin-top:1rem"></div>
+
+    <div class="user-post__write-comments">
+      <input class="user-post__write-comments--input" [(ngModel)]="inputComment" type="text"
+        placeholder="Write a comment...">
+      <ion-icon (click)="submitCommentClickHandler()" name="send-outline" class="user-post__write-comments--icon">
+      </ion-icon>
+
+    </div>
+
+    <div class="border-line"></div>
+
+  </div>
+  <div class="comments">
+    <div class="comments__btn">
+      <span>All Comments</span>
+      <span>{{post?.comment?.length}}</span>
+      <ion-icon name="caret-down-outline"></ion-icon>
+    </div>
+
+    <div class="comments__list">
+      <div class="comments__item" *ngFor="let comment of post?.comment">
+        <img class="comments__userImg" [src]='comment?.userImg' />
+        <div class="comments__content">
+          <span class="comments__username">{{comment?.fullName}}</span>
+          <p class="comments__message">{{comment?.comment}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</ion-content>
