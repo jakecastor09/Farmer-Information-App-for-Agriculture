@@ -17,6 +17,7 @@ export class CommentPage implements OnInit {
   user: User;
   inputComment;
   postId;
+  showComments = false;
 
   constructor(
     private location: Location,
@@ -31,7 +32,6 @@ export class CommentPage implements OnInit {
       this.postId = paramMap.commentId;
       this.communityService.getAllPost().subscribe((allPost) => {
         this.post = allPost.filter((post) => post.postId === this.postId)[0];
-        console.log(this.post);
       });
 
       this.mainService.fetchUsers().subscribe((data) => {
@@ -39,7 +39,6 @@ export class CommentPage implements OnInit {
           (user) => this.authService.userLoginLocalId === user.userId
         )[0];
       });
-      console.log(this.user);
     });
   }
   backBtnHandler() {
@@ -79,5 +78,8 @@ export class CommentPage implements OnInit {
         event.target.complete();
       });
     });
+  }
+  showCommentsClickHandler() {
+    this.showComments = !this.showComments;
   }
 }

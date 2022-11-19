@@ -51,10 +51,10 @@ export class AddService {
       return { ...item, id: newId };
     });
   }
-  updateMethod(id, title, message) {
+  updateMethod(id, title, message, img) {
     this.farmingMethod.methods = this.farmingMethod.methods.map((item) => {
       if (item.id === id) {
-        return { ...item, title, message };
+        return { ...item, title, message, img };
       }
       return item;
     });

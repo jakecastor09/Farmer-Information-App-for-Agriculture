@@ -38,13 +38,14 @@
 
   </div>
   <div class="comments">
-    <div class="comments__btn">
-      <span>All Comments</span>
+    <div class="comments__btn" (click)="showCommentsClickHandler()">
+      <span>View comments</span>
       <span>{{post?.comment?.length}}</span>
-      <ion-icon name="caret-down-outline"></ion-icon>
+      <ion-icon name="caret-down-circle-outline" class="comments__icon" *ngIf="!showComments"></ion-icon>
+      <ion-icon name="caret-down-circle" class="comments__icon" *ngIf="showComments"></ion-icon>
     </div>
 
-    <div class="comments__list">
+    <div class="comments__list" *ngIf="showComments">
       <div class="comments__item" *ngFor="let comment of post?.comment">
         <img class="comments__userImg" [src]='comment?.userImg' />
         <div class="comments__content">

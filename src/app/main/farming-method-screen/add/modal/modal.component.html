@@ -23,8 +23,15 @@
         </div>
       </div>
     </div>
-
     <ion-list class="add-modal__input-field">
+      <div class="add-modal__add-image">
+        <ion-icon *ngIf="selectedImage" class="add-modal__delete-icon" name="close-circle-sharp"
+          (click)="deleteImgClickHandler()">
+        </ion-icon>
+        <img [src]="selectedImage" alt="" class="add-modal__img" *ngIf="selectedImage">
+        <ion-button style="margin-bottom:2.4rem" color="dark" (click)="addImageClickHandler()">Add Image</ion-button>
+      </div>
+
       <ion-item>
         <ion-label position="floating">Title</ion-label>
         <ion-input [(ngModel)]="farmingMethod.title"></ion-input>

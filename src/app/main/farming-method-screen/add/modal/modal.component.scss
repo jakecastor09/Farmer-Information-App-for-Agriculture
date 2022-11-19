@@ -18,6 +18,25 @@
   &__input-field {
     margin-top: 3rem;
   }
+  &__add-image {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: center;
+    position: relative;
+  }
+  &__img {
+    width: 100%;
+    height: 20rem;
+    object-fit: cover;
+  }
+  &__delete-icon {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    color: #d9534f;
+    font-size: 2.4rem;
+    box-shadow: rgba(99, 99, 99, 0.5) 0px 2px 8px 0px;
+  }
   &__hectares {
     display: flex;
     justify-content: flex-end;

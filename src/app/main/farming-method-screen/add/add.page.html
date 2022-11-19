@@ -19,6 +19,7 @@
         <ion-icon name="trash-outline" class="add-farming-method__content--icons--delete"
           (click)="onDeleteClickHandler(data.id)"></ion-icon>
       </div>
+      <img *ngIf="data.img" [src]="data.img" alt="" class="add-farming-method__added-img">
       <app-title [title]="data.title"></app-title>
       <app-message [message]="data.message"></app-message>
     </div>
