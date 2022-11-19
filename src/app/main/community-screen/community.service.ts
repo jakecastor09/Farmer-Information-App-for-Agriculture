@@ -162,9 +162,9 @@ export class CommunityService {
       oldPost.image,
       commentData,
       oldPost.userId,
-      fullName,
+      oldPost.fullName,
       oldPost.date,
-      userImg
+      oldPost.userImg
     );
 
     return this.http

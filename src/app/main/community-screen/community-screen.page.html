@@ -53,7 +53,7 @@
               <div class="comment" (click)="commentsClickHandler(post.postId)">
                 <ion-icon name="chatbox-ellipses-outline"></ion-icon>
                 <span class="comment__text">Comments</span>
-                <span class="comment__count">{{post.comment.length}}</span>
+                <span class="comment__count">{{post.comment?.length}}</span>
               </div>
             </div>
           </ion-col>

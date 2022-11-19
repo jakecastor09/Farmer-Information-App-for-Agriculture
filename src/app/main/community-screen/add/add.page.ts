@@ -91,7 +91,6 @@ export class AddPage implements OnInit {
 
     if (this.allImageFileChoose.length >= 1) {
       this.allImageFileChoose.map((item) => this.uploadImage(item));
-
       setTimeout(() => {
         this.allImageId.map((id, key) => {
           const storage = firebase.storage();
