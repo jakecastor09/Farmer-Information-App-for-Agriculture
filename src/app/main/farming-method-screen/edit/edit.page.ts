@@ -64,7 +64,7 @@ export class EditPage implements OnInit {
       this.id,
       this.title,
       this.message,
-      this.selectedImage
+      this.imageFileChoose
     );
     this.router.navigateByUrl('/main/tabs/farming-method/add');
   }

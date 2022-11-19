@@ -43,7 +43,7 @@ export class ModalComponent implements OnInit {
   farmingMethod = {
     title: '',
     message: '',
-    img: '',
+    img: Blob,
   };
 
   imageId;

@@ -1,4 +1,10 @@
 .farming-method-details {
+  &__img {
+    width: 100%;
+    object-fit: cover;
+    height: auto;
+    margin-top: 3rem;
+  }
   &__header {
     height: 15rem;
     width: 100%;

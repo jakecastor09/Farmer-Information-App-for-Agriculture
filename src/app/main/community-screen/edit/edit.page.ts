@@ -193,8 +193,7 @@ export class EditPage implements OnInit {
 
   async uploadImage(itemBlob) {
     const fileBlob = itemBlob;
-    const code =
-      Math.random() * 1000 + Math.random() * 1000 + Math.random() * 100;
+    const code = Math.random().toString(16).slice(2);
     const id = this.user.userId + code;
     this.imageId = id;
     this.allImageId.push(this.imageId);
