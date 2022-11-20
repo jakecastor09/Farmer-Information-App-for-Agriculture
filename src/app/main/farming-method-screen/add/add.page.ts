@@ -35,6 +35,8 @@ const base64toBlob = (base64Data, contentType) => {
 export class AddPage implements OnInit {
   publishData;
   imageId;
+  allImageId = [];
+  ind = 0;
 
   constructor(
     private modalCtrl: ModalController,
@@ -80,51 +82,41 @@ export class AddPage implements OnInit {
     loading.present();
     console.log(this.publishData);
 
-    const promise = new Promise((resolve, reject) => {
-      this.publishData.methods.forEach(async (method, index) => {
+    const promise = new Promise(async (resolve, reject) => {
+      await this.publishData.methods.forEach(async (method, index) => {
         if (method.img) {
           const imageFile = base64toBlob(
             method.img.replace('data:image/jpeg;base64,', ''),
             'image/jpeg'
           );
-          this.uploadImage(imageFile);
-
-          resolve('done');
+          await this.uploadImage(imageFile);
         }
       });
+      resolve('done');
     });
 
-    promise.then((value) => {
-      this.publishData.methods.forEach(async (method, index) => {
-        if (method.img) {
-          const storage = firebase.storage();
-          storage
-            .ref(`farmingMethod/${this.imageId}`)
-            .getDownloadURL()
-            .then((url) => {
-              method.img = url;
-              if (this.publishData.methods.length - 1 === index) {
-                this.farmingMethodService
-                  .addFarmingMethod(this.publishData)
-                  .subscribe(() => {
-                    loading.dismiss();
-                    this.router.navigateByUrl('/main/tabs/farming-method');
-                  });
-              }
-            });
-        }
+    promise
+      .then((value) => {
+        this.publishData.methods.forEach(async (method, index) => {
+          if (method.img) {
+            const storage = firebase.storage();
+            storage
+              .ref(`farmingMethod/${this.allImageId[this.ind++]}`)
+              .getDownloadURL()
+              .then((url) => {
+                method.img = url;
+              });
+          }
+        });
+      })
+      .then(() => {
+        this.farmingMethodService
+          .addFarmingMethod(this.publishData)
+          .subscribe(() => {
+            loading.dismiss();
+            this.router.navigateByUrl('/main/tabs/farming-method');
+          });
       });
-      console.log(value);
-    });
-
-    // else if (this.publishData.methods.length - 1 === index) {
-    //   this.farmingMethodService
-    //     .addFarmingMethod(this.publishData)
-    //     .subscribe(() => {
-    //       loading.dismiss();
-    //       this.router.navigateByUrl('/main/tabs/farming-method');
-    //     });
-    // }
   }
   onRemoveClickHandler() {
     this.addService.resetFarmingMethod();
@@ -135,9 +127,11 @@ export class AddPage implements OnInit {
 
   async uploadImage(itemBlob) {
     const fileBlob = itemBlob;
-    const code = Math.random().toString(16).slice(2);
+    const code = Math.random() * 1000 + Date.now() + Math.random() * 1000 + '';
     const id = code;
     this.imageId = id;
+    this.allImageId.push(id);
+    //add image id to array to get all image id when getting the url
     this.storage.upload(`farmingMethod/${id}`, fileBlob);
   }
 }
