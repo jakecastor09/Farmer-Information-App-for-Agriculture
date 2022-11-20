@@ -42,4 +42,7 @@ export class ProfileScreenPage implements OnInit {
   myFavorites() {
     this.router.navigateByUrl('/main/tabs/profile/my-favorites');
   }
+  logoutClickHandler() {
+    this.router.navigate(['/auth-page/register']);
+  }
 }
