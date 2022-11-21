@@ -13,9 +13,11 @@
     position: relative;
     margin-right: 0.5rem;
     &--img {
-      width: auto;
-      object-fit: contain;
-      border-radius: inherit;
+      display: block;
+      width: 4.5rem;
+      height: 4.5rem;
+      border-radius: 50%;
+      object-fit: cover;
     }
     &--post {
       position: absolute;
@@ -43,7 +45,7 @@
 }
 
 .card {
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
   border-radius: 5px;
   width: 100%;
   margin-bottom: 2rem;
@@ -140,7 +142,7 @@
   align-items: center;
   background: #2e322f;
   color: #ffffff;
-  border-radius: 1rem;
+  border-radius: 0.6rem;
   margin: 1rem;
   transform: translateY(-12px);
 }

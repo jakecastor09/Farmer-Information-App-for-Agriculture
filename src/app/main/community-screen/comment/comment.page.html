@@ -51,6 +51,8 @@
         <div class="comments__content">
           <span class="comments__username">{{comment?.fullName}}</span>
           <p class="comments__message">{{comment?.comment}}</p>
+          <ion-icon *ngIf="comment.userId === user.userId" (click)="deleteComment(comment.id)"
+            class="comments__delete-icon" name="trash-outline"></ion-icon>
         </div>
       </div>
     </div>

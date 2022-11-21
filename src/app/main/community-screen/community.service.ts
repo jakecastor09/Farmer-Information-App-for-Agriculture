@@ -136,7 +136,8 @@ export class CommunityService {
     documentId: string,
     fullName: string,
     comment: string,
-    userImg: string
+    userImg: string,
+    userId: string
   ) {
     let oldPost;
     this._allPost.subscribe((post) =>
@@ -147,12 +148,15 @@ export class CommunityService {
         }
       })
     );
-
+    const id = Math.random() * 1000 + Date.now() + Math.random() * 1000 + '';
     let commentData;
     if (oldPost?.comment?.length >= 1) {
-      commentData = [...oldPost.comment, { fullName, comment, userImg }];
+      commentData = [
+        ...oldPost.comment,
+        { id, userId, fullName, comment, userImg },
+      ];
     } else {
-      commentData = [{ fullName, comment, userImg }];
+      commentData = [{ id, userId, fullName, comment, userImg }];
     }
 
     const updatedPost = new CommunityPost(
@@ -167,6 +171,49 @@ export class CommunityService {
       oldPost.userImg
     );
 
+    return this.http
+      .put(
+        `https://agri-app-96063-default-rtdb.firebaseio.com/community-post/${documentId}.json`,
+        { ...updatedPost }
+      )
+      .pipe(
+        switchMap((responseData) => this._allPost),
+        take(1),
+        tap((post) => this._allPost.next(post))
+      );
+  }
+
+  deleteComment(documentId: string, commentId: string) {
+    let oldPost;
+    this._allPost.subscribe((post) =>
+      post.map((item) => {
+        if (item.key === documentId) {
+          oldPost = item;
+        }
+      })
+    );
+
+    console.log(documentId);
+
+    console.log(commentId);
+
+    const updatedComment = oldPost.comment.filter(
+      (item) => item.id !== commentId
+    );
+
+    console.log(updatedComment);
+
+    const updatedPost = new CommunityPost(
+      oldPost.key,
+      oldPost.postId,
+      oldPost.message,
+      oldPost.image,
+      [...updatedComment],
+      oldPost.userId,
+      oldPost.fullName,
+      oldPost.date,
+      oldPost.userImg
+    );
     return this.http
       .put(
         `https://agri-app-96063-default-rtdb.firebaseio.com/community-post/${documentId}.json`,

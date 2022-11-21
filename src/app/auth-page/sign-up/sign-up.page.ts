@@ -91,7 +91,7 @@ export class SignUpPage implements OnInit {
           message,
           buttons: [
             {
-              text: 'Go to Login',
+              text: 'Setup Profile',
               handler: () => {
                 this.router.navigateByUrl('/profile-setup/add-image');
               },

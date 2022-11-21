@@ -89,9 +89,13 @@ export class EditProfilePage implements OnInit {
           handler: async () => {
             if (this.imageFileChoose) {
               //add image in database
-              this.uploadImage(this.imageFileChoose);
 
-              setTimeout(() => {
+              const promise = new Promise(async (resolve, reject) => {
+                await this.uploadImage(this.imageFileChoose);
+                resolve('done');
+              });
+
+              promise.then((value) => {
                 const storage = firebase.storage();
                 storage
                   .ref(`Avatar/${this.imageId}`)
@@ -102,7 +106,7 @@ export class EditProfilePage implements OnInit {
                       url
                     );
                   });
-              }, 1500);
+              });
             }
 
             //show loading message

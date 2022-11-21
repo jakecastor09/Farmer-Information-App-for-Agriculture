@@ -66,6 +66,13 @@
 
 .comments {
   padding: 1rem;
+
+  &__delete-icon {
+    color: #d9534f;
+    position: absolute;
+    top: 15px;
+    right: 12px;
+  }
   &__btn {
     display: flex;
     align-items: center;
@@ -101,13 +108,15 @@
   }
   &__content {
     background-color: #f0f0f0;
-    padding: 1.2rem 1.6rem;
+    padding: 1.2rem 2.2rem 1.2rem 1.6rem;
     border-radius: 10px;
+    position: relative;
   }
   &__username {
     font-size: 1.2rem;
     font-weight: 700;
     color: #2e322f;
+    margin-right: 1rem;
   }
   &__message {
     color: #383838;

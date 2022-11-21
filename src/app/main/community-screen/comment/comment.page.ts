@@ -1,6 +1,7 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 import { AuthPageService } from 'src/app/auth-page/auth-page.service';
 import { MainService } from '../../main.service';
 import { User } from '../../user.model';
@@ -24,7 +25,8 @@ export class CommentPage implements OnInit {
     private communityService: CommunityService,
     private route: ActivatedRoute,
     private mainService: MainService,
-    private authService: AuthPageService
+    private authService: AuthPageService,
+    private alertCtrl: AlertController
   ) {}
 
   ngOnInit() {
@@ -56,7 +58,13 @@ export class CommentPage implements OnInit {
       this.user.lastName.slice(1);
 
     this.communityService
-      .addComments(this.post.key, fullName, userInputComment, this.user.imgUrl)
+      .addComments(
+        this.post.key,
+        fullName,
+        userInputComment,
+        this.user.imgUrl,
+        this.user.userId
+      )
       .subscribe((data) => {
         console.log(data);
         this.communityService.fethPosts().subscribe(() => {
@@ -81,5 +89,37 @@ export class CommentPage implements OnInit {
   }
   showCommentsClickHandler() {
     this.showComments = !this.showComments;
+  }
+  async deleteComment(commentId: string) {
+    const alert = this.alertCtrl.create({
+      header: 'Delete',
+      message: 'Are you sure you want to remove this comment?',
+      buttons: [
+        {
+          text: 'No',
+          handler: () => {},
+        },
+        {
+          text: 'Yes',
+          handler: () => {
+            this.communityService
+              .deleteComment(this.post.key, commentId)
+              .subscribe(() => {
+                this.communityService.fethPosts().subscribe(() => {
+                  this.communityService
+                    .getAllPost()
+                    .subscribe(
+                      (allPost) =>
+                        (this.post = allPost.filter(
+                          (post) => post.postId === this.postId
+                        )[0])
+                    );
+                });
+              });
+          },
+        },
+      ],
+    });
+    (await alert).present();
   }
 }
