@@ -21,13 +21,14 @@
     "@angular/platform-browser-dynamic": "~13.2.2",
     "@angular/router": "~13.2.2",
     "@capacitor-community/sqlite": "^3.5.0",
-    "@capacitor/android": "^3.7.0",
+    "@capacitor/android": "4.5.0",
     "@capacitor/camera": "^4.1.2",
-    "@capacitor/core": "^3.8.0",
+    "@capacitor/core": "^4.5.0",
     "@ionic/angular": "^6.0.0",
     "firebase": "^9.12.1",
     "jetifier": "^2.0.0",
     "rxjs": "~6.6.0",
+    "ts-node-dev": "^2.0.0",
     "uuid": "^9.0.0",
     "zone.js": "~0.11.4"
   },
@@ -62,9 +63,9 @@
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
     "protractor": "~7.0.0",
-    "ts-node": "~8.3.0",
+    "ts-node": "~10.7.0",
     "tslib": "^2.4.0",
-    "typescript": "~4.4.4"
+    "typescript": "~4.6.4"
   },
   "description": "An Ionic project"
 }

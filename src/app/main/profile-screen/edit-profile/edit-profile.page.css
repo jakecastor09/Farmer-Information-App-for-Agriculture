@@ -1,0 +1,61 @@
+.edit-profile__user {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.edit-profile__user--name {
+  margin-top: 1rem;
+  font-size: 2.4rem;
+  font-weight: bold;
+}
+
+.edit-profile__user--avatar {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 10rem !important;
+  max-height: 10rem !important;
+  position: relative;
+}
+
+.edit-profile__user--icon {
+  position: absolute;
+  font-size: 2.5rem;
+  bottom: 0rem;
+  right: 10px;
+  z-index: 100;
+}
+
+.back-btn {
+  width: 48px;
+  height: 48px;
+  background-color: #fff;
+  border-radius: 100%;
+  position: absolute;
+  -webkit-box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+          box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  top: 23px;
+  left: 23px;
+}
+
+.back-btn:hover {
+  opacity: 0.8;
+}
+
+.back-btn--icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  font-size: 23px;
+  color: #333;
+}
+/*# sourceMappingURL=edit-profile.page.css.map */

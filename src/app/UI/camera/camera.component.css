@@ -1,0 +1,30 @@
+.camera {
+  margin-top: 3.2rem;
+}
+
+.camera__image-container--img {
+  margin-right: 2rem;
+  width: 20rem;
+  height: 20rem;
+  border-radius: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 100%;
+  margin-bottom: 2rem;
+}
+
+.image-list {
+  margin-top: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow-x: scroll;
+}
+
+.image-list__img {
+  width: 8rem;
+  height: 8rem;
+  margin-right: 2rem;
+  border-radius: 100%;
+}
+/*# sourceMappingURL=camera.component.css.map */

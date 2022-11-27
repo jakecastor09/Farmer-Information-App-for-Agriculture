@@ -1,0 +1,66 @@
+.finished-setup__content {
+  margin-top: 20rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.finished-setup__content--title {
+  font-size: 3rem;
+  color: #519259;
+  margin-top: 1rem;
+}
+
+.finished-setup__logo {
+  width: 20rem;
+  height: 20rem;
+  border-radius: 100%;
+  background-color: #e7f4e7;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+}
+
+.finished-setup__logo::after {
+  content: "";
+  width: 15rem;
+  height: 15rem;
+  border-radius: 100%;
+  background-color: #5cb85c;
+}
+
+.finished-setup__icon {
+  position: absolute;
+  font-size: 5rem;
+  color: #fff;
+}
+
+.finished-setup__buttons {
+  margin-top: 20rem;
+  text-align: center;
+  display: -ms-grid;
+  display: grid;
+  row-gap: 1.8rem;
+}
+
+.finished-setup__buttons > p {
+  text-decoration: underline;
+}
+/*# sourceMappingURL=finished-setup.page.css.map */

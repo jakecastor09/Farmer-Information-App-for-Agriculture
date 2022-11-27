@@ -1,0 +1,228 @@
+.user-details {
+  margin-top: 8rem;
+}
+
+.user-details h3 {
+  font-weight: 700;
+}
+
+.user-details__info {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+  margin-bottom: 1rem;
+}
+
+.user-details__info--img {
+  width: 12rem;
+  height: 12rem;
+  border-radius: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  outline: 6px solid #c2bfbf;
+  padding: 4px;
+}
+
+.user-details__info--text {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: left;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.user-details__info--text > h1 {
+  font-size: 3.2rem;
+  margin-bottom: 0.4rem;
+  line-height: 1;
+}
+
+.user-details__info--text > span {
+  font-size: 1.6rem;
+  margin-right: 1rem;
+}
+
+.user-details__agriculture {
+  color: #2e322f;
+  margin-top: 4.4rem;
+}
+
+.user-details__agriculture__crops--selected {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0 1.4rem;
+}
+
+.user-details__agriculture__crops--selected > * {
+  margin-right: 1.4rem;
+}
+
+.user-details__agriculture__crops--selected--img {
+  width: 5rem;
+}
+
+.user-details__agriculture__livestock--selected {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0 1.4rem;
+}
+
+.user-details__agriculture__livestock--selected > * {
+  margin-right: 1.4rem;
+}
+
+.user-details__agriculture__livestock--selected--img {
+  width: 5rem;
+}
+
+.user-details__agriculture h3 {
+  font-size: 20px;
+}
+
+.user-details__farming-methods {
+  color: #2e322f;
+  margin-top: 4.4rem;
+}
+
+.user-details__farming-methods h3 {
+  font-size: 20px;
+}
+
+.border-line {
+  width: 100%;
+  border-bottom: 1px solid #e4e4e4;
+  -webkit-transform: translateY(22px);
+          transform: translateY(22px);
+}
+
+.offline {
+  outline: 6px solid #d9534f !important;
+}
+
+.online {
+  outline: 6px solid #5cb85c !important;
+}
+
+.back-btn {
+  width: 48px;
+  height: 48px;
+  background-color: #fff;
+  border-radius: 100%;
+  position: absolute;
+  -webkit-box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+          box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  top: 23px;
+  left: 23px;
+}
+
+.back-btn:hover {
+  opacity: 0.8;
+}
+
+.back-btn--icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  font-size: 23px;
+  color: #333;
+}
+
+.card-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #2e322f;
+  margin-top: 1rem;
+  border-radius: 15px;
+  padding: 1.4rem;
+  -webkit-box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+          box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.card-item__first {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  min-width: 120px;
+}
+
+.card-item__first img {
+  width: 45px;
+  height: 45px;
+  border-radius: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-right: 1rem;
+}
+
+.card-item__first-name-details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.card-item__first-name-details h3 {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-item__middle p {
+  font-size: 1.3rem;
+  font-weight: bold;
+  padding: 0 0.5rem;
+  color: #2e322f;
+}
+
+.card-item__last {
+  display: -ms-grid;
+  display: grid;
+}
+
+.card-item__last-name {
+  background-image: var(--ion-color-gradient);
+  border-radius: 25px;
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  text-align: center;
+}
+
+.card-item__last-hectares {
+  background-color: transparent;
+  border-radius: 25px;
+  color: #2e322f;
+  font-size: 0.8rem;
+  font-weight: bold;
+  border: 1px solid #2e322f;
+  padding: 0.4rem 0.8rem;
+  text-align: center;
+}
+/*# sourceMappingURL=user-details.page.css.map */

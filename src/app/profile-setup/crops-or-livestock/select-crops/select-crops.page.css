@@ -1,0 +1,83 @@
+.select-crops {
+  margin-top: 15rem;
+}
+
+.select-crops__items {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (100px)[2];
+      grid-template-columns: repeat(2, 100px);
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  row-gap: 2rem;
+  -webkit-column-gap: 6rem;
+          column-gap: 6rem;
+  height: 35rem;
+  overflow-y: scroll;
+  justify-items: center;
+  padding: 0;
+  margin-top: 5rem;
+}
+
+.select-crops__items--list {
+  display: block;
+  width: 10rem;
+  height: 10rem;
+  padding: 1rem;
+  border-radius: 100%;
+  background-color: #f5e8c7;
+}
+
+.select-crops__button {
+  margin-top: 5rem;
+}
+
+.selected {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.selected::after {
+  content: "";
+  display: block;
+  height: 100%;
+  width: 100%;
+  background: url("../../../../assets/img/check.png") no-repeat 0 0;
+  background-size: 45px 45px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 5;
+  background-position: center;
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
+}
+
+.back-btn {
+  width: 48px;
+  height: 48px;
+  background-color: #fff;
+  border-radius: 100%;
+  position: relative;
+  -webkit-box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+          box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.back-btn:hover {
+  opacity: 0.8;
+}
+
+.back-btn--icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  font-size: 23px;
+  color: #333;
+}
+/*# sourceMappingURL=select-crops.page.css.map */

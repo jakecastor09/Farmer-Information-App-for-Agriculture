@@ -1,0 +1,27 @@
+.add-image {
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 2.4rem;
+}
+
+.add-image__title {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+
+.add-image__buttons {
+  margin-top: 6.4rem;
+  width: 100%;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+/*# sourceMappingURL=add-image.page.css.map */

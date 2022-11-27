@@ -15,7 +15,8 @@
             </ion-img>
             <div class="farming-method-details__header--details">
               <div>
-                <span class="farming-method-details__header--name">{{farmingMethod.name}}</span>
+                <span
+                  class="farming-method-details__header--name">{{farmingMethod.name.charAt(0).toUpperCase() + farmingMethod.name.slice(1)}}</span>
                 <span class="farming-method-details__header--date">{{farmingMethod.date | date}}</span>
               </div>
               <div class="farming-method-details__header--hectares">{{farmingMethod.hectares}} ha</div>
@@ -26,7 +27,8 @@
       <ion-row>
         <ion-col>
           <div class="farming-method-details__heading">
-            <h1 class="farming-method-details__heading--title">{{farmingMethod.name}} Farming Methods</h1>
+            <h1 class="farming-method-details__heading--title">
+              {{farmingMethod.name.charAt(0).toUpperCase() + farmingMethod.name.slice(1)}} Farming Methods</h1>
             <div class="farming-method-details__heading--details">
               <div class="farming-method-details__heading--details--userInfo">
                 <span>By</span>

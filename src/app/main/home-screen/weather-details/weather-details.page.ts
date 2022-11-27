@@ -54,6 +54,7 @@ export class WeatherDetailsPage implements OnInit {
     windspeed: 0,
     sunrise: '',
     icon: '',
+    dt: 0,
   };
   currentWeatherData = {
     temp: 0,
@@ -130,6 +131,7 @@ export class WeatherDetailsPage implements OnInit {
       windspeed: this.tomorrowWeather.wind_speed,
       sunrise: this.formatTime(this.tomorrowWeather.sunrise),
       icon: tomorrowIcon,
+      dt: this.tomorrowWeather.dt,
     };
 
     console.log(this.dailyWeatherData);
@@ -228,5 +230,14 @@ export class WeatherDetailsPage implements OnInit {
     };
 
     this.titleCurrentWeather = this.formatTime(data.dt) + ' Weather';
+  }
+
+  formatDate(dt) {
+    return new Date(dt * 1000).toLocaleDateString('en-us', {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    });
   }
 }

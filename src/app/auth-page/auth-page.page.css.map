@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "auth-page.page.scss"
+    ],
+    "names": [],
+    "file": "auth-page.page.css"
+}

@@ -1,0 +1,49 @@
+button {
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  height: 50px;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.solid {
+  color: #fff;
+  background-image: -webkit-gradient(linear, left top, right top, from(#3dc27c), to(#2ff784));
+  background-image: linear-gradient(to right, #3dc27c, #2ff784);
+}
+
+.outline {
+  background-color: transparent;
+  border: 1px solid #519259;
+  color: #519259;
+}
+
+.yellow {
+  color: #fff;
+  background-color: #274046;
+}
+
+.danger {
+  color: #fff;
+  background-image: -webkit-gradient(linear, left top, right top, from(#f72f2f), to(#c23d3d));
+  background-image: linear-gradient(to right, #f72f2f, #c23d3d);
+}
+
+.small {
+  border-radius: 5px;
+  margin-right: 2rem;
+  padding: 0 2rem;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.isValid {
+  background-image: -webkit-gradient(linear, left top, right top, from(#cbcccb), to(#cbcccb));
+  background-image: linear-gradient(to right, #cbcccb, #cbcccb);
+}
+/*# sourceMappingURL=button.component.css.map */

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "onboarding-screen.page.scss"
+    ],
+    "names": [],
+    "file": "onboarding-screen.page.css"
+}

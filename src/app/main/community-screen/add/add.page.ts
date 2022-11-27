@@ -140,12 +140,10 @@ export class AddPage implements OnInit {
 
   addImageClickHandler() {
     Camera.getPhoto({
-      quality: 90,
+      quality: 100,
       allowEditing: true,
       source: CameraSource.Prompt,
       correctOrientation: true,
-      height: 200,
-      width: 200,
       resultType: CameraResultType.DataUrl,
     })
       .then((image) => {

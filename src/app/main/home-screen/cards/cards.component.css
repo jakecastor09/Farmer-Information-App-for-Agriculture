@@ -1,0 +1,44 @@
+.card {
+  padding: 0.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 184px;
+  border-radius: 20px;
+  width: 161.67px;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin-right: 1rem;
+}
+
+.card__img {
+  width: 60%;
+}
+
+.card__title {
+  font-size: 10px;
+  color: #fff;
+  padding: 5px 19px;
+  border-radius: 25px;
+  width: 94.25px;
+  height: 22px;
+  -webkit-transform: translateY(-10px);
+          transform: translateY(-10px);
+  text-align: center;
+}
+
+.card__content {
+  font-size: 10px;
+  text-align: center;
+  color: #3a3a3a;
+  -webkit-transform: translateY(-8px);
+          transform: translateY(-8px);
+}
+/*# sourceMappingURL=cards.component.css.map */

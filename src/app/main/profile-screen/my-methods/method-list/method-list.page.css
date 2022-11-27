@@ -1,0 +1,120 @@
+.method-list {
+  margin-top: 4rem;
+}
+
+.method-list__item {
+  border-top: 1px solid rgba(60, 64, 67, 0.3);
+  border-bottom: 1px solid rgba(60, 64, 67, 0.3);
+}
+
+.card-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #2e322f;
+  border-radius: 15px;
+  padding: 1.4rem;
+  width: 100%;
+}
+
+.card-item__first {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  min-width: 120px;
+}
+
+.card-item__first img {
+  width: 45px;
+  height: 45px;
+  border-radius: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-right: 1rem;
+}
+
+.card-item__first-name-details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.card-item__first-name-details h3 {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-item__middle p {
+  font-size: 1.3rem;
+  font-weight: bold;
+  padding: 0 0.5rem;
+  color: #2e322f;
+}
+
+.card-item__last {
+  display: -ms-grid;
+  display: grid;
+}
+
+.card-item__last-name {
+  background-image: var(--ion-color-gradient);
+  border-radius: 25px;
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  text-align: center;
+}
+
+.card-item__last-hectares {
+  background-color: transparent;
+  border-radius: 25px;
+  color: #2e322f;
+  font-size: 0.8rem;
+  font-weight: bold;
+  border: 1px solid #2e322f;
+  padding: 0.4rem 0.8rem;
+  text-align: center;
+}
+
+.back-btn {
+  width: 48px;
+  height: 48px;
+  background-color: #fff;
+  border-radius: 100%;
+  position: absolute;
+  -webkit-box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+          box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  top: 23px;
+  left: 23px;
+}
+
+.back-btn:hover {
+  opacity: 0.8;
+}
+
+.back-btn--icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  font-size: 23px;
+  color: #333;
+}
+/*# sourceMappingURL=method-list.page.css.map */

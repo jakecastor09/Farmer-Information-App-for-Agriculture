@@ -1,0 +1,52 @@
+.crops__logo {
+  width: 130px;
+  height: 130px;
+  margin-top: 40px;
+}
+
+.crops__message {
+  font-size: 30px;
+  color: #fff;
+  -webkit-transform: translateY(-22px);
+          transform: translateY(-22px);
+}
+
+.crops__header {
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  background-color: var(--ion-color-primary);
+  height: 32vh;
+  border-radius: 0 0 50px 50px;
+}
+
+.crops__content {
+  height: 53vh;
+  padding: 0.8rem 0;
+  margin-top: 0.7rem;
+}
+
+ion-card {
+  text-align: center;
+  padding: 12px 8px;
+}
+
+ion-card > ion-img {
+  width: 50px;
+  margin: 0 auto;
+  padding-bottom: 5px;
+}
+
+span {
+  margin: 0 22px;
+  font-size: 17px;
+  padding: 0.8rem 0;
+  display: inline-block;
+}
+
+ion-button {
+  position: absolute;
+  bottom: 15px;
+  right: 25px;
+}
+/*# sourceMappingURL=crops-screen.page.css.map */

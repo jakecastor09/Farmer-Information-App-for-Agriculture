@@ -1,0 +1,70 @@
+.community__add__main__write-post {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 2.4rem;
+}
+
+.community__add__main__img {
+  min-width: 5rem;
+  height: 5rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 100%;
+  -webkit-box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+          box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  margin-right: 1.4rem;
+  outline: 3px solid #3ec27d;
+  padding: 2px;
+}
+
+.community__add__main__text-area {
+  padding: 1.6rem;
+  width: 100%;
+  border-radius: 15px;
+  color: #2e322f;
+  font-size: 1.4rem;
+  -webkit-box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+          box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border: 1px solid #e0e2e0;
+}
+
+.community__add__main__text-area:focus {
+  outline: 1px solid #3ec27d;
+}
+
+.community__add__img-post {
+  margin-bottom: 1.6rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow-x: scroll;
+}
+
+.community__add__img-post__img-list {
+  margin-right: 1.6rem;
+  position: relative;
+}
+
+.community__add__img-post__img {
+  min-width: 18rem;
+  height: 11rem;
+  border-radius: 10px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.community__add__img-post__icon {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  color: #d9534f;
+  font-size: 2.4rem;
+  -webkit-box-shadow: rgba(99, 99, 99, 0.5) 0px 2px 8px 0px;
+          box-shadow: rgba(99, 99, 99, 0.5) 0px 2px 8px 0px;
+}
+
+ion-button {
+  background-image: var(--ion-color-gradient);
+}
+/*# sourceMappingURL=add.page.css.map */

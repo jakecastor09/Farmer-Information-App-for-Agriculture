@@ -1,0 +1,84 @@
+.add-farming-method__remove {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  margin-top: 6rem;
+}
+
+.add-farming-method__details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: #3e433f;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.add-farming-method__name {
+  font-size: 4rem;
+  font-weight: bold;
+}
+
+.add-farming-method__added-img {
+  width: 100%;
+  height: 20rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-top: 4rem;
+}
+
+.add-farming-method__back {
+  color: #ffffff;
+  text-align: left;
+}
+
+.add-farming-method__hectares {
+  font-size: 1.4rem;
+  background: black;
+  color: #ffff;
+  padding: 0.8rem 1rem;
+  border-radius: 20rem;
+}
+
+.add-farming-method__publish {
+  display: block;
+  font-size: 1.8rem;
+  font-weight: bold;
+  background-color: #3e433f;
+  width: 100%;
+  padding: 2rem;
+  color: #ffffff;
+  text-align: right;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.add-farming-method__content--item:nth-child(1) {
+  margin-top: 1rem;
+}
+
+.add-farming-method__content--icons {
+  position: absolute;
+  right: 1.6rem;
+  font-size: 2.5rem;
+}
+
+.add-farming-method__content--icons--edit {
+  color: #2e322f;
+  margin-right: 0.5rem;
+}
+
+.add-farming-method__content--icons--delete {
+  color: #d9534f;
+}
+/*# sourceMappingURL=add.page.css.map */

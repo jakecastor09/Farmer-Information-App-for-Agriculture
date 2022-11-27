@@ -1,0 +1,42 @@
+.log-in {
+  margin-top: 2.4rem;
+}
+
+.log-in__logo {
+  width: 12rem;
+  height: 12rem;
+  margin-bottom: 0.5rem;
+}
+
+.log-in__header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 1rem;
+}
+
+.log-in__header--title {
+  font-size: 4.8rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin-top: 4rem;
+  color: #2e322f;
+}
+
+.log-in p {
+  color: #b4bbb4;
+}
+
+.log-in span {
+  color: #d9534f;
+  font-weight: bold;
+  text-decoration: underline;
+}
+/*# sourceMappingURL=log-in.page.css.map */
